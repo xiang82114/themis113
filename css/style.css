@@ -5,7 +5,7 @@ h2{
 }
 #carouselExampleControls{
     height: 50px;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 .carousel {
     position: relative;

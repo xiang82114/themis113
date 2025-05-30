@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="css/allstyle.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="warp">
+        <H1>Contact</H1>
+        <a href="../index.html">回首頁</a>
+        <div class="test">
+            <section>
+                <form name="myform" id="myform" action="contact.php" method="post" style="margin:0px;display: inline">
+                <input type="hidden" name="Mode" value="Post_Send">
+                    <div class="container-fluid">
+                      <div class="row justify-content-center">
+                        
+                        <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10">
+                          <div class="c_form row">
+                            <div class="col-md-12">
+                              <p>感謝您的資訊，我們將會盡快與您聯繫。</p>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                              <label>姓名 NAME</label>
+                              <input name="Name" id="Name" value="" type="text" class="form-control validate[required]">
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                              <label>電話 TEL</label>
+                              <input type="text" name="Tel" id="Tel" value="" class="form-control">
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                              <label>LINE ID</label>
+                              <input name="WT" type="text" class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                              <label>信箱 Email</label>
+                              <input type="text" name="EMail" id="EMail" value="" class="form-control validate[required, custom[email]]">
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                              <label>您的空間性質為何？</label>
+                              <select  name="Room" class="form-control">
+                                  <option value="預售屋">預售屋</option>
+                                  <option value="新成屋（5年以下）">新成屋（5年以下）</option>
+                                  <option value="中古屋（5~15年）">中古屋（5~15年）</option>
+                                  <option value="老屋（15年以上）">老屋（15年以上）</option>
+                                  <option value="辦公室空間">辦公室空間</option>
+                                  <option value="商業空間">商業空間</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                              <label>您的執行預算？</label>
+                              <select class="form-control" name="Money">
+                                <option value="100-150萬">100-150萬</option>
+                                    <option value="150-200萬">150-200萬</option>
+                                    <option value="200-250萬">200-250萬</option>
+                                    <option value="250-300萬">250-300萬</option>
+                                    <option value="300-500萬">300-500萬</option>
+                                    <option value="500萬以上">500萬以上</option>
+                              </select>
+                            </div>
+                            
+                            
+                            <div class="col-md-12 col-sm-12">
+                              <label>您的空間坪數</label>
+                              <input name="Square" type="text" class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                              <label>備註</label>
+                              <textarea name="Message" class="form-control" rows="6" style="height: auto;"></textarea>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                            <label>驗證碼</label>
+                            </div>
+                            <div class="col-md-6 col-sm-6">                  
+                              <input type="text" name="PostAuthCode" id="PostAuthCode" class="form-control">
+                            </div>
+                            <div class="col-md-6 col-sm-6">                  
+                               <img src="AuthCode.php" align="absMiddle" id="AuthCode" border="0" onClick="this.src='AuthCode.php?' + Math.random()" style="cursor:pointer;margin-left:10px;"> 
+                            </div>
+                            <div class="col-md-12">
+                              <button type="submit">送出</button>
+                            </div>
+                          </div>
+                        </div>
+            
+            
+            
+                        
+            
+            
+                      </div>
+                    </div>
+            
+            
+                    <div class="container-fluid" style="background-color: #FBFAF5; padding: 3em 0;">
+            
+                      <div class="row">
+            
+                        <div class="container">
+            
+                          
+            
+                          <div class="col-md-12 col-md-offset-4 ">
+            
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div style="position: relative; width: 100%; padding-top: 75%; /* 4:3 比例 */">
+                                  <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.918830050824!2d121.51092857469447!3d25.070740136812343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a937fa9730a7%3A0x271711c0e1ac3a94!2zMTAz5Y-w5YyX5biC5aSn5ZCM5Y2A6YeN5oW25YyX6Lev5LiJ5q61MjQ0LTHomZ8!5e0!3m2!1szh-TW!2stw!4v1748589209356!5m2!1szh-TW!2stw"
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                                    allowfullscreen 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                  </iframe>
+                                </div>
+                              </div>
+            
+                              <!-- 聯絡資訊區塊 -->
+                              <div class="col-md-6 h-100">
+                                <div class="col-12 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+                                  <dl>
+                                    <h4>同翕設計</h4>
+                                    <dd><span>ADD | </span>台北市大同區 重慶北路三段244-1號1樓</dd>
+                                    <dd class="tel"><span>TEL | </span>(02) 2598 - 9803</dd>
+                                    <dd class="tel"><span>FAX | </span>(02) 2595 - 2578</dd>
+                                    <dd class="tel"><span>Mobile | </span>0986-500-977</dd>
+                                    <dd><span>E-Mail | </span>themis113@gmail.com</dd>
+                                    <dd><span>Line ID | </span>themis113</dd>
+                                  </dl>
+                                </div>
+                              </div>
+                                
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            
+                  </div>
+                  </form>
+                </section>
+        </div>
+    </div>
+</body>
+</html>
