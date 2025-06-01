@@ -12,8 +12,28 @@
 </head>
 <body>
     <div class="warp">
-        <H1>Contact</H1>
-        <a href="../index.html">回首頁</a>
+        <div class="header mb-2">
+            <nav class="navbar navbar-expand-sm sticky-top navbar-light bg-light">
+                <div class="container">
+                    <a class="navbar-brand" href="#"><img src="../imges/logo.png" alt="" width="50px"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <div class="navbar-nav ms-auto">
+                            <a class="nav-link me-3" href="../index.html">首頁</a>
+                            <a class="nav-link me-3" href="#">流程</a>
+                            <a class="nav-link me-3 active" href="/Work/work.html">作品集</a>
+                            <a class="nav-link me-3" href="/Contact/contact.html">聯繫我們</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="mb-5">
+          <H1>Contact</H1>
+        </div>
         <div class="test">
             <section>
                 <form name="myform" id="myform" action="contact.php" method="post" style="margin:0px;display: inline">
@@ -146,5 +166,6 @@
                 </section>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>

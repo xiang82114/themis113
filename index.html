@@ -12,25 +12,7 @@
     <!-- animate -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
-        .carousel-item .test{
-            position: absolute;
-            left: -18%;
-            top: 50%;
-        }
-        .carousel-inner{
-            overflow: visible !important;
-        }
-        .more{
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 20px;
-            border: 1px solid black;
-            color: black;
-        }
-        .more:hover{
-            background-color: #666;
-            color: azure;
-        }
+        
     </style>
 </head>
 <body>
@@ -63,8 +45,8 @@
         </nav>
         <div class="container">
             <div class="row d-flex justify-content-end caro">
-                <div class="col-md-12 col-lg-8">
-                    <div id="carouselExampleControls" class="carousel slide mx-auto" data-bs-ride="carousel" style="min-height: 500px;">
+                <div class="col-md-12 col-lg-8 caroitem">
+                    <div id="carouselExampleControls" class="carousel slide mx-auto" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active position-relative">
                                 <div class="test">
@@ -72,7 +54,7 @@
                                     <a href="#" class="more">More</a>
                                 </div>
                                 <a href="#">
-                                    <img src="imges/ThemisWeb/test1.jpg" class="img-fluid d-block w-100" style="height: 500px; object-fit: cover;" alt="...">
+                                    <img src="imges/ThemisWeb/test1.jpg" class="img-fluid d-block w-100" alt="...">
                                 </a>
                             </div>
                             <div class="carousel-item position-relative">
@@ -80,14 +62,14 @@
                                     <h3>皙 • 霧白<br>挑高於白霧中 輕繞漂渺</h3>
                                     <a href="#" class="more">More</a>
                                 </div>
-                                <img src="imges/ThemisWeb/test2.jpg" class="img-fluid d-block w-100" style="height: 500px; object-fit: cover;" alt="...">
+                                <img src="imges/ThemisWeb/test2.jpg" class="img-fluid d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item position-relative">
                                 <div class="test">
                                     <h3>皙 • 霧白<br>挑高於白霧中 輕繞漂渺</h3>
                                     <a href="#" class="more">More</a>
                                 </div>
-                                <img src="imges/ThemisWeb/test3.jpg" class="img-fluid d-block w-100" style="height: 500px; object-fit: cover;" alt="...">
+                                <img src="imges/ThemisWeb/test3.jpg" class="img-fluid d-block w-100" alt="...">
                             </div>
                         </div>
                         <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -102,7 +84,7 @@
                 </div>
             </div>
             
-            <div class="ourwish">
+            <div class="ourwish container">
                 <div class="row ">
                     <h2>品牌想法</h2>
                     <div class="wich1 row align-items-center justify-content-center" data-bottom-top="transform: translateX(-200px)" data-center="transform: translateX(0px)">
@@ -139,7 +121,7 @@
                     </div>
                 </div>
             </div>
-            <div class="aboutus row d-flex justify-content-center align-items-center">
+            <div class="aboutus container row d-flex justify-content-center align-items-center">
                 <h2 data-bottom-top="transform: translateY(-50px);opacity:0" data-center="transform: translateY(0px);opacity:1">關於我們</h2>
                 <div class="col col-sm-12 col-md-6">
                     <div class="p-2">
@@ -166,16 +148,16 @@
                      </pre>
                 </div>
             </div>
-            <div class="process row align-items-center justify-content-center">
+            <div class="process container row align-items-center justify-content-center">
                 <h2>簡易流程</h2>
                 <img src="imges/ThemisWeb/process.png" alt="" data-bottom-top="transform: translateX(-200px)" data-center="transform: translateX(0px)">
             </div>
-            <div class="process row align-items-center justify-content-center">
+            <div class="process container row align-items-center justify-content-center">
                 <h2>流程</h2>
                 <img src="imges/ThemisWeb/start.jpeg" alt="" data-bottom-top="transform: translateX(-200px)" data-center="transform: translateX(0px)">
             </div>
-            <div class="starwork row align-items-center justify-content-center">
-                <h2>精選作品/最新作品</h2>
+            <div class="starwork row">
+                <h2>精選作品/最新作品</h2> 
                 <a class="col col-sm-12 col-md-6 col-lg-4 work" href="#">
                     <img src="imges/ThemisWeb/test1.jpg" alt="" class="w-100">
                     <p>士林 王公府</p>
@@ -202,7 +184,7 @@
                 </a>
             </div>
         </div>
-        <div class="footer">
+        <div class="footer container">
             <div class="fixed-bottom">
                 <ul class="icons">
                     <li><a href="tel:+886986500977" target="_blank" class="d-flex justify-content-center align-items-center mb-2"><i class="bi bi-telephone-fill"></i></a></li>

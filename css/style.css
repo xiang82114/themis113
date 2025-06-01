@@ -94,3 +94,29 @@ h2{
 .caro,.ourwish,.aboutus,.process,.starwork,.feedbacks{
     margin-bottom: 50px;
 }
+.carousel-item .test{
+    position: absolute;
+    left: -18%;
+    top: 50%;
+}
+.carousel-inner{
+    overflow: visible !important;
+}
+.more{
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    color: black;
+}
+.more:hover{
+    background-color: #666;
+    color: azure;
+}
+@media (max-width:768px) {
+    .carousel-item .test{
+        left: 0;
+        bottom: 0;  
+        color: aliceblue;
+    }
+}
