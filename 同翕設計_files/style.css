@@ -1,0 +1,31 @@
+h2{
+    font-size: 24px;
+    text-align: center;
+    margin: 20px;
+}
+#carouselExampleControls{
+    height: 50px;
+    margin-bottom: 20px;
+}
+.carousel {
+    position: relative;
+    z-index: 1;
+}
+
+.photos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.item{
+    width: 30%;
+    text-align: center;
+}
+.item img {
+    width: 100%;
+}
+.item p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

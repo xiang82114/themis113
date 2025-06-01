@@ -1,0 +1,9 @@
+.workstyle{
+    margin: 50px 30px;
+}
+.workstyle img{
+    height: 500px;
+    overflow: hidden;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
