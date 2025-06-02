@@ -21,6 +21,9 @@ html,body{
   --text-main: #333333;
   --text-light: #FFFFFF;
   --border-soft: #CCCCCC;
+
+  --border-text:rgba(255, 255, 255, .1);
+  --border-back:rgba(255, 255, 255, .55);  
 }
 
 /* ============ 應用範例 ============ */
@@ -41,6 +44,15 @@ body {
 }
 .navbar .nav-link:hover {
   color: var(--accent-yellow);
+}
+#toggle {
+    color: var(--border-text);
+    border: 1px solid var(--border-back);
+    /* border-color: rgba(255, 255, 255, .1); */
+}  
+#toggle:hover {
+    color: var(--accent-yellow);
+    border-color: var(--accent-yellow);
 }
 
 /* 按鈕 */
@@ -76,7 +88,15 @@ h1, h2, h3 {
 /* 向下滑導覽行 */
 
 .navbar-top{
-    background-color: transparent;    
+    background-color: transparent;
+    #toggle {
+        border: 1px solid var(--border-back);
+        color: var(--border-text);
+    }  
+    #toggle:hover {
+        color: var(--accent-yellow);
+        border-color: var(--accent-yellow);
+    }
     #navbarTogglerDemo02 .nav-link {
         color: var(--accent-green);
         transition: 0.5s; 
