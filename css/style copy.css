@@ -1,0 +1,101 @@
+h2{
+    font-size: 24px;
+    text-align: center;
+    margin: 50px;
+}
+#carouselExampleControls{
+    height: 50px;
+    margin-bottom: 20px;
+}
+.carousel {
+    position: relative;
+    z-index: 1;
+}
+
+.photos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.item{
+    width: 30%;
+    text-align: center;
+}
+.item img {
+    width: 100%;
+}
+.item p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* 遮罩樣式 */
+#splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #757171b7; /* 背景色可自訂 */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+
+
+.work{
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+.work:hover{
+    /* border: 2px solid red; */
+    img{
+        transform: scale(1.2);
+    }
+}
+
+.feedback{
+    width: 100%;
+    height: 200px;
+    background-color: #ec9959dd;
+}
+.feedback .more{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+.caro,.ourwish,.aboutus,.process,.starwork,.feedbacks{
+    margin-bottom: 50px;
+}
+.carousel-item .test{
+    position: absolute;
+    left: -18%;
+    top: 50%;
+}
+.carousel-inner{
+    overflow: visible !important;
+}
+.more{
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    color: black;
+}
+.more:hover{
+    background-color: #666;
+    color: azure;
+}
+@media (max-width:768px) {
+    .carousel-item .test{
+        left: 0;
+        bottom: 0;  
+        color: aliceblue;
+    }
+    
+}

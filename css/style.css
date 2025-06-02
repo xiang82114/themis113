@@ -1,33 +1,18 @@
-h2{
-    font-size: 24px;
-    text-align: center;
-    margin: 50px;
-}
-#carouselExampleControls{
-    height: 50px;
-    margin-bottom: 20px;
-}
-.carousel {
-    position: relative;
-    z-index: 1;
-}
+:root {
+  /* 主色與強調色 */
+  --main-gray: #4F4F4F;         /* 柔霧深灰 */
+  --accent-yellow: #F5B917;     /* Logo 黃 */
+  --accent-green: #445C4A;      /* Logo 墨綠 */
 
-.photos {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.item{
-    width: 30%;
-    text-align: center;
-}
-.item img {
-    width: 100%;
-}
-.item p{
-    margin-top: 20px;
-    margin-bottom: 20px;
+  /* 背景 */
+  --bg-soft: #F7F5F2;           /* 柔和底色 */
+  --bg-cement: #E0DCD5;         /* 水泥色偏暖 */
+  --wood-tone: #D8BA94;         /* 淺木色 */
+
+  /* 文字與邊界 */
+  --text-main: #333333;
+  --text-light: #FFFFFF;
+  --border-soft: #CCCCCC;
 }
 
 /* 遮罩樣式 */
@@ -37,7 +22,7 @@ h2{
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #757171b7; /* 背景色可自訂 */
+  background-color: var(--main-gray); /* 背景色可自訂 */
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -47,8 +32,9 @@ h2{
 
 /* 中間 Logo 或文字 */
 .splash-logo {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: thin;
+  color: var(--bg-soft);
   opacity: 0;
   animation: fadeIn 1s ease forwards;
 }
@@ -69,31 +55,6 @@ h2{
   pointer-events: none;
 }
 
-.work{
-    display: block;
-    text-decoration: none;
-    color: #000;
-}
-.work:hover{
-    /* border: 2px solid red; */
-    img{
-        transform: scale(1.2);
-    }
-}
-
-.feedback{
-    width: 100%;
-    height: 200px;
-    background-color: #ec9959dd;
-}
-.feedback .more{
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-}
-.caro,.ourwish,.aboutus,.process,.starwork,.feedbacks{
-    margin-bottom: 50px;
-}
 .carousel-item .test{
     position: absolute;
     left: -18%;
@@ -113,10 +74,62 @@ h2{
     background-color: #666;
     color: azure;
 }
-@media (max-width:768px) {
+@media (max-width:992px) {
     .carousel-item .test{
         left: 0;
         bottom: 0;  
         color: aliceblue;
+    }
+}
+
+.work{
+    display: block;
+    text-decoration: none;
+    color: var(--text-main);
+    overflow: hidden;
+}
+.work:hover{
+    /* border: 2px solid red; */
+    img{
+        transform: scale(1.2);
+    }
+}
+
+.feedback{
+    width: 100%;
+    height: 200px;
+    background-color: var(--wood-tone);
+}
+.feedback .more{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+.footer{
+    position: relative;
+    .Copyright{
+        text-align: center;
+    }
+}
+
+.footer .icons{
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    li a{
+        display: flex;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        text-align: center;
+        background-color: #4F4F4F79;
+        color: #fff;
+    }
+    li a:hover{
+        background-color: var(--accent-yellow);
+        color: var(--accent-green);
     }
 }

@@ -1,0 +1,87 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+.container-fluid{
+    padding: 0;
+}
+
+:root {
+  /* 主色與強調色 */
+  --main-gray: #4F4F4F;         /* 柔霧深灰 */
+  --accent-yellow: #F5B917;     /* Logo 黃 */
+  --accent-green: #445C4A;      /* Logo 墨綠 */
+
+  /* 背景 */
+  --bg-soft: #F7F5F2;           /* 柔和底色 */
+  --bg-cement: #E0DCD5;         /* 水泥色偏暖 */
+  --wood-tone: #D8BA94;         /* 淺木色 */
+
+  /* 文字與邊界 */
+  --text-main: #333333;
+  --text-light: #FFFFFF;
+  --border-soft: #CCCCCC;
+}
+
+/* ============ 應用範例 ============ */
+
+body {
+    text-decoration: none;
+  background-color: var(--bg-soft);
+  color: var(--text-main);
+  font-family: 'Noto Sans TC', 'Helvetica', sans-serif;
+}
+
+/* 導覽列 */
+.navbar {
+  background-color: var(--main-gray);
+}
+.navbar .nav-link {
+  color: var(--text-light);
+}
+.navbar .nav-link:hover {
+  color: var(--accent-yellow);
+}
+
+/* 按鈕 */
+.btn-primary {
+  background-color: var(--accent-yellow);
+  border: none;
+  color: var(--main-gray);
+}
+.btn-primary:hover {
+  background-color: #e0a300;
+}
+
+/* 分區 */
+.section-cement {
+  background-color: var(--bg-cement);
+}
+.section-wood {
+  background-color: var(--wood-tone);
+  color: var(--main-gray);
+}
+
+/* 標題 */
+h1, h2, h3 {
+  color: var(--main-gray);
+}
+
+/* 分隔線 */
+.divider {
+  border-top: 1px solid var(--border-soft);
+  margin: 2rem 0;
+}
+
+/* 向下滑導覽行 */
+
+.navbar-top{
+    background-color: transparent;    
+    #navbarTogglerDemo02 .nav-link {
+        color: var(--accent-green);
+        transition: 0.5s; 
+    }
+    #navbarTogglerDemo02 a:hover{
+        color: var(--accent-yellow);
+    }
+}
