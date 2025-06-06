@@ -105,3 +105,12 @@ h1, h2, h3 {
         color: var(--accent-yellow);
     }
 }
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+/* navbar height*/
+.navbar .container img{
+  height: 30px;
+}
