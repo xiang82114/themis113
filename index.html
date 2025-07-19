@@ -1,303 +1,167 @@
 <!DOCTYPE html>
-<html lang="tw">
+<html lang="zh-Hant">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>同翕設計</title>
-        
-        <!-- <link rel="stylesheet" href="css/style.css"> -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-        <!-- animate -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-        <link rel="stylesheet" href="css/TheStyle.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #f8f0e6;
+                font-family: "Noto Serif TC", serif;
+            }
+            .navbar-custom {
+                transition: background-color 0.3s ease;
+            }
+            .navbar-transparent {
+                background-color: transparent !important;
+            }
+            .navbar-colored {
+                background-color: #f8f0e6 !important;
+            }
+            .hero {
+                position: relative;
+                height: 100vh;
+                background-image: url("imges/新莊Z宅/08.png");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                color: #fff;
+            }
+            .btn-custom {
+                background-color: #f3ede8;
+                border: none;
+                padding: 0.75rem 1.5rem;
+                margin: 0.5rem;
+            }
+        </style>
     </head>
     <body>
-        <div id="splash">
-            <div class="splash-logo text-center">
-                <div class="title">
-                    <img src="imges/圖片1.png" alt="" height="50px" class="me-3">                
-                </div>
-                <p>與 您 一 同 完 成 夢 想 中 的 藍 圖</p>
-            </div>
-        </div>
 
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-md sticky-top navbar-top">
-                <div class="container">
-                    <a class="navbar-brand" href="index.html"><img src="imges/圖片1.png" alt=""></a>
-                    <button id="toggle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                        ☰
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                        <div class="navbar-nav ms-auto">
-                            <a class="nav-link me-3 active" href="index.html">關於我們</a>
-                            <a class="nav-link me-3" href="/Process/process.html">流程</a>
-                            <a class="nav-link me-3" href="/Work/work.html">作品集</a>
-                            <a class="nav-link me-3" href="/Contact/contact.html">聯繫我們</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+        <!-- 導覽列 -->
+        <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
             <div class="container">
-                <div class="row d-flex justify-content-end caro">
-                    <div class="col-md-12 col-lg-8 caroitem">
-                        <div id="carouselExampleControls" class="carousel slide mx-auto" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active position-relative">
-                                    <div class="test">
-                                        <h3>皙 • 霧白<br>挑高於白霧中 輕繞漂渺</h3>
-                                        <a href="#" class="more">More</a>
-                                    </div>
-                                    <a href="#">
-                                        <img src="imges/ThemisWeb/test1.jpg" class="img-fluid d-block w-100" alt="...">
-                                    </a>
-                                </div>
-                                <div class="carousel-item position-relative">
-                                    <div class="test">
-                                        <h3>皙 • 霧白<br>挑高於白霧中 輕繞漂渺</h3>
-                                        <a href="#" class="more">More</a>
-                                    </div>
-                                    <img src="imges/ThemisWeb/test2.jpg" class="img-fluid d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item position-relative">
-                                    <div class="test">
-                                        <h3>皙 • 霧白<br>挑高於白霧中 輕繞漂渺</h3>
-                                        <a href="#" class="more">More</a>
-                                    </div>
-                                    <img src="imges/ThemisWeb/test3.jpg" class="img-fluid d-block w-100" alt="...">
-                                </div>
-                            </div>
-                            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button> -->
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="ourwish container">
-                    <div class="row ">
-                        <h2>品牌想法</h2>
-                        <div class="wich1 row align-items-center justify-content-center" data-bottom-top="transform: translateX(-200px)" data-center="transform: translateX(0px)">
-                            <div class="col col-sm-12 col-md-6">
-                                <img src="imges/ThemisWeb/blue.jpg" alt="" class="w-100">
-                            </div>
-                            <div class="col col-sm-12 col-md-6" data-bottom-top="transform: translateY(200px);opacity:0" data-center="transform: translateY(0px);opacity:1">
-                                <p class="text-start">
-                                我 們 專 注 於 空 間 訂 製 與 平 衡 美 學<br><br>
-
-                                讓 空 間 主 導 空 間 ， 讓 想 像 成 為 現 實<br><br><br>
-
-
-                                從 居 家 住 宅 到 商 業 空 間 一 手 包 辦<br><br>
-
-                                我 們 非 常 珍 惜 與 每 位 業 主 的 相 遇<br><br>
-
-                                同 翕 與 您 一 起 在 築 夢 踏 實 的 過 程 中 成 長<br><br><br> 
-
-
-                                您 好 ， 我 們 是 同 翕 設 計 團 隊<br><br>
-
-                                讓 我 們 與 您 一 同 完 成 夢 想 中 的 藍 圖
-                                </p>
-                            </div>
-                        </div>
-                        <div class="wish2 row align-items-center justify-content-center flex-row-reverse" data-bottom-top="transform: translateX(200px)" data-center="transform: translateX(0px)">
-                            <div class="col col-sm-12 col-md-6">
-                                <img src="imges/ThemisWeb/test2.jpg" alt="" class="w-100">
-                            </div>
-                            <div class="col col-sm-12 col-md-6">
-                                <p class="text-end">
-                                我 們 專 注 於 空 間 訂 製 與 平 衡 美 學<br><br>
-
-                                讓 空 間 主 導 空 間 ， 讓 想 像 成 為 現 實<br><br><br>
-
-
-                                從 居 家 住 宅 到 商 業 空 間 一 手 包 辦<br><br>
-
-                                我 們 非 常 珍 惜 與 每 位 業 主 的 相 遇<br><br>
-
-                                同 翕 與 您 一 起 在 築 夢 踏 實 的 過 程 中 成 長<br><br><br> 
-
-
-                                您 好 ， 我 們 是 同 翕 設 計 團 隊<br><br>
-
-                                讓 我 們 與 您 一 同 完 成 夢 想 中 的 藍 圖
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="aboutus container row d-flex justify-content-center align-items-center">
-                    <h2 data-bottom-top="transform: translateY(-50px);opacity:0" data-center="transform: translateY(0px);opacity:1">關於我們</h2>
-                    <div class="col col-sm-12 col-md-6">
-                        <div class="p-2">
-                            <img src="imges/designer.png" alt="" class="w-100 p-5">
-                        </div>
-                    </div>
-                    <div class="col col-sm-12 col-md-6 text-center">
-                        <p class="text-center">
-                                我 們 專 注 於 空 間 訂 製 與 平 衡 美 學<br><br>
-
-                                讓 空 間 主 導 空 間 ， 讓 想 像 成 為 現 實<br><br><br>
-
-
-                                從 居 家 住 宅 到 商 業 空 間 一 手 包 辦<br><br>
-
-                                我 們 非 常 珍 惜 與 每 位 業 主 的 相 遇<br><br>
-
-                                同 翕 與 您 一 起 在 築 夢 踏 實 的 過 程 中 成 長<br><br><br> 
-
-
-                                您 好 ， 我 們 是 同 翕 設 計 團 隊<br><br>
-
-                                讓 我 們 與 您 一 同 完 成 夢 想 中 的 藍 圖
-                        </p>
-                    </div>
-                </div>
-                <div class="process container row align-items-center justify-content-center">
-                    <h2>簡易流程</h2>
-                    <img src="imges/ThemisWeb/process.png" alt="" data-bottom-top="transform: translateX(-200px)" data-center="transform: translateX(0px)">
-                </div>
-                <div class="process container row align-items-center justify-content-center">
-                    <h2>流程</h2>
-                    <img src="imges/ThemisWeb/start.jpeg" alt="" data-bottom-top="transform: translateX(-200px)" data-center="transform: translateX(0px)">
-                </div>
-                <div class="container my-5">
-                    <h2 class="mb-4 text-center">精選作品 / 最新作品</h2>
-                    <div class="row g-4">
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="work">
-                                <div class="img-box">
-                                    <a href="#">
-                                        <img src="imges/ThemisWeb/test1.jpg" alt="士林 王公府">
-                                    </a>
-                                </div>                                
-                                <p>士林 王公府</p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="work">
-                                <div class="img-box">
-                                    <a href="#">
-                                        <img src="imges/ThemisWeb/test2.jpg" alt="天母靜好">
-                                    </a>
-                                </div> 
-                                <p>天母靜好</p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="work">
-                                <div class="img-box">
-                                    <a href="#">
-                                        <img src="imges/ThemisWeb/test3.jpg" alt="淺水灣佛朗明哥">
-                                    </a>
-                                </div> 
-                                <p>淺水灣佛朗明哥</p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="work">
-                                <div class="img-box">
-                                    <a href="#">
-                                        <img src="imges/ThemisWeb/test4.jpg" alt="八里 吳公館">
-                                    </a>
-                                </div> 
-                                <p>八里 吳公館</p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="work">
-                                <div class="img-box">
-                                    <a href="#">
-                                        <img src="imges/ThemisWeb/test5.jpg" alt="新店 陳公館">
-                                    </a>
-                                </div> 
-                                <p>新店 陳公館</p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="work">
-                                <div class="img-box">
-                                    <a href="#">
-                                        <img src="imges/ThemisWeb/test6.jpg" alt="石碇 蔡公館">
-                                    </a>
-                                </div> 
-                                <p>石碇 蔡公館</p>
-                            </div>
-                        </div>
-                    </div>
+                <a class="navbar-brand" href="#">
+                <img src="imges/logoNocolor.png" alt=""> 
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-white" href="#">品牌介紹</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">設計作品</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">服務流程</a></li>
+                </ul>
                 </div>
             </div>
-            <div class="footer container">
-                <div class="fixed-bottom">
-                    <ul class="icons list-unstyled">
-                        <li><a href="tel:+886986500977" target="_blank" class="d-flex justify-content-center align-items-center mb-2"><i class="bi bi-telephone-fill"></i></a></li>
-                        <li><a href="https://www.instagram.com/themis__design/" target="_blank" class="d-flex justify-content-center align-items-center mb-2"><i class="bi bi-instagram"></i></a></li>
-                        <!-- <li><a href="#" class="d-flex justify-content-center align-items-center mb-2"><i class="bi bi-facebook"></i></a></li> -->
-                        <li><a href="https://page.line.me/themis113?fbclid=PAZXh0bgNhZW0CMTEAAadjJaJ18s0nnDbHJP_K77IaUtxCZMT6YwiUG_AJ8H82JXUKVQCKG2g83KnwiA_aem_rAEHbZg_pfs_ccewp1b0TA" class="d-flex justify-content-center align-items-center"><i class="bi bi-line"></i></a></li>
-                    </ul>
+        </nav>
+
+        <!-- 主視覺 -->
+        <section class="hero vh-100">
+            <h1>體驗夢想實現的美好</h1>
+            <p>打造安心、溫度與質感並存的居住空間</p>
+            <div>
+                <button class="btn btn-custom">立即預約諮詢</button>
+                <button class="btn btn-custom">瀏覽設計作品</button>
+            </div>
+        </section>
+
+        <!-- 品牌理念 -->
+        <section class="brand-concept container p-3">
+            <h2 class="section-title">品牌理念</h2>
+            <p>
+                初真，是為了諦察，不只是見去問，而是一種除盡的安心。<br>
+                我們陪你縝密從徹徹到安心的每一步，因為這就是我們專業。
+            </p>
+        </section>
+
+        <!-- 關於我們 -->
+        <section class="about-us container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                <img src="imges/designer.png" alt="關於我們" class="img-fluid">
                 </div>
-                <div class="feedbacks container">
-                    <h2>客戶回饋</h2>
-                    <div class="feedback p-2 d-flex align-items-center justify-content-center position-relative mb-2">
-                        <p class="p-5">
-                            很用心的設計師，幫我們把舊屋翻新，整個房子都不一樣了，
-                            整體設計風格非常符合我們的想像，不僅實用性高，還大大提升了家的溫度與質感。
-                        </p>
-                        <a href="#" class="more">More</a>
-                    </div>
-                    <div class="feedback p-2 d-flex align-items-center justify-content-center position-relative mb-2">
-                        <p>
-                            謝謝設計師，把空間重新規劃，多了遊戲房，小孩住得很開心，
-                            從初期規劃到完工，每個細節都非常用心，讓我們的空間既舒適又有獨特風格。
-                        </p>
-                        <a href="#" class="more">More</a>
-                    </div>
-                    <div class="feedback p-2 d-flex align-items-center justify-content-center position-relative mb-2">
-                        <p>
-                            謝謝設計師，把空間重新規劃，多了遊戲房，大人住得很開心，
-                            非常感謝設計團隊耐心傾聽與細緻規劃，讓我們夢想中的理想居所完美實現。
-                        </p>
-                        <a href="#" class="more">More</a>
-                    </div>
+                <div class="col-md-6">
+                <h2>關於我們</h2>
+                <p>
+                    凝聚純心莊力，信賴兼顧理念與溫暖走入每個家。<br>
+                    我們屢次淬煉設計專業技術，與專業施工監工一同合作，<br>
+                    凝練雋永空間，<br>
+                    讓你輕鬆作決定，心懷感動的家業相連。
+                </p>
                 </div>
-                <!-- <div class="info">
-                    <div class="row">
-                        <div class="col col-md-6 col-sm-12  row">
-                            <div class="col col-md-8 d-flex justify-content-start">
-                                <p>電話 : (02) 2598 - 9803</p>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-sm-12 row">
-                            <div class="col col-md-8 d-flex justify-content-start">
-                                <p>官方LINE : @themis113</p>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-sm-12  row">
-                            <div class="col col-md-8 d-flex justify-content-start">
-                                <p>信箱 : themis113@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-sm-12  row">
-                            <div class="col col-md-8 d-flex justify-content-start">
-                                <p>地址 : 台北市大同區 重慶北路三段244-1號1樓</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <p class="Copyright">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
+            </div>
+        </section>
+
+        <!-- 精選作品 -->
+        <section class="container">
+        <h2 class="section-title">精選作品</h2>
+        <div class="row text-center">
+            <div class="col-md-4 mb-3">
+            <img src="imges/ThemisWeb/test1.jpg" class="img-fluid" alt="作品1">
+            </div>
+            <div class="col-md-4 mb-3">
+            <img src="imges/ThemisWeb/test2.jpg" class="img-fluid" alt="作品2">
+            </div>
+            <div class="col-md-4 mb-3">
+            <img src="imges/ThemisWeb/test3.jpg" class="img-fluid" alt="作品3">
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="js/index.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+        </section>
+
+        <!-- 服務流程 -->
+        <section class="service-process text-center">
+        <h2 class="section-title">服務流程</h2>
+        <div class="d-flex flex-wrap justify-content-center align-items-center">
+            <div class="p-2">籌劃溝通</div>
+            <span class="mx-2">→</span>
+            <div class="p-2">場地勘察</div>
+            <span class="mx-2">→</span>
+            <div class="p-2">與確預算</div>
+            <span class="mx-2">→</span>
+            <div class="p-2">配置審圖</div>
+            <span class="mx-2">→</span>
+            <div class="p-2">施工監造</div>
+            <span class="mx-2">→</span>
+            <div class="p-2">售後協同</div>
+        </div>
+        </section>
+
+        <!-- 客戶回饋 -->
+        <section class="customer-feedback container">
+            <h2 class="section-title">客戶回饋</h2>
+            <div class="bg-white p-3 rounded shadow-sm">
+                設計專業注重細心，佈置太了療，設計審圖到施工監工陪你完工的安心，<br>
+                離我們的專業幫助挪擠量又空間。
+            </div>
+        </section>
+
+        <div class="footer m-3">
+            <!-- <div class="fixed-bottom">
+                <p class="Copyright">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
+            </div> -->
+            <div class="text-center">
+                <p class="Copyright">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
+            </div> 
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            window.addEventListener("scroll", function() {
+                const navbar = document.querySelector(".navbar");
+                if (window.scrollY > 50) {
+                navbar.classList.remove("navbar-transparent");
+                navbar.classList.add("navbar-colored");
+                } else {
+                navbar.classList.add("navbar-transparent");
+                navbar.classList.remove("navbar-colored");
+                }
+            });
+        </script>
     </body>
 </html>
