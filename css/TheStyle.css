@@ -8,36 +8,36 @@ html,body{
 
 :root {
   /* 主色與強調色 */
-  --main-gray: #4F4F4F;         /* 柔霧深灰 */
-  --accent-yellow: #F5B917;     /* Logo 黃 */
-  --accent-green: #445C4A;      /* Logo 墨綠 */
+  --main-brown: #7B6650;
+  --accent-beige: #C1B3A2;
+  --accent-dark: #5E5146;
+  --accent-yellow: #F5B917;
 
   /* 背景 */
-  --bg-soft: #F7F5F2;           /* 柔和底色 */
-  --bg-cement: #E0DCD5;         /* 水泥色偏暖 */
-  --wood-tone: #D8BA94;         /* 淺木色 */
+  --bg-soft: #F5F2EF;
+  --bg-stone: #D5C8BA;
+  --wood-tone: #B89F7C;
 
   /* 文字與邊界 */
-  --text-main: #333333;
+  --text-main: #3B3B3B;
+  --text-subtle: #6D6258;
   --text-light: #FFFFFF;
-  --border-soft: #CCCCCC;
-
-  --border-text:rgba(255, 255, 255, .1);
-  --border-back:rgba(255, 255, 255, .55);  
+  --border-soft: #DCD2C6;
+  --border-light-translucent: rgba(220, 208, 190, 0.4);
+  --border-highlight: rgba(120, 100, 80, 0.2);
 }
-
 /* ============ 應用範例 ============ */
 
 body {
-    text-decoration: none;
   background-color: var(--bg-soft);
   color: var(--text-main);
   font-family: 'Noto Sans TC', 'Helvetica', sans-serif;
+  text-decoration: none;
 }
 
 /* 導覽列 */
 .navbar {
-  background-color: var(--main-gray);
+  background-color: var(--accent-dark);
 }
 .navbar .nav-link {
   color: var(--text-light);
@@ -45,38 +45,44 @@ body {
 .navbar .nav-link:hover {
   color: var(--accent-yellow);
 }
+
 #toggle {
-    color: var(--border-text);
-    border: 1px solid var(--border-back);
-    /* border-color: rgba(255, 255, 255, .1); */
-}  
+  color: var(--text-light);
+  border: 1px solid var(--border-light-translucent);
+}
 #toggle:hover {
     color: var(--accent-yellow);
-    border-color: var(--accent-yellow);
+    border: 2px solid var(--accent-yellow);
 }
+@media (min-width: 768px) {
+  #toggle:hover {
+    border: none;
+  }
+}
+
 
 /* 按鈕 */
 .btn-primary {
   background-color: var(--accent-yellow);
   border: none;
-  color: var(--main-gray);
+  color: var(--accent-dark);
 }
 .btn-primary:hover {
-  background-color: #e0a300;
+  background-color: #e0a300; /* 暗一階黃 */
 }
 
 /* 分區 */
 .section-cement {
-  background-color: var(--bg-cement);
+  background-color: var(--bg-stone);
 }
 .section-wood {
   background-color: var(--wood-tone);
-  color: var(--main-gray);
+  color: var(--accent-dark);
 }
 
 /* 標題 */
 h1, h2, h3 {
-  color: var(--main-gray);
+  color: var(--accent-dark);
 }
 
 /* 分隔線 */
@@ -86,13 +92,24 @@ h1, h2, h3 {
 }
 
 /* 向下滑導覽行 */
+.navbar-top {
+  background-color: rgba(255, 255, 255, 0);  /* 初始透明 */
+  transition: background-color 0.3s ease;
+}
 
-.navbar-top{
+.navbar-top.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);  /* 滾動後白底 + 半透明 */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+/* .navbar-top{
     background-color: transparent;
+    border: none !important;
+  box-shadow: none !important;
     #toggle {
-        border: 1px solid var(--border-back);
+        border: 1px solid var(--border-light-translucent);
         color: var(--border-text);
-    }  
+    }
+
     #toggle:hover {
         color: var(--accent-yellow);
         border-color: var(--accent-yellow);
@@ -104,7 +121,7 @@ h1, h2, h3 {
     #navbarTogglerDemo02 a:hover{
         color: var(--accent-yellow);
     }
-}
+} */
 img{
   max-width: 100%;
   height: auto;
@@ -114,3 +131,49 @@ img{
 .navbar .container img{
   height: 30px;
 }
+
+@media (max-width: 991px) {
+  p{
+    font-size: 16px;
+  }
+
+}
+@media (min-width: 992px){
+  h2{
+    font-size: 36px;
+  }
+  h5{
+    font-size: 28px;
+  }
+  .Selected-works .work p{
+    font-size: 24px;
+  }
+  p{
+    font-size: 24px;
+  }
+}
+
+.d {
+  height: 5px;
+  background-color: red;
+  margin-bottom: 5px;
+}
+.d1980px {
+  width: 2115px;
+}
+.d1400px {
+  width: 1400px;
+}
+.d1200px {
+  width: 1200px;
+}
+.d992px {
+  width: 992px;
+}
+.d768px {
+  width: 768px;
+}
+.d576px {
+  width: 576px;
+}
+
