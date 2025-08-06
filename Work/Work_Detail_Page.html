@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品詳情｜同翕設計</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f0e6;
+      font-family: "Noto Serif TC", serif;
+      color: #5a4a3f;
+    }
+
+    .navbar-custom {
+      background-color: #f8f0e6;
+      padding: 1rem 0;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+    }
+
+    .hero {
+      position: relative;
+      height: 60vh;
+      background-image: url("../images/ThemisWeb/test1.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 2.5rem;
+    }
+
+    .section {
+      padding: 4rem 1rem;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .carousel-inner img {
+      object-fit: cover;
+      height: 60vh;
+      border-radius: 8px;
+    }
+
+    .thumbnail-nav {
+      margin-top: 1rem;
+    }
+
+    .thumb-img {
+      width: 100px;
+      height: 70px;
+      object-fit: cover;
+      opacity: 0.5;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .thumb-img.active {
+      opacity: 1;
+      outline: 2px solid #5a4a3f;
+    }
+
+    .info-box dt {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .img-grid img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container px-4">
+      <a class="navbar-brand" href="/index.html">
+        <img src="../images/logocolor.png" alt="logo" />
+      </a>
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-dark me-3" href="/index.html">關於我們</a></li>
+          <li class="nav-item"><a class="nav-link text-dark active" href="/Work/work.html">設計作品</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="/Process/process.html">服務流程</a></li>
+          <li class="nav-item"><a class="nav-link text-dark me-3" href="/Contact/contact.html">聯繫我們</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>現代住宅 × 簡約風</h1>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">空間預覽</h2>
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../images/ThemisWeb/test1.jpg" class="d-block w-100" alt="作品圖1">
+        </div>
+        <div class="carousel-item">
+          <img src="../images/ThemisWeb/test2.jpg" class="d-block w-100" alt="作品圖2">
+        </div>
+        <div class="carousel-item">
+          <img src="../images/ThemisWeb/test3.jpg" class="d-block w-100" alt="作品圖3">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+    <div class="d-flex flex-wrap gap-2 justify-content-center thumbnail-nav">
+      <img src="../images/ThemisWeb/test1.jpg" class="thumb-img active" data-bs-target="#mainCarousel" data-bs-slide-to="0">
+      <img src="../images/ThemisWeb/test2.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="1">
+      <img src="../images/ThemisWeb/test3.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="2">
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">設計概念</h2>
+    <p>以灰階為基底，透過材質轉換與簡潔線條營造現代都會的生活場域。</p>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">平面配置圖</h2>
+    <div class="row img-grid">
+      <div class="col-md-6">
+        <p class="fw-bold">原始平面圖</p>
+        <img src="../images/ThemisWeb/plan-original.png" alt="原始平面圖">
+      </div>
+      <div class="col-md-6">
+        <p class="fw-bold">現況平面圖</p>
+        <img src="../images/ThemisWeb/plan-final.png" alt="現況平面圖">
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">3D 模擬圖</h2>
+    <div class="row img-grid">
+      <div class="col-md-6">
+        <p class="fw-bold">客廳 3D 圖</p>
+        <img src="../images/ThemisWeb/3d-living.jpg" alt="客廳3D">
+      </div>
+      <div class="col-md-6">
+        <p class="fw-bold">整體 3D 圖</p>
+        <img src="../images/ThemisWeb/3d-overview.jpg" alt="3D整體">
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">創意巧思</h2>
+    <p>善用牆面凹槽收納、將梁柱視覺隱化，並以光源層次豐富空間感。</p>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">屋主回饋</h2>
+    <p>我們非常滿意整體規劃，設計細節貼心，團隊也非常用心，真的讓我們感受到家的溫度！</p>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-title">案場資訊</h2>
+    <dl class="info-box">
+      <dt>案名：</dt><dd>摩登灰階宅邸</dd>
+      <dt>地點：</dt><dd>台中市</dd>
+      <dt>家庭成員：</dt><dd>夫妻＋雙寶</dd>
+      <dt>坪數：</dt><dd>31 坪</dd>
+      <dt>房屋類型：</dt><dd>中古屋</dd>
+      <dt>格局：</dt><dd>三房兩廳兩衛</dd>
+    </dl>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // sync thumbnail active on carousel change
+    const carousel = document.querySelector('#mainCarousel');
+    const thumbs = document.querySelectorAll('.thumb-img');
+
+    thumbs.forEach((thumb, idx) => {
+      thumb.addEventListener('click', () => {
+        thumbs.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+      });
+    });
+
+    carousel.addEventListener('slid.bs.carousel', function (event) {
+      thumbs.forEach(t => t.classList.remove('active'));
+      if (thumbs[event.to]) {
+        thumbs[event.to].classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html>
