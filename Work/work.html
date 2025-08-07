@@ -121,7 +121,7 @@
         <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
             <div class="container px-4">
             <a class="navbar-brand" href="/index.html">
-                <img id="navbarLogo" src="../images/logoNocolor.png" alt="logo" />
+                <img id="navbarLogo" src="../images/logo/logoNocolor.png" alt="logo" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="bi bi-list fs-1 text-white"></span>
@@ -145,7 +145,7 @@
             <div class="row g-4">
                 <!-- 作品卡片 -->
                 <div class="col-md-6" data-aos="fade-up">
-                    <a href="Work_Detail_Page.html" class="text-decoration-none">
+                    <a href="detail/themis-modern.html" class="text-decoration-none">
                         <div class="work-card">
                             <img src="../images/ThemisWeb/test1.jpg" alt="作品1" loading="lazy">
                             <div class="work-info">現代住宅 × 簡約風</div>
@@ -229,11 +229,11 @@
             if (window.scrollY > 50) {
                 navbar.classList.remove("navbar-transparent");
                 navbar.classList.add("navbar-colored");
-                logo.src = "../images/logocolor.png";
+                logo.src = "../images/logo/logocolor.png";
             } else {
                 navbar.classList.add("navbar-transparent");
                 navbar.classList.remove("navbar-colored");
-                logo.src = "../images/logoNocolor.png";
+                logo.src = "../images/logo/logoNocolor.png";
             }
             });
         </script>
