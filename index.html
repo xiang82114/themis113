@@ -92,14 +92,32 @@
             @media (max-width: 576px) {
                 .hero .btn-custom {
                     display: block;
-                    width: 80%;
+                    width: 100%;
                     margin: 0.5rem auto;
+                    opacity: 0.8;
+                }
+                section .section-title,.about-us h2 {
+                    text-align: center;
                 }
             }
-            
+
+            @media (max-width: 575.98px) {
+                .process-flow .arrow {
+                display: block;
+                transform: rotate(90deg); /* → 變成 ↓ */
+                font-size: 20px;
+                line-height: 1;
+                }
+            }
+
+            @media (min-width: 576px) {
+                .process-flow .arrow {
+                display: inline-block;
+                transform: none;
+                }
+            }
             .about-us h2 {
                 font-size: 2rem;
-                font-weight: bold;
             }
 
             .about-us p {
@@ -152,12 +170,14 @@
         </section>
 
         <!-- 品牌理念 -->
-        <section class="brand-concept container section-spacing-lg">
-            <h2 class="section-title">品牌理念</h2>
-            <p>
-                初真，是為了諦察，不只是見去問，而是一種除盡的安心。<br>
-                我們陪你縝密從徹徹到安心的每一步，因為這就是我們專業。
-            </p>
+        <section class="brand-concept section-spacing-lg">
+            <div class="container px-4">
+                <h2 class="section-title">品牌理念</h2>
+                <p>
+                    初真，是為了諦察，不只是見去問，而是一種除盡的安心。<br>
+                    我們陪你縝密從徹徹到安心的每一步，因為這就是我們專業。
+                </p>
+            </div>
         </section>
 
         <!-- 關於我們 -->
@@ -182,59 +202,63 @@
 
 
         <!-- 精選作品 -->
-        <section class="container section-spacing-lg">
-        <h2 class="section-title">精選作品</h2>
-        <div class="row text-center">
-            <div class="col-md-4 mb-3">
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="800">
-                    <img src="images/ThemisWeb/test1.jpg" class="img-fluid" alt="作品1">
+        <section class="section-spacing-lg">
+            <div class="container">
+                <h2 class="section-title">精選作品</h2>
+                <div class="row text-center">
+                    <div class="col-md-4 mb-3">
+                        <div class="project-card" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="800">
+                            <img src="images/ThemisWeb/test1.jpg" class="img-fluid" alt="作品1">
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
+                            <img src="images/ThemisWeb/test2.jpg" class="img-fluid" alt="作品2">
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
+                            <img src="images/ThemisWeb/test3.jpg" class="img-fluid" alt="作品3">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
-                    <img src="images/ThemisWeb/test2.jpg" class="img-fluid" alt="作品2">
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
-                    <img src="images/ThemisWeb/test3.jpg" class="img-fluid" alt="作品3">
-                </div>
-            </div>
-        </div>
         </section>
 
         <!-- 服務流程 -->
         <section class="service-process text-center section-spacing-sm">
-        <h2 class="section-title">服務流程</h2>
-        <div class="d-flex flex-wrap justify-content-center align-items-center">
-            <div class="p-2" data-aos="fade-up" data-aos-delay="0">籌劃溝通</div>
-            <span class="mx-2">→</span>
-            <div class="p-2" data-aos="fade-up" data-aos-delay="100">場地勘察</div>
-            <span class="mx-2">→</span>
-            <div class="p-2" data-aos="fade-up" data-aos-delay="200">與確預算</div>
-            <span class="mx-2">→</span>
-            <div class="p-2" data-aos="fade-up" data-aos-delay="300">配置審圖</div>
-            <span class="mx-2">→</span>
-            <div class="p-2" data-aos="fade-up" data-aos-delay="400">施工監造</div>
-            <span class="mx-2">→</span>
-            <div class="p-2" data-aos="fade-up" data-aos-delay="500">售後協同</div>
-        </div>
+            <h2 class="section-title">服務流程</h2>
+            <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center align-items-center process-flow">
+                <div class="p-2" data-aos="fade-up" data-aos-delay="0">籌劃溝通</div>
+                <span class="arrow p-2">→</span>
+                <div class="p-2" data-aos="fade-up" data-aos-delay="100">場地勘察</div>
+                <span class="arrow p-2">→</span>
+                <div class="p-2" data-aos="fade-up" data-aos-delay="200">與確預算</div>
+                <span class="arrow p-2">→</span>
+                <div class="p-2" data-aos="fade-up" data-aos-delay="300">配置審圖</div>
+                <span class="arrow p-2">→</span>
+                <div class="p-2" data-aos="fade-up" data-aos-delay="400">施工監造</div>
+                <span class="arrow p-2">→</span>
+                <div class="p-2" data-aos="fade-up" data-aos-delay="500">售後協同</div>
+            </div>
         </section>
 
         <!-- 客戶回饋 -->
-        <section class="customer-feedback container section-spacing-sm">
-            <h2 class="section-title">客戶回饋</h2>
-            <div class="bg-white p-3 rounded shadow-sm mb-3">
-                設計細心專業，從設計審圖到施工監工都讓人安心，<br>
-                感謝同翕團隊幫助我們打造更寬敞實用的空間。
-            </div>
-            <div class="bg-white p-3 rounded shadow-sm mb-3">
-                設計細心專業，從設計審圖到施工監工都讓人安心，<br>
-                感謝同翕團隊幫助我們打造更寬敞實用的空間。
-            </div>
-            <div class="bg-white p-3 rounded shadow-sm mb-3">
-                設計細心專業，從設計審圖到施工監工都讓人安心，<br>
-                感謝同翕團隊幫助我們打造更寬敞實用的空間。
+        <section class="customer-feedback section-spacing-sm">
+            <div class="container">
+                <h2 class="section-title">客戶回饋</h2>
+                <div class="bg-white p-3 rounded shadow-sm mb-3">
+                    設計細心專業，從設計審圖到施工監工都讓人安心，<br>
+                    感謝同翕團隊幫助我們打造更寬敞實用的空間。
+                </div>
+                <div class="bg-white p-3 rounded shadow-sm mb-3">
+                    設計細心專業，從設計審圖到施工監工都讓人安心，<br>
+                    感謝同翕團隊幫助我們打造更寬敞實用的空間。
+                </div>
+                <div class="bg-white p-3 rounded shadow-sm mb-3">
+                    設計細心專業，從設計審圖到施工監工都讓人安心，<br>
+                    感謝同翕團隊幫助我們打造更寬敞實用的空間。
+                </div>
             </div>
         </section>
 
