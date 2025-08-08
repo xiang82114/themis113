@@ -1,0 +1,52 @@
+[
+  {
+    "id": "themis-modern",
+    "title": "摩登灰階宅邸",
+    "heroImage": "../images/ThemisWeb/test1.jpg",
+    "carouselImages": [
+      "../images/ThemisWeb/test1.jpg",
+      "../images/ThemisWeb/test2.jpg",
+      "../images/ThemisWeb/test3.jpg"
+    ],
+    "designConcept": "以灰階為基底，透過材質轉換與簡潔線條營造現代都會的生活場域。",
+    "planOriginal": "../images/ThemisWeb/plan-original.png",
+    "planFinal": "../images/ThemisWeb/plan-final.png",
+    "living3D": "../images/ThemisWeb/3d-living.jpg",
+    "overview3D": "../images/ThemisWeb/3d-overview.jpg",
+    "creativeIdeas": "善用牆面凹槽收納、將梁柱視覺隱化，並以光源層次豐富空間感。",
+    "feedback": "設計細節貼心，團隊非常用心，真的讓我們感受到家的溫度！",
+    "info": {
+      "projectName": "摩登灰階宅邸",
+      "location": "台中市",
+      "members": "夫妻＋雙寶",
+      "area": "31 坪",
+      "houseType": "中古屋",
+      "layout": "三房兩廳兩衛"
+    }
+  },
+  {
+    "id": "japanwood",
+    "title": "日式暖木風居所",
+    "heroImage": "../images/ThemisWeb/japanwood-hero.jpg",
+    "carouselImages": [
+      "../images/ThemisWeb/japanwood1.jpg",
+      "../images/ThemisWeb/japanwood2.jpg",
+      "../images/ThemisWeb/japanwood3.jpg"
+    ],
+    "designConcept": "融合木質溫潤感與日式侘寂精神，創造心靈沉靜的棲身空間。",
+    "planOriginal": "../images/ThemisWeb/japanwood-plan-original.jpg",
+    "planFinal": "../images/ThemisWeb/japanwood-plan-final.jpg",
+    "living3D": "../images/ThemisWeb/japanwood-living.jpg",
+    "overview3D": "../images/ThemisWeb/japanwood-overview.jpg",
+    "creativeIdeas": "引入自然光與榻榻米配置，打造收納與生活一體的起居空間。",
+    "feedback": "設計師非常理解我們的生活節奏，最終成果超出預期，非常滿意！",
+    "info": {
+      "projectName": "暖木系簡約宅",
+      "location": "新竹市",
+      "members": "夫妻",
+      "area": "27 坪",
+      "houseType": "新成屋",
+      "layout": "兩房兩廳"
+    }
+  }
+]
