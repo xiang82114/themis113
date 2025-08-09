@@ -1,293 +1,348 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>同翕設計</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet">
-        <style>
-            body {
-                background-color: #f8f0e6;
-                font-family: "Noto Serif TC", serif;
-            }
-            .navbar-custom {
-                transition: background-color 0.3s ease;
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-            }
-            .navbar-transparent {
-                background-color: transparent !important;
-            }
-            .navbar-colored {
-                background-color: #f8f0e6 !important;
-            }
-            .navbar-colored .nav-link {
-                color: #000 !important;
-            }
-            .navbar-brand img {
-                height: 40px; /* 原本可能過小，建議 40~60px */
-                transition: all 0.3s ease;
-            }            
-            .navbar-colored .nav-link:hover {
-                color: #333 !important;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>同翕設計</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet"/>
+    <style>
+      /* 全站色系（與原站一致） */
+      :root{
+        --c-bg: #f8f0e6;    /* 米色背景 */
+        --c-text: #5a4a3f;  /* 主要深棕文字 */
+        --c-mute: #8a8a8a;  /* 次要灰文字 */
+        --c-line: #d9cfc4;  /* 淺米棕分隔線 */
+        --c-accent: #a08974;/* 暖棕重點色(hover) */
+      }
 
-            .hero {
-                position: relative;
-                height: 100vh;
-                background-image: url("images/hero-bgc.jpg");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                color: #fff;
-            }
-            .hero::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.4); /* 黑色遮罩可調 */
-                z-index: 0;
-            }
+      body{
+        background-color: var(--c-bg);
+        font-family: "Noto Serif TC", serif;
+        color: var(--c-text);
+      }
 
-            .hero > * {
-                position: relative;
-                z-index: 1;
-            }
+      /* Navbar */
+      .navbar-custom{ transition: background-color .3s ease; padding:.9rem 0; }
+      .navbar-transparent{ background-color: transparent !important; }
+      .navbar-colored{ background-color: var(--c-bg) !important; }
+      .navbar-colored .nav-link{ color:#000 !important; }
+      .navbar-brand img{ height:40px; transition: all .3s ease; }
+      .navbar-colored .nav-link:hover{ color:#333 !important; }
 
-            .btn-custom {
-                background-color: #f3ede8;
-                border: none;
-                padding: 0.75rem 1.5rem;
-                margin: 0.5rem;
-            }
+      /* Hero */
+      .hero{
+        position:relative; height:100vh;
+        background:url("images/hero-bgc.jpg") center/cover no-repeat;
+        display:flex; flex-direction:column; justify-content:center; align-items:center;
+        text-align:center; color:#fff;
+      }
+      .hero::before{ content:""; position:absolute; inset:0; background:rgba(0,0,0,.4); z-index:0; }
+      .hero>*{ position:relative; z-index:1; }
+      .btn-custom{ background:#f3ede8; border:none; padding:.75rem 1.5rem; margin:.5rem; }
 
-            .section-spacing-sm { padding: 2rem 0; }
-            .section-spacing-lg { padding: 6rem 0; }
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            } 
+      .section-spacing-sm{ padding:2rem 0; }
+      .section-spacing-lg{ padding:6rem 0; }
+      .section-title{ font-size:2rem; margin-bottom:2rem; }
 
-            .project-card {
-                overflow: hidden;
-                border-radius: 8px;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.05);                
-            }
+      /* Projects */
+      .project-card{ overflow:hidden; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,.05); }
+      .project-card img{ display:block; width:100%; transition: transform .6s ease; }
+      .project-card:hover img{ transform: scale(1.2); }
 
-            .project-card img {
-                transition: transform 0.6s ease;
-                display: block;
-                width: 100%;
-            }            
-            .project-card:hover img {
-                transform: scale(1.2); /* 微放大但不超出 */
-            }
+      @media (max-width:576px){
+        .hero .btn-custom{ display:block; width:100%; margin:.5rem auto; opacity:.85; }
+        section .section-title,.about-us h2{ text-align:center; }
+      }
+      .about-us h2{ font-size:2rem; }
+      .about-us p{ font-size:1.1rem; line-height:1.8; }
 
-            @media (max-width: 576px) {
-                .hero .btn-custom {
-                    display: block;
-                    width: 100%;
-                    margin: 0.5rem auto;
-                    opacity: 0.8;
-                }
-                section .section-title,.about-us h2 {
-                    text-align: center;
-                }
-            }
+      /* ===== 服務流程（配合原站色系） ===== */
+      .process{ background: var(--c-bg); letter-spacing:.04em; }
+      .process__container{ max-width:1200px; margin:0 auto; padding:72px 20px 90px; }
+      .process__header{ margin-bottom:36px; }
+      .process__title{
+        font-size:clamp(32px,4vw,56px); font-weight:700; line-height:1.15; margin:0 0 12px; color:var(--c-text);
+      }
+      .process__subtitle{ font-size:clamp(14px,1.8vw,18px); color:var(--c-mute); margin:0; }
 
-            @media (max-width: 575.98px) {
-                .process-flow .arrow {
-                display: block;
-                transform: rotate(90deg); /* → 變成 ↓ */
-                font-size: 20px;
-                line-height: 1;
-                }
-            }
+      .process__grid{ display:grid; grid-template-columns:1fr; gap:8px 80px; margin:24px 0 48px; }
+      @media (min-width:992px){ .process__grid{ grid-template-columns:1fr 1fr; } }
 
-            @media (min-width: 576px) {
-                .process-flow .arrow {
-                display: inline-block;
-                transform: none;
-                }
-            }
-            .about-us h2 {
-                font-size: 2rem;
-            }
+      .process__list{ list-style:none; margin:0; padding:0; }
+      .process__item{
+        display:grid; grid-template-columns:auto 1fr; column-gap:22px; align-items:start; padding:22px 0 24px; position:relative;
+      }
+      .process__item + .process__item{ border-top:1px solid var(--c-line); }
 
-            .about-us p {
-                font-size: 1.1rem;
-                line-height: 1.8;
-            }
+      .process__num{
+        font-size:clamp(28px,3.2vw,40px); font-weight:700; color:var(--c-text);
+        line-height:1; min-width:52px; text-align:left; letter-spacing:.06em;
+      }
+      .process__body{ position:relative; padding-left:20px; }
+      .process__body::before{
+        content:""; position:absolute; left:0; top:.55em; bottom:.55em; width:1px; background:var(--c-line);
+      }
+      .process__itemTitle{ font-size:clamp(18px,2.2vw,24px); font-weight:700; margin:0 0 6px; color:var(--c-text); }
+      .process__desc{ font-size:clamp(14px,1.8vw,16px); color:var(--c-mute); margin:0; }
 
-        </style>
-        <!-- AOS CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    </head>
-    <body>
+      .process__cta{ margin-top:24px; }
+      .process__q{ font-size:16px; margin:0 0 6px; color:var(--c-text); }
+      .process__qsub{ font-size:14px; color:var(--c-mute); margin:0 0 16px; }
+      .process__link{
+        display:inline-flex; align-items:center; gap:10px; font-size:16px; color:var(--c-text);
+        text-decoration:none; padding:10px 2px; border-bottom:1px solid var(--c-line);
+        transition: color .2s ease, border-color .2s ease, transform .2s ease;
+      }
+      .process__link:hover{ color:var(--c-accent); border-color:var(--c-accent); transform: translateX(2px); }
+      .process__arrow{ font-size:18px; margin-left:2px; }
+    </style>
 
-        <!-- 導覽列 -->
-        <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
-            <div class="container px-4">
-                <a class="navbar-brand" href="index.html">
-                    <img id="navbarLogo" src="images/logo/logoNocolor.png" alt=""> 
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-white me-3 active" href="index.html">關於我們</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white me-3" href="/Work/work.html">設計作品</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white me-3" href="/Process/process.html">服務流程</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white me-3" href="/Contact/contact.html">聯繫我們</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <!-- 主視覺 -->
-        <section class="hero vh-100">
-            <h1>體驗夢想實現的美好</h1>
-            <p>打造安心、溫度與質感並存的居住空間</p>
-            <div>
-                <a href="/Contact/contact.html" class="btn btn-custom">立即預約諮詢</a>
-                <a href="/Work/work.html" class="btn btn-custom">瀏覽設計作品</a>
-            </div>
-        </section>
-
-        <!-- 品牌理念 -->
-        <section class="brand-concept section-spacing-lg">
-            <div class="container px-4">
-                <h2 class="section-title">品牌理念</h2>
-                <p>
-                    初真，是為了諦察，不只是見去問，而是一種除盡的安心。<br>
-                    我們陪你縝密從徹徹到安心的每一步，因為這就是我們專業。
-                </p>
-            </div>
-        </section>
-
-        <!-- 關於我們 -->
-        <section class="section-spacing-lg">
-            <div class="container px-4 about-us">
-                <div class="row align-items-center">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <img src="images/designer.png" alt="關於我們" class="img-fluid rounded shadow-sm" loading="lazy">
-                </div>
-                <div class="col-md-6">
-                    <h2 class="mb-3">關於我們</h2>
-                    <p>
-                    凝聚純心莊力，信賴兼顧理念與溫暖走入每個家。<br>
-                    我們屢次淬煉設計專業技術，與專業施工監工一同合作，<br>
-                    凝練雋永空間，<br>
-                    讓你輕鬆作決定，心懷感動的家業相連。
-                    </p>
-                </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- 精選作品 -->
-        <section class="section-spacing-lg">
-            <div class="container">
-                <h2 class="section-title">精選作品</h2>
-                <div class="row text-center">
-                    <div class="col-md-4 mb-3">
-                        <div class="project-card" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="800">
-                            <img src="images/ThemisWeb/test1.jpg" class="img-fluid" alt="作品1">
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
-                            <img src="images/ThemisWeb/test2.jpg" class="img-fluid" alt="作品2">
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
-                            <img src="images/ThemisWeb/test3.jpg" class="img-fluid" alt="作品3">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 服務流程 -->
-        <section class="service-process text-center section-spacing-sm">
-            <h2 class="section-title">服務流程</h2>
-            <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center align-items-center process-flow">
-                <div class="p-2" data-aos="fade-up" data-aos-delay="0">籌劃溝通</div>
-                <span class="arrow p-2">→</span>
-                <div class="p-2" data-aos="fade-up" data-aos-delay="100">場地勘察</div>
-                <span class="arrow p-2">→</span>
-                <div class="p-2" data-aos="fade-up" data-aos-delay="200">與確預算</div>
-                <span class="arrow p-2">→</span>
-                <div class="p-2" data-aos="fade-up" data-aos-delay="300">配置審圖</div>
-                <span class="arrow p-2">→</span>
-                <div class="p-2" data-aos="fade-up" data-aos-delay="400">施工監造</div>
-                <span class="arrow p-2">→</span>
-                <div class="p-2" data-aos="fade-up" data-aos-delay="500">售後協同</div>
-            </div>
-        </section>
-
-        <!-- 客戶回饋 -->
-        <section class="customer-feedback section-spacing-sm">
-            <div class="container">
-                <h2 class="section-title">客戶回饋</h2>
-                <div class="bg-white p-3 rounded shadow-sm mb-3">
-                    設計細心專業，從設計審圖到施工監工都讓人安心，<br>
-                    感謝同翕團隊幫助我們打造更寬敞實用的空間。
-                </div>
-                <div class="bg-white p-3 rounded shadow-sm mb-3">
-                    設計細心專業，從設計審圖到施工監工都讓人安心，<br>
-                    感謝同翕團隊幫助我們打造更寬敞實用的空間。
-                </div>
-                <div class="bg-white p-3 rounded shadow-sm mb-3">
-                    設計細心專業，從設計審圖到施工監工都讓人安心，<br>
-                    感謝同翕團隊幫助我們打造更寬敞實用的空間。
-                </div>
-            </div>
-        </section>
-
-        <div class="footer m-3">
-            <div class="text-center">
-                <p class="Copyright">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
-            </div> 
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
+      <div class="container px-4">
+        <a class="navbar-brand" href="index.html">
+          <img id="navbarLogo" src="images/logo/logoNocolor.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link text-white me-3 active" href="index.html">關於我們</a></li>
+            <li class="nav-item"><a class="nav-link text-white me-3" href="/Work/work.html">設計作品</a></li>
+            <li class="nav-item"><a class="nav-link text-white me-3" href="/Process/process.html">服務流程</a></li>
+            <li class="nav-item"><a class="nav-link text-white me-3" href="/Contact/contact.html">聯繫我們</a></li>
+          </ul>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- AOS JS（放在 Bootstrap.js 下方） -->
-        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-        <script>
-            AOS.init();
+      </div>
+    </nav>
 
-            window.addEventListener("scroll", function() {
-                const navbar = document.querySelector(".navbar");
-                const logo = document.getElementById("navbarLogo");
-                if (window.scrollY > 50) {
-                    navbar.classList.remove("navbar-transparent");
-                    navbar.classList.add("navbar-colored");
-                    // 切換為彩色 logo
-                    logo.src = "images/logo/logocolor.png";
-                } else {
-                    navbar.classList.add("navbar-transparent");
-                    navbar.classList.remove("navbar-colored");
-                    // 切換為無色 logo
-                    logo.src = "images/logo/logoNocolor.png";
-                }
-            });
-        </script>
-    </body>
+    <!-- 主視覺 -->
+    <section class="hero vh-100">
+      <h1>體驗夢想實現的美好</h1>
+      <p>打造安心、溫度與質感並存的居住空間</p>
+      <div>
+        <a href="/Contact/contact.html" class="btn btn-custom">立即預約諮詢</a>
+        <a href="/Work/work.html" class="btn btn-custom">瀏覽設計作品</a>
+      </div>
+    </section>
+
+    <!-- 品牌理念 -->
+    <section class="brand-concept section-spacing-lg">
+        <div class="container px-4">
+            <div class="row g-4 align-items-start brand-wrap">
+            <div class="col-lg-3">
+                <h2 class="section-title brand-title"><span>品牌理念</span></h2>
+            </div>
+
+            <div class="col-lg-9">
+                <article class="brand-card">
+                <p class="brand-lead">
+                    初真，意味著回到事物最純粹的起點，帶著謙遜與專注，細心觀察每一個細節。
+                </p>
+                <p>
+                    我們相信，設計不只是解決表面的需求，而是深入理解背後的故事與情感。每一次的傾聽、每一次的勘察、每一次的規劃，都是為了讓您在完成的那一刻，感受到發自內心的安心與信任。
+                </p>
+                <p>
+                    我們將專業化為日常，從空間動線、光線比例到材質選擇，都以縝密的態度反覆推敲，確保每一步都穩健踏實。
+                </p>
+                <p>
+                    因為我們明白，真正的安心不是華麗的堆砌，而是每一個決定都能讓生活更加自在、貼近本心。
+                </p>
+                <p class="mb-0">
+                    初真，是我們對專業的堅持，也是對您的承諾——用最純粹的心，陪您走過每一段設計旅程，直到滿意微笑的那一刻。
+                </p>
+                </article>
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 關於我們 -->
+    <section class="section-spacing-lg">
+      <div class="container px-4 about-us">
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <img src="images/designer.png" alt="關於我們" class="img-fluid rounded shadow-sm" loading="lazy">
+          </div>
+          <div class="col-md-6">
+            <h2 class="mb-3">關於我們</h2>
+            <p>
+              凝聚純心莊力，信賴兼顧理念與溫暖走入每個家。<br>
+              我們屢次淬煉設計專業技術，與專業施工監工一同合作，<br>
+              凝練雋永空間，<br>
+              讓你輕鬆作決定，心懷感動的家業相連。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 精選作品 -->
+    <section class="section-spacing-lg">
+      <div class="container">
+        <h2 class="section-title">精選作品</h2>
+        <div class="row text-center">
+          <div class="col-md-4 mb-3">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="800">
+              <img src="images/ThemisWeb/test1.jpg" class="img-fluid" alt="作品1">
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
+              <img src="images/ThemisWeb/test2.jpg" class="img-fluid" alt="作品2">
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
+              <img src="images/ThemisWeb/test3.jpg" class="img-fluid" alt="作品3">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 服務流程（新版・色系一致） -->
+    <section class="process">
+      <div class="process__container">
+        <header class="process__header">
+          <h2 class="section-title">服務流程</h2>
+          <p class="process__subtitle">將室內設計的服務流程系統化，提供專業有效率的服務體驗</p>
+        </header>
+
+        <div class="process__grid">
+          <!-- 左欄 01-04 -->
+          <ol class="process__list">
+            <li class="process__item" data-aos="fade-up">
+              <div class="process__num">01</div>
+              <div class="process__body">
+                <h3 class="process__itemTitle">設計諮詢</h3>
+                <p class="process__desc">經客戶彙整基本需求後，由設計師電訪，安排諮詢會議</p>
+              </div>
+            </li>
+            <li class="process__item" data-aos="fade-up" data-aos-delay="80">
+              <div class="process__num">02</div>
+              <div class="process__body">
+                <h3 class="process__itemTitle">現場會勘</h3>
+                <p class="process__desc">約至案件現場進行細部會勘</p>
+              </div>
+            </li>
+            <li class="process__item" data-aos="fade-up" data-aos-delay="160">
+              <div class="process__num">03</div>
+              <div class="process__body">
+                <h3 class="process__itemTitle">設計提案</h3>
+                <p class="process__desc">設計概念發想＋平面配置建議，另有提案簡報的說明</p>
+              </div>
+            </li>
+            <li class="process__item" data-aos="fade-up" data-aos-delay="240">
+              <div class="process__num">04</div>
+              <div class="process__body">
+                <h3 class="process__itemTitle">簽訂設計合約</h3>
+                <p class="process__desc">簽訂設計合約後，開始進行詳盡的空間規劃與細部圖面繪製</p>
+              </div>
+            </li>
+            <li class="process__item" data-aos="fade-up" data-aos-delay="240">
+              <div class="process__num">05</div>
+              <div class="process__body">
+                <h3 class="process__itemTitle">簽訂設計合約</h3>
+                <p class="process__desc">簽訂設計合約後，開始進行詳盡的空間規劃與細部圖面繪製</p>
+              </div>
+            </li>
+          </ol>
+
+          <!-- 右欄 05-08 -->
+          <ol class="process__list" start="5">
+            <li class="process__item" data-aos="fade-up">
+              <div class="process__num">06</div>
+              <div class="process__body">
+                <h3 class="process__itemTitle">工程估價</h3>
+                <p class="process__desc">依據施工圖進行工程估價及施工時程</p>
+              </div>
+            </li>
+            <li class="process__item" data-aos="fade-up" data-aos-delay="80">
+              <div class="process__num">07</div>
+              <div class="process__body">
+                <h3 class="process__itemTitle">簽訂工程合約</h3>
+                <p class="process__desc">依據合約預算及工期按圖施作，並由工程師確實監造及紀錄</p>
+              </div>
+            </li>
+            <li class="process__item" data-aos="fade-up" data-aos-delay="160">
+              <div class="process__num">08</div>
+              <div class="process__body">
+                <h3 class="process__itemTitle">完工交屋</h3>
+                <p class="process__desc">完成清潔驗收、完工拍攝</p>
+              </div>
+            </li>
+            <li class="process__item" data-aos="fade-up" data-aos-delay="240">
+              <div class="process__num">09</div>
+              <div class="process__body">
+                <h3 class="process__itemTitle">客戶滿意度調查／結案</h3>
+                <p class="process__desc">為了確保每個案場的服務品質，客變單位會再與業主了解案件的滿意度</p>
+              </div>
+            </li>
+            <li class="process__item" data-aos="fade-up" data-aos-delay="240">
+              <div class="process__num">10</div>
+              <div class="process__body">
+                <h3 class="process__itemTitle">客戶滿意度調查／結案</h3>
+                <p class="process__desc">為了確保每個案場的服務品質，客變單位會再與業主了解案件的滿意度</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="process__cta">
+          <p class="process__q">您有對於同翕設計的疑問嗎？</p>
+          <p class="process__qsub">如有任何問題歡迎填寫表單與我們聯繫，將會有專人為您服務喔！</p>
+          <a href="#contact" class="process__link">立即諮詢同翕設計 <span class="process__arrow" aria-hidden>▸</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 客戶回饋 -->
+    <!-- <section class="customer-feedback section-spacing-sm">
+      <div class="container">
+        <h2 class="section-title">客戶回饋</h2>
+        <div class="bg-white p-3 rounded shadow-sm mb-3">
+          設計細心專業，從設計審圖到施工監工都讓人安心，<br>感謝同翕團隊幫助我們打造更寬敞實用的空間。
+        </div>
+        <div class="bg-white p-3 rounded shadow-sm mb-3">
+          設計細心專業，從設計審圖到施工監工都讓人安心，<br>感謝同翕團隊幫助我們打造更寬敞實用的空間。
+        </div>
+        <div class="bg-white p-3 rounded shadow-sm mb-3">
+          設計細心專業，從設計審圖到施工監工都讓人安心，<br>感謝同翕團隊幫助我們打造更寬敞實用的空間。
+        </div>
+      </div>
+    </section> -->
+
+    <div class="footer m-3">
+      <div class="text-center">
+        <p class="Copyright">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+      window.addEventListener("scroll", function() {
+        const navbar = document.querySelector(".navbar");
+        const logo = document.getElementById("navbarLogo");
+        if (window.scrollY > 50) {
+          navbar.classList.remove("navbar-transparent");
+          navbar.classList.add("navbar-colored");
+          logo.src = "images/logo/logocolor-black.png";
+        } else {
+          navbar.classList.add("navbar-transparent");
+          navbar.classList.remove("navbar-colored");
+          logo.src = "images/logo/logoNocolor.png";
+        }
+      });
+    </script>
+  </body>
 </html>
