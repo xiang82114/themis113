@@ -18,7 +18,7 @@
 
       body{
         background-color: var(--c-bg);
-        font-family: "Noto Serif TC", serif;
+        font-family: "Noto Serif TC","微軟正黑體", serif; /**/
         color: var(--c-text);
       }
 
@@ -27,8 +27,9 @@
       .navbar-transparent{ background-color: transparent !important; }
       .navbar-colored{ background-color: var(--c-bg) !important; }
       .navbar-colored .nav-link{ color:#000 !important; }
-      .navbar-brand img{ height:40px; transition: all .3s ease; }
+      .navbar-brand img{ height:30px; transition: all .3s ease; }
       .navbar-colored .nav-link:hover{ color:#333 !important; }
+      .nav-link { font-size: 0.85rem; }
 
       /* Hero */
       .hero{
@@ -39,22 +40,36 @@
       }
       .hero::before{ content:""; position:absolute; inset:0; background:rgba(0,0,0,.4); z-index:0; }
       .hero>*{ position:relative; z-index:1; }
-      .btn-custom{ background:#f3ede8; border:none; padding:.75rem 1.5rem; margin:.5rem; }
+      .btn-custom{ background:#f3ede87a; border:none; padding:.75rem 1.5rem; margin:.5rem; }
 
       .section-spacing-sm{ padding:2rem 0; }
-      .section-spacing-lg{ padding:6rem 0; }
-      .section-title{ font-size:2rem; margin-bottom:2rem; }
+      .section-spacing-lg{ padding:8rem 0; }
+      .section-title{ font-size:1.8rem; margin-bottom:2rem; }
 
       /* Projects */
-      .project-card{ overflow:hidden; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,.05); }
-      .project-card img{ display:block; width:100%; transition: transform .6s ease; }
+      .project-card{ overflow:hidden; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,.05); height: 300px;}
+      .project-card img{ display:block; width:100%; transition: transform .6s ease; height: 100%;}
       .project-card:hover img{ transform: scale(1.2); }
+
+      .project-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(248, 240, 230, 0.6);
+        color: #5a4a3f;
+        padding: 1rem;
+        text-align: center;
+        font-weight: bold;
+        font-size: 0.8rem;
+        transition: transform 0.3s ease;
+      }
 
       @media (max-width:576px){
         .hero .btn-custom{ display:block; width:100%; margin:.5rem auto; opacity:.85; }
         section .section-title,.about-us h2{ text-align:center; }
       }
-      .about-us h2{ font-size:2rem; }
+      .about-us h2{ font-size: 1.5rem; }
       .about-us p{ font-size:1.1rem; line-height:1.8; }
 
       /* ===== 服務流程（配合原站色系） ===== */
@@ -64,34 +79,43 @@
       .process__title{
         font-size:clamp(32px,4vw,56px); font-weight:700; line-height:1.15; margin:0 0 12px; color:var(--c-text);
       }
-      .process__subtitle{ font-size:clamp(14px,1.8vw,18px); color:var(--c-mute); margin:0; }
+      .process__subtitle{ font-size: clamp(10px,1.8vw,12.8px); color:var(--c-mute); margin:0; }
 
       .process__grid{ display:grid; grid-template-columns:1fr; gap:8px 80px; margin:24px 0 48px; }
-      @media (min-width:992px){ .process__grid{ grid-template-columns:1fr 1fr; } }
+      @media (min-width:992px){ 
+        .process__grid{ grid-template-columns:1fr 1fr; }        
+      }
+      @media (max-width:576px){
+        .process__container{
+          flex-wrap:wrap-reverse;
+        }
+      }
 
       .process__list{ list-style:none; margin:0; padding:0; }
-      .process__item{
+      /* .process__item{
         display:grid; grid-template-columns:auto 1fr; column-gap:22px; align-items:start; padding:22px 0 24px; position:relative;
-      }
-      .process__item + .process__item{ border-top:1px solid var(--c-line); }
+      } */
+       .process__head{
+          display: flex;
+          align-items: center;
+       }
+      /* .process__item + .process__item{ border-top:1px solid var(--c-line); } */
 
       .process__num{
         font-size:clamp(28px,3.2vw,40px); font-weight:700; color:var(--c-text);
         line-height:1; min-width:52px; text-align:left; letter-spacing:.06em;
       }
-      .process__body{ position:relative; padding-left:20px; }
-      .process__body::before{
+      .process__body{margin: 20px; position:relative; padding-left:20px; height: 36px;}
+      .process__body::before{ height: 32px;
         content:""; position:absolute; left:0; top:.55em; bottom:.55em; width:1px; background:var(--c-line);
       }
       .process__itemTitle{ font-size:clamp(18px,2.2vw,24px); font-weight:700; margin:0 0 6px; color:var(--c-text); }
       .process__desc{ font-size:clamp(14px,1.8vw,16px); color:var(--c-mute); margin:0; }
 
-      .process__cta{ margin-top:24px; }
-      .process__q{ font-size:16px; margin:0 0 6px; color:var(--c-text); }
-      .process__qsub{ font-size:14px; color:var(--c-mute); margin:0 0 16px; }
+      .process__cta{ margin: 24px 0 48px; font-size:10px;}
       .process__link{
-        display:inline-flex; align-items:center; gap:10px; font-size:16px; color:var(--c-text);
-        text-decoration:none; padding:10px 2px; border-bottom:1px solid var(--c-line);
+        display:inline-flex; align-items:center; gap:10px; font-size:12px; color:var(--c-text);
+        text-decoration:none; padding:5px 2px; border-bottom:1px solid var(--c-line);
         transition: color .2s ease, border-color .2s ease, transform .2s ease;
       }
       .process__link:hover{ color:var(--c-accent); border-color:var(--c-accent); transform: translateX(2px); }
@@ -133,34 +157,27 @@
     </section>
 
     <!-- 品牌理念 -->
-    <section class="brand-concept section-spacing-lg">
-        <div class="container px-4">
-            <div class="row g-4 align-items-start brand-wrap">
-            <div class="col-lg-3">
-                <h2 class="section-title brand-title"><span>品牌理念</span></h2>
+    <section class="section-spacing-lg">
+      <div class="container px-4 about-us">
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-4 mb-md-0 p-4 d-flex justify-content-center align-items-center">
+            <div class="col-md-8">
+              <img src="images/ThemisWeb/about.png" alt="品牌理念" class="img-fluid rounded shadow-sm" loading="lazy">
             </div>
-
-            <div class="col-lg-9">
-                <article class="brand-card">
-                <p class="brand-lead">
-                    初真，意味著回到事物最純粹的起點，帶著謙遜與專注，細心觀察每一個細節。
-                </p>
-                <p>
-                    我們相信，設計不只是解決表面的需求，而是深入理解背後的故事與情感。每一次的傾聽、每一次的勘察、每一次的規劃，都是為了讓您在完成的那一刻，感受到發自內心的安心與信任。
-                </p>
-                <p>
-                    我們將專業化為日常，從空間動線、光線比例到材質選擇，都以縝密的態度反覆推敲，確保每一步都穩健踏實。
-                </p>
-                <p>
-                    因為我們明白，真正的安心不是華麗的堆砌，而是每一個決定都能讓生活更加自在、貼近本心。
-                </p>
-                <p class="mb-0">
-                    初真，是我們對專業的堅持，也是對您的承諾——用最純粹的心，陪您走過每一段設計旅程，直到滿意微笑的那一刻。
-                </p>
-                </article>
-            </div>
-            </div>
+          </div>
+          <div class="col-md-6 p-4">
+            <h2 class="mb-3">品牌理念</h2>
+            <p class="brand-lead">
+                初真，意味著回到事物最純粹的起點，帶著謙遜與專注，細心觀察每一個細節。
+            </p>
+            <p>我們相信，設計不只是解決表面的需求，而是深入理解背後的故事與情感。</p>
+            <p>每一次的傾聽、每一次的勘察、每一次的規劃，都是為了讓您在完成的那一刻，感受到發自內心的安心與信任。</p>
+            <p>我們將專業化為日常，從空間動線、光線比例到材質選擇，都以縝密的態度反覆推敲，確保每一步都穩健踏實。</p>
+            <p>因為我們明白，真正的安心不是華麗的堆砌，而是每一個決定都能讓生活更加自在、貼近本心。</p>
+            <p class="mb-0">初真，是我們對專業的堅持，也是對您的承諾——用最純粹的心，陪您走過每一段設計旅程，直到滿意微笑的那一刻。</p>
+          </div>
         </div>
+      </div>
     </section>
 
 
@@ -168,8 +185,10 @@
     <section class="section-spacing-lg">
       <div class="container px-4 about-us">
         <div class="row align-items-center">
-          <div class="col-md-6 mb-4 mb-md-0">
-            <img src="images/designer.png" alt="關於我們" class="img-fluid rounded shadow-sm" loading="lazy">
+          <div class="col-md-6 mb-4 mb-md-0 p-4 d-flex justify-content-center align-items-center">
+            <div class="col-md-8">
+              <img src="images/designer.png" alt="關於我們" class="img-fluid rounded shadow-sm" loading="lazy">
+            </div>
           </div>
           <div class="col-md-6">
             <h2 class="mb-3">關於我們</h2>
@@ -189,19 +208,40 @@
       <div class="container">
         <h2 class="section-title">精選作品</h2>
         <div class="row text-center">
-          <div class="col-md-4 mb-3">
+          <div class="col-md-5 mb-3">
             <div class="project-card" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="800">
               <img src="images/ThemisWeb/test1.jpg" class="img-fluid" alt="作品1">
+              <div class="project-info">現代住宅 × 簡約風</div>
             </div>
           </div>
-          <div class="col-md-4 mb-3">
+          <div class="col-md-3 mb-3">
             <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
               <img src="images/ThemisWeb/test2.jpg" class="img-fluid" alt="作品2">
+              <div class="project-info">日式暖木風空間</div>
             </div>
           </div>
           <div class="col-md-4 mb-3">
             <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
               <img src="images/ThemisWeb/test3.jpg" class="img-fluid" alt="作品3">
+              <div class="project-info">工業風設計</div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="800">
+              <img src="images/ThemisWeb/test4.jpg" class="img-fluid" alt="作品4">
+              <div class="project-info">混搭風小宅</div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
+              <img src="images/ThemisWeb/test5.jpg" class="img-fluid" alt="作品5">
+              <div class="project-info">摩登灰階宅邸</div>
+            </div>
+          </div>
+          <div class="col-md-5 mb-3">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
+              <img src="images/ThemisWeb/test6.jpg" class="img-fluid" alt="作品6">
+              <div class="project-info">北歐風溫馨小家</div>
             </div>
           </div>
         </div>
@@ -210,97 +250,121 @@
 
     <!-- 服務流程（新版・色系一致） -->
     <section class="process">
-      <div class="process__container">
-        <header class="process__header">
-          <h2 class="section-title">服務流程</h2>
-          <p class="process__subtitle">將室內設計的服務流程系統化，提供專業有效率的服務體驗</p>
-        </header>
-
-        <div class="process__grid">
-          <!-- 左欄 01-04 -->
-          <ol class="process__list">
-            <li class="process__item" data-aos="fade-up">
-              <div class="process__num">01</div>
-              <div class="process__body">
-                <h3 class="process__itemTitle">設計諮詢</h3>
-                <p class="process__desc">經客戶彙整基本需求後，由設計師電訪，安排諮詢會議</p>
-              </div>
-            </li>
-            <li class="process__item" data-aos="fade-up" data-aos-delay="80">
-              <div class="process__num">02</div>
-              <div class="process__body">
-                <h3 class="process__itemTitle">現場會勘</h3>
-                <p class="process__desc">約至案件現場進行細部會勘</p>
-              </div>
-            </li>
-            <li class="process__item" data-aos="fade-up" data-aos-delay="160">
-              <div class="process__num">03</div>
-              <div class="process__body">
-                <h3 class="process__itemTitle">設計提案</h3>
-                <p class="process__desc">設計概念發想＋平面配置建議，另有提案簡報的說明</p>
-              </div>
-            </li>
-            <li class="process__item" data-aos="fade-up" data-aos-delay="240">
-              <div class="process__num">04</div>
-              <div class="process__body">
-                <h3 class="process__itemTitle">簽訂設計合約</h3>
-                <p class="process__desc">簽訂設計合約後，開始進行詳盡的空間規劃與細部圖面繪製</p>
-              </div>
-            </li>
-            <li class="process__item" data-aos="fade-up" data-aos-delay="240">
-              <div class="process__num">05</div>
-              <div class="process__body">
-                <h3 class="process__itemTitle">簽訂設計合約</h3>
-                <p class="process__desc">簽訂設計合約後，開始進行詳盡的空間規劃與細部圖面繪製</p>
-              </div>
-            </li>
-          </ol>
-
-          <!-- 右欄 05-08 -->
-          <ol class="process__list" start="5">
-            <li class="process__item" data-aos="fade-up">
-              <div class="process__num">06</div>
-              <div class="process__body">
-                <h3 class="process__itemTitle">工程估價</h3>
-                <p class="process__desc">依據施工圖進行工程估價及施工時程</p>
-              </div>
-            </li>
-            <li class="process__item" data-aos="fade-up" data-aos-delay="80">
-              <div class="process__num">07</div>
-              <div class="process__body">
-                <h3 class="process__itemTitle">簽訂工程合約</h3>
-                <p class="process__desc">依據合約預算及工期按圖施作，並由工程師確實監造及紀錄</p>
-              </div>
-            </li>
-            <li class="process__item" data-aos="fade-up" data-aos-delay="160">
-              <div class="process__num">08</div>
-              <div class="process__body">
-                <h3 class="process__itemTitle">完工交屋</h3>
-                <p class="process__desc">完成清潔驗收、完工拍攝</p>
-              </div>
-            </li>
-            <li class="process__item" data-aos="fade-up" data-aos-delay="240">
-              <div class="process__num">09</div>
-              <div class="process__body">
-                <h3 class="process__itemTitle">客戶滿意度調查／結案</h3>
-                <p class="process__desc">為了確保每個案場的服務品質，客變單位會再與業主了解案件的滿意度</p>
-              </div>
-            </li>
-            <li class="process__item" data-aos="fade-up" data-aos-delay="240">
-              <div class="process__num">10</div>
-              <div class="process__body">
-                <h3 class="process__itemTitle">客戶滿意度調查／結案</h3>
-                <p class="process__desc">為了確保每個案場的服務品質，客變單位會再與業主了解案件的滿意度</p>
-              </div>
-            </li>
-          </ol>
+      <div class="process__container row">
+        <div class="col-md-2 d-flex flex-column justify-content-between mb-3 p-4">
+          <header class="process__header">
+            <h2 class="section-title">服務流程</h2>
+            <p class="process__subtitle">將室內設計的服務流程系統化，提供專業有效率的服務體驗</p>
+          </header>        
+          <div class="process__cta">
+            <p> 您有對於同翕設計的疑問嗎？<br>
+                如有任何問題歡迎填寫表單與我們聯繫，將會有專人為您服務喔！
+            </p>
+            <a href="#contact" class="process__link">立即諮詢同翕設計 <span class="process__arrow" aria-hidden>▸</span></a>
+          </div>
         </div>
+        <div class="col-md-10">
+          <div class="process__grid">
+            <!-- 左欄 01-04 -->
+            <ol class="process__list">
+              <li class="process__item" data-aos="fade-up">
+                <div class="process__head">
+                  <h3 class="me-3">01</h3>
+                  <h5>設計諮詢</h5>
+                </div>
+                <div class="process__body">                  
+                  <p class="process__desc">經客戶彙整基本需求後，由設計師電訪，安排諮詢會議</p>
+                </div>
+              </li>
+              <li class="process__item" data-aos="fade-up" data-aos-delay="100">
+                <div class="process__head">
+                  <h3 class="me-3">02</h3>
+                  <h5>現場丈量／諮詢</h5>
+                </div>
+                <div class="process__body">                  
+                  <p class="process__desc">勘查結構、水電、採光與動線，釐清限制與需求優先度</p>
+                </div>
+              </li>
+              <li class="process__item" data-aos="fade-up" data-aos-delay="200">
+                <div class="process__head">
+                  <h3 class="me-3">03</h3>
+                  <h5>初步提案（平面配置）</h5>
+                </div>
+                <div class="process__body">                  
+                  <p class="process__desc">提供平面配置與動線建議，評估初步工程費用</p>
+                </div>
+              </li>
+              <li class="process__item" data-aos="fade-up" data-aos-delay="300">
+                <div class="process__head">
+                  <h3 class="me-3">04</h3>
+                  <h5>設計合約簽訂</h5>
+                </div>
+                <div class="process__body">                  
+                  <p class="process__desc">確認服務範疇、進度與付款節點，開始深化設計</p>
+                </div>
+              </li>
+              <li class="process__item" data-aos="fade-up" data-aos-delay="400">
+                <div class="process__head">
+                  <h3 class="me-3">05</h3>
+                  <h5>設計規劃(3D/材質/機電)</h5>
+                </div>
+                <div class="process__body">                  
+                  <p class="process__desc">建立 3D 示意、材質樣本、照明及插座配置，細部討論</p>
+                </div>
+              </li>
+            </ol>
 
-        <div class="process__cta">
-          <p class="process__q">您有對於同翕設計的疑問嗎？</p>
-          <p class="process__qsub">如有任何問題歡迎填寫表單與我們聯繫，將會有專人為您服務喔！</p>
-          <a href="#contact" class="process__link">立即諮詢同翕設計 <span class="process__arrow" aria-hidden>▸</span></a>
+            <!-- 右欄 05-08 -->
+            <ol class="process__list" start="5">
+              <li class="process__item" data-aos="fade-up">
+                <div class="process__head">
+                  <h3 class="me-3">06</h3>
+                  <h5>設計定案</h5>
+                </div>
+                <div class="process__body">                  
+                  <p class="process__desc">確認各空間尺寸與細節，凍結圖說與工程預算</p>
+                </div>
+              </li>
+              <li class="process__item" data-aos="fade-up" data-aos-delay="100">
+                <div class="process__head">
+                  <h3 class="me-3">07</h3>
+                  <h5>工程合約／排程</h5>
+                </div>
+                <div class="process__body">                  
+                  <p class="process__desc">確認工期、分段驗收與付款節點，施工前說明</p>
+                </div>
+              </li>
+              <li class="process__item" data-aos="fade-up" data-aos-delay="200">
+                <div class="process__head">
+                  <h3 class="me-3">08</h3>
+                  <h5>工程準備</h5>
+                </div>
+                <div class="process__body">                  
+                  <p class="process__desc">料件下單、工班安排、社區施工申請與電梯使用申請</p>
+                </div>
+              </li>
+              <li class="process__item" data-aos="fade-up" data-aos-delay="300">
+                <div class="process__head">
+                  <h3 class="me-3">09</h3>
+                  <h5>施工管理／進度回報</h5>
+                </div>
+                <div class="process__body">                  
+                  <p class="process__desc">定期會勘與里程碑驗收，提供進度照片與重點提醒</p>
+                </div>
+              </li>
+              <li class="process__item" data-aos="fade-up" data-aos-delay="400">
+                <div class="process__head">
+                  <h3 class="me-3">10</h3>
+                  <h5>完工驗收／保固</h5>
+                </div>
+                <div class="process__body">                  
+                  <p class="process__desc">完工清潔與交屋，提供保固與使用說明，後續維護諮詢</p>
+                </div>
+              </li>
+            </ol>
+          </div>
         </div>
+        
       </div>
     </section>
 
