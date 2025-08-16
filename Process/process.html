@@ -1,369 +1,340 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>服務流程｜同翕設計</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>服務流程｜同翕設計</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+        <style>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <link href="../css/TheStyle.css" rel="stylesheet" />
+            .gallery-section {
+                margin-top: 20px;
+                padding: 5rem 1rem;
+            }
 
-  <style>
-    :root{
-      --bg:#f8f0e6;
-      --text:#5a4a3f;
-      --muted:#8a7a6f;
-      --accent:#c8a98b;
-      --line:#e8ddd3;
-      --nav-bg:#fffaf4;
-    }
-    html,body{ background:var(--bg); color:var(--text); font-family:"Noto Serif TC", serif; }
-    body { padding-top: 80px; }
+            .work-card {
+                position: relative;
+                overflow: hidden;
+                border-radius: 8px;
+                background-color: #fff;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                aspect-ratio: 4 / 3; /* 強制比例 */
+            }
 
-    /* ====== Navbar（依你給的 class 命名） ====== */
-    .navbar-custom{ transition: background-color .25s ease, box-shadow .25s ease; }
-    .navbar-transparent{ background:transparent; }
-    .navbar-custom.scrolled{
-      background: var(--nav-bg);
-      box-shadow: 0 6px 18px rgba(0,0,0,.06);
-    }
-    /* 透明時白字、滾動後深字 */
-    .navbar-custom .nav-link{ transition: color .2s; }
-    .navbar-custom.navbar-transparent .nav-link{ color:#fff !important; }
-    .navbar-custom.scrolled .nav-link{ color:var(--text) !important; }
-    .navbar-custom .nav-link.active{ font-weight:700; letter-spacing:.02em; }
+            .work-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* 超過就裁切 */
+                transition: transform 0.5s ease;
+                display: block;
+            }
 
-    /* 漢堡 icon（白/深色自動切換） */
-    .navbar-toggler{ border:0; }
-    .navbar-transparent .navbar-toggler-icon{
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    }
-    .navbar-custom.scrolled .navbar-toggler-icon{
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%235a4a3f' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    }
+            .work-card:hover img {
+                transform: scale(1.05);
+            }
 
-    /* ====== Hero ====== */
-    .section-hero{ padding: 2.5rem 0 1rem; }
-    .section-hero h1{ font-weight:700; letter-spacing:.08em; }
-    .section-hero p{ color:var(--muted); }
+            .work-info {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(248, 240, 230, 0.9);
+                color: #5a4a3f;
+                padding: 1rem;
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.1rem;
+                transition: transform 0.3s ease;
+                letter-spacing: 0.3rem;
+            }
 
-    /* ====== Timeline ====== */
-    .timeline{ position:relative; padding-left:0; margin:0; }
-    .timeline-item{ list-style:none; margin-bottom:3rem; position:relative; }
-    .timeline .card{
-      border:0;
-      background:#fffdfa;
-      border-radius:1rem;
-      box-shadow:0 8px 26px rgba(90,74,63,.08);
-    }
-    .stage-title{ font-weight:700; letter-spacing:.04em; }
-    .stage-sub{ color:var(--muted); font-size:.95rem; }
+            @media (max-width: 576px) {
+                .hero h1 {
+                    font-size: 1.75rem;
+                }
+                .work-info {
+                    font-size: 1rem;
+                    padding: 0.75rem;
+                }
+                .navbar-collapse {
+                    background-color: #f8f0e6;
+                    padding: 1rem;
+                }
+            }
+        </style>
+        <!-- 共用樣式 -->
+        <link rel="stylesheet" href="/css/common.css">
 
-    .stage-media{ width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:1rem; }
-
-    /* 中線（桌機以上） */
-    @media (min-width: 992px){
-      .timeline::before{
-        content:"";
-        position:absolute;
-        left:50%;
-        top:0; bottom:0;
-        transform:translateX(-50%);
-        width:2px;
-        background:linear-gradient(to bottom, transparent 0, var(--line) 10%, var(--line) 90%, transparent 100%);
-      }
-    }
-
-    /* 數字圓點 */
-    .stage-num{
-      position:absolute; left:50%;
-      transform:translate(-50%,-50%);
-      top:50%;
-      width:40px; height:40px; border-radius:50%;
-      display:grid; place-items:center;
-      background:#fff; border:2px solid var(--accent); color:var(--accent); font-weight:700;
-      z-index:2;
-    }
-
-    /* 版面：lg 以上左右交錯，以下直排 */
-    @media (min-width:992px){
-      .timeline-row{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center; }
-      .timeline-row.left  .col-a{ order:1; } /* 左文字右圖 */
-      .timeline-row.left  .col-b{ order:2; }
-      .timeline-row.right .col-a{ order:2; } /* 右文字左圖 */
-      .timeline-row.right .col-b{ order:1; }
-      .timeline-item{ padding: 0 2rem; }
-    }
-    @media (max-width:991.98px){
-      .timeline-item{ padding-left:0; }
-      .stage-num{ left:24px; top:0; transform:translate(0,-70%); }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ====== 導覽列（你的版本） ====== -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
-    <div class="container px-4">
-        <a class="navbar-brand" href="/index.html">
-            <img src="../images/logo/logocolor-black.png" alt="logo" />
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link text-dark me-3" href="/index.html">關於我們</a></li>
-            <li class="nav-item"><a class="nav-link text-dark me-3 active" href="/Work/work.html">設計作品</a></li>
-            <li class="nav-item"><a class="nav-link text-dark me-3" href="/Process/process.html">服務流程</a></li>
-            <li class="nav-item"><a class="nav-link text-dark me-3" href="/Contact/contact.html">聯繫我們</a></li>
-            </ul>
-        </div>
-    </div>
-  </nav>
-
-  <!-- ====== Hero ====== -->
-  <section class="section-hero text-center">
-    <div class="container" style="max-width:920px;">
-      <h1 class="mb-2" data-aos="fade-up">服務流程</h1>
-      <p class="mb-0" data-aos="fade-up" data-aos-delay="100">
-        從初談到完工，每一步都有專人陪伴，讓你的想像落地成真。
-      </p>
-    </div>
-  </section>
-
-  <!-- ====== Timeline ====== -->
-  <section class="pb-5">
-    <div class="container" style="max-width:980px;">
-      <ol class="timeline">
-
-        <!-- 01 -->
-        <li class="timeline-item">
-          <div class="timeline-row left">
-            <div class="col-a" data-aos="fade-right">
-              <div class="card p-4">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-chat-dots me-2"></i>
-                  <span class="stage-title">初步接洽</span>
-                </div>
-                <p class="mb-2">了解需求、風格喜好與預算區間，安排現場丈量。</p>
-                <div class="stage-sub">輸入：需求/坪數/預算 ｜ 產出：丈量預約</div>
+        <!-- 這頁面自己的樣式放最後 -->
+        <link rel="stylesheet" href="/css/process.css">
+    </head>
+    <body>
+        <!-- 導覽列 -->
+        <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
+            <div class="container px-4">
+            <a class="navbar-brand" href="/index.html">
+                <img id="navbarLogo" src="../images/logo/logoNocolor.png" alt="logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="bi bi-list fs-1 text-white"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link text-white me-3" href="/index.html">關於我們</a></li>
+                <li class="nav-item"><a class="nav-link text-white me-3 active" href="/Work/work.html">設計作品</a></li>
+                <li class="nav-item"><a class="nav-link text-white me-3" href="/Process/process.html">服務流程</a></li>
+                <li class="nav-item"><a class="nav-link text-white me-3" href="/Contact/contact.html">聯繫我們</a></li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        <section class="container service-items row">
+          <div class="col-lg-12">
+              <h2 class="section-title">服務流程</h2>
+              <hr>
+          </div>
+          <div class="container">
+            <h2 class="section-title">服務項目</h2>
+            <div class="service-grid">
+              <div class="service-item">
+                <i class="bi bi-pencil-square"></i>
+                <p>家居設計</p>
+              </div>
+              <div class="service-item">
+                <i class="bi bi-shop"></i>
+                <p>商業空間</p>
+              </div>
+              <div class="service-item">
+                <i class="bi bi-shop-window"></i>
+                <p>店面設計</p>
+              </div>
+              <div class="service-item">
+                <i class="bi bi-buildings"></i>
+                <p>建築設計</p>
+              </div>
+              <div class="service-item">
+                <i class="bi bi-layout-text-window-reverse"></i>
+                <p>裝潢施工</p>
+              </div>
+              <div class="service-item">
+                <i class="bi bi-house-up"></i>
+                <p>老屋翻新</p>
+              </div>
+              <div class="service-item">
+                <i class="bi bi-bricks"></i>
+                <p>景觀設計</p>
+              </div>
+              <div class="service-item">
+                <i class="bi bi-tree"></i>
+                <p>庭院造景</p>
               </div>
             </div>
-            <div class="col-b" data-aos="fade-left">
-              <img class="stage-media" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop" alt="">
+          </div>
+        </section>
+
+        <section class="process-section">
+          <div class="container d-flex flex-column align-items-center">
+            <h2 class="section-title">服務流程</h2>
+
+            <div class="process__grid">
+              <!-- 左欄 01-05 -->
+              <ol class="process__list">
+                <li class="process__item" data-aos="fade-up">
+                  <div class="process__head">
+                    <i class="bi bi-chat-dots me-2"></i>
+                    <h3 class="me-3">01</h3>
+                    <h5>設計諮詢</h5>
+                  </div>
+                  <div class="process__body">                  
+                    <p class="process__desc">經客戶彙整基本需求後，由設計師電訪，安排諮詢會議</p>
+                  </div>
+                </li>
+                <li class="process__item" data-aos="fade-up">
+                  <div class="process__head">
+                    <i class="bi bi-rulers me-2"></i>
+                    <h3 class="me-3">02</h3>
+                    <h5>現場丈量／諮詢</h5>
+                  </div>
+                  <div class="process__body">                  
+                    <p class="process__desc">勘查結構、水電、採光與動線，釐清限制與需求優先度</p>
+                  </div>
+                </li>
+                <li class="process__item" data-aos="fade-up" >
+                  <div class="process__head">
+                    <i class="bi bi-layout-wtf me-2"></i>
+                    <h3 class="me-3">03</h3>
+                    <h5>初步提案（平面配置）</h5>
+                  </div>
+                  <div class="process__body">                  
+                    <p class="process__desc">提供平面配置與動線建議，評估初步工程費用</p>
+                  </div>
+                </li>
+                <li class="process__item" data-aos="fade-up" >
+                  <div class="process__head">
+                    <i class="bi bi-file-text me-2"></i>
+                    <h3 class="me-3">04</h3>
+                    <h5>設計合約簽訂</h5>
+                  </div>
+                  <div class="process__body">                  
+                    <p class="process__desc">確認服務範疇、進度與付款節點，開始深化設計</p>
+                  </div>
+                </li>
+                <li class="process__item" data-aos="fade-up" >
+                  <div class="process__head">
+                    <i class="bi bi-bricks me-2"></i>
+                    <h3 class="me-3">05</h3>
+                    <h5>設計規劃(3D/材質/機電)</h5>
+                  </div>
+                  <div class="process__body">                  
+                    <p class="process__desc">建立 3D 示意、材質樣本、照明及插座配置，細部討論</p>
+                  </div>
+                </li>
+              </ol>
+
+              <!-- 右欄 06-10 -->
+              <ol class="process__list" start="6">
+                <li class="process__item" data-aos="fade-up">
+                  <div class="process__head">
+                    <i class="bi bi-check2-circle me-2"></i>
+                    <h3 class="me-3">06</h3>
+                    <h5>設計定案</h5>
+                  </div>
+                  <div class="process__body">                  
+                    <p class="process__desc">確認各空間尺寸與細節，凍結圖說與工程預算</p>
+                  </div>
+                </li>
+                <li class="process__item" data-aos="fade-up">
+                  <div class="process__head">
+                    <i class="bi bi-clipboard-check me-2"></i>
+                    <h3 class="me-3">07</h3>
+                    <h5>工程合約／排程</h5>
+                  </div>
+                  <div class="process__body">                  
+                    <p class="process__desc">確認工期、分段驗收與付款節點，施工前說明</p>
+                  </div>
+                </li>
+                <li class="process__item" data-aos="fade-up" >
+                  <div class="process__head">
+                    <i class="bi bi-box-seam me-2"></i>
+                    <h3 class="me-3">08</h3>
+                    <h5>工程準備</h5>
+                  </div>
+                  <div class="process__body">                  
+                    <p class="process__desc">料件下單、工班安排、社區施工申請與電梯使用申請</p>
+                  </div>
+                </li>
+                <li class="process__item" data-aos="fade-up" >
+                  <div class="process__head">
+                    <i class="bi bi-hammer me-2"></i>
+                    <h3 class="me-3">09</h3>
+                    <h5>施工管理／進度回報</h5>
+                  </div>
+                  <div class="process__body">                  
+                    <p class="process__desc">定期會勘與里程碑驗收，提供進度照片與重點提醒</p>
+                  </div>
+                </li>
+                <li class="process__item" data-aos="fade-up" >
+                  <div class="process__head">
+                    <i class="bi bi-house-check me-2"></i>
+                    <h3 class="me-3">10</h3>
+                    <h5>完工驗收／保固</h5>
+                  </div>
+                  <div class="process__body">                  
+                    <p class="process__desc">完工清潔與交屋，提供保固與使用說明，後續維護諮詢</p>
+                  </div>
+                </li>
+              </ol>
             </div>
           </div>
-          <div class="stage-num">1</div>
-        </li>
+        </section>
 
-        <!-- 02 -->
-        <li class="timeline-item">
-          <div class="timeline-row right">
-            <div class="col-a" data-aos="fade-left">
-              <div class="card p-4">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-rulers me-2"></i>
-                  <span class="stage-title">現場丈量／諮詢</span>
-                </div>
-                <p class="mb-2">勘查結構、水電、採光與動線，釐清限制與需求優先度。</p>
-                <div class="stage-sub">輸入：現況條件 ｜ 產出：平配方向</div>
+
+
+        <section class="value-services">
+          <div class="vs-container">
+            <h2 class="section-title">八大加值服務</h2>
+
+            <div class="vs-grid">
+              <!-- 1 -->
+              <div class="vs-item">
+                <i class="bi bi-clipboard-check"></i>
+                <h3>打造屋主專屬風格</h3>
+                <p>細心了解屋主需求及故事</p>
+              </div>
+
+              <!-- 2 -->
+              <div class="vs-item">
+                <i class="bi bi-folder2-open"></i>
+                <h3>網路施工相簿</h3>
+                <p>隨時掌握施工進度</p>
+              </div>
+
+              <!-- 3 -->
+              <div class="vs-item">
+                <i class="bi bi-chat-left-quote"></i>
+                <h3>設計師研討會</h3>
+                <p>設計師團隊協力合作</p>
+              </div>
+
+              <!-- 4 -->
+              <div class="vs-item">
+                <i class="bi bi-currency-dollar"></i>
+                <h3>條列報價清楚明確</h3>
+                <p>於施作前確認花費</p>
+              </div>
+
+              <!-- 5 -->
+              <div class="vs-item">
+                <i class="bi bi-check2-circle"></i>
+                <h3>嚴格把關，安心認證</h3>
+                <p>材料品質有保障</p>
+              </div>
+
+              <!-- 6 -->
+              <div class="vs-item">
+                <i class="bi bi-file-earmark-text"></i>
+                <h3>設計與施工</h3>
+                <p>品質保固二年</p>
+              </div>
+
+              <!-- 7 -->
+              <div class="vs-item">
+                <i class="bi bi-box-seam"></i>
+                <h3>系統櫃板</h3>
+                <p>品質保固五年</p>
+              </div>
+
+              <!-- 8 -->
+              <div class="vs-item">
+                <i class="bi bi-camera"></i>
+                <h3>記錄感動時刻</h3>
+                <p>贈送完工拍攝照</p>
               </div>
             </div>
-            <div class="col-b" data-aos="fade-right">
-              <img class="stage-media" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop" alt="">
-            </div>
           </div>
-          <div class="stage-num">2</div>
-        </li>
+        </section>
 
-        <!-- 03 -->
-        <li class="timeline-item">
-          <div class="timeline-row left">
-            <div class="col-a" data-aos="fade-right">
-              <div class="card p-4">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-layout-wtf me-2"></i>
-                  <span class="stage-title">初步提案（平面配置）</span>
-                </div>
-                <p class="mb-2">提供平面配置與動線建議，評估初步工程費用。</p>
-                <div class="stage-sub">輸入：平配共識 ｜ 產出：設計委託</div>
-              </div>
-            </div>
-            <div class="col-b" data-aos="fade-left">
-              <img class="stage-media" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1600&auto=format&fit=crop" alt="">
-            </div>
-          </div>
-          <div class="stage-num">3</div>
-        </li>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script>
+            AOS.init();
 
-        <!-- 04 -->
-        <li class="timeline-item">
-          <div class="timeline-row right">
-            <div class="col-a" data-aos="fade-left">
-              <div class="card p-4">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-file-text me-2"></i>
-                  <span class="stage-title">設計合約簽訂</span>
-                </div>
-                <p class="mb-2">確認服務範疇、進度與付款節點，開始深化設計。</p>
-                <div class="stage-sub">輸入：合約條款 ｜ 產出：設計時程表</div>
-              </div>
-            </div>
-            <div class="col-b" data-aos="fade-right">
-              <img class="stage-media" src="https://images.unsplash.com/photo-1521790361543-f645cf042ec4?q=80&w=1600&auto=format&fit=crop" alt="">
-            </div>
-          </div>
-          <div class="stage-num">4</div>
-        </li>
+            window.addEventListener("scroll", function () {
+            const navbar = document.querySelector(".navbar");
+            const logo = document.getElementById("navbarLogo");
 
-        <!-- 05 -->
-        <li class="timeline-item">
-          <div class="timeline-row left">
-            <div class="col-a" data-aos="fade-right">
-              <div class="card p-4">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-bricks me-2"></i>
-                  <span class="stage-title">設計規劃（3D／材質／機電）</span>
-                </div>
-                <p class="mb-2">建立 3D 示意、材質樣本、照明及插座配置，細部討論。</p>
-                <div class="stage-sub">輸入：風格與預算 ｜ 產出：定案圖與報價</div>
-              </div>
-            </div>
-            <div class="col-b" data-aos="fade-left">
-              <img class="stage-media" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1600&auto=format&fit=crop" alt="">
-            </div>
-          </div>
-          <div class="stage-num">5</div>
-        </li>
-
-        <!-- 06 -->
-        <li class="timeline-item">
-          <div class="timeline-row right">
-            <div class="col-a" data-aos="fade-left">
-              <div class="card p-4">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2-circle me-2"></i>
-                  <span class="stage-title">設計定案</span>
-                </div>
-                <p class="mb-2">確認各空間尺寸與細節，凍結圖說與工程預算。</p>
-                <div class="stage-sub">輸入：最終圖說 ｜ 產出：工程合約</div>
-              </div>
-            </div>
-            <div class="col-b" data-aos="fade-right">
-              <img class="stage-media" src="/images/ThemisWeb/plan-original.png" alt="">
-            </div>
-          </div>
-          <div class="stage-num">6</div>
-        </li>
-
-        <!-- 07 -->
-        <li class="timeline-item">
-          <div class="timeline-row left">
-            <div class="col-a" data-aos="fade-right">
-              <div class="card p-4">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-clipboard-check me-2"></i>
-                  <span class="stage-title">工程合約／排程</span>
-                </div>
-                <p class="mb-2">確認工期、分段驗收與付款節點，施工前說明。</p>
-                <div class="stage-sub">輸入：施工排程 ｜ 產出：開工準備</div>
-              </div>
-            </div>
-            <div class="col-b" data-aos="fade-left">
-              <img class="stage-media" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop" alt="">
-            </div>
-          </div>
-          <div class="stage-num">7</div>
-        </li>
-
-        <!-- 08 -->
-        <li class="timeline-item">
-          <div class="timeline-row right">
-            <div class="col-a" data-aos="fade-left">
-              <div class="card p-4">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-box-seam me-2"></i>
-                  <span class="stage-title">工程準備</span>
-                </div>
-                <p class="mb-2">料件下單、工班安排、社區施工申請與電梯使用申請。</p>
-                <div class="stage-sub">輸入：核對清單 ｜ 產出：開工</div>
-              </div>
-            </div>
-            <div class="col-b" data-aos="fade-right">
-              <img class="stage-media" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1600&auto=format&fit=crop" alt="">
-            </div>
-          </div>
-          <div class="stage-num">8</div>
-        </li>
-
-        <!-- 09 -->
-        <li class="timeline-item">
-          <div class="timeline-row left">
-            <div class="col-a" data-aos="fade-right">
-              <div class="card p-4">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-hammer me-2"></i>
-                  <span class="stage-title">施工管理／進度回報</span>
-                </div>
-                <p class="mb-2">定期會勘與里程碑驗收，提供進度照片與重點提醒。</p>
-                <div class="stage-sub">輸入：現場狀況 ｜ 產出：修正與確認</div>
-              </div>
-            </div>
-            <div class="col-b" data-aos="fade-left">
-              <img class="stage-media" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop" alt="">
-            </div>
-          </div>
-          <div class="stage-num">9</div>
-        </li>
-
-        <!-- 10 -->
-        <li class="timeline-item">
-          <div class="timeline-row right">
-            <div class="col-a" data-aos="fade-left">
-              <div class="card p-4">
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-house-check me-2"></i>
-                  <span class="stage-title">完工驗收／保固</span>
-                </div>
-                <p class="mb-2">完工清潔與交屋，提供保固與使用說明，後續維護諮詢。</p>
-                <div class="stage-sub">輸入：驗收清單 ｜ 產出：交付使用</div>
-              </div>
-            </div>
-            <div class="col-b" data-aos="fade-right">
-              <img class="stage-media" src="/images/ThemisWeb/3d-living.jpg" alt="">
-            </div>
-          </div>
-          <div class="stage-num">10</div>
-        </li>
-
-      </ol>
-    </div>
-  </section>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ once:true, duration:700, offset:40 });
-
-    // Navbar 捲動狀態 & Logo 交換
-    window.addEventListener("scroll", function() {
-        const navbar = document.querySelector(".navbar");
-        const logo = document.getElementById("navbarLogo");
-        if (window.scrollY > 50) {
-            navbar.classList.remove("navbar-transparent");
-            navbar.classList.add("navbar-colored");
-            // 切換為彩色 logo
-            logo.src = "images/logo/logocolor-black.png";
-        } else {
-            navbar.classList.add("navbar-transparent");
-            navbar.classList.remove("navbar-colored");
-            // 切換為無色 logo
-            logo.src = "images/logo/logoNocolor.png";
-        }
-    });
-  </script>
-</body>
+            if (window.scrollY > 50) {
+                navbar.classList.remove("navbar-transparent");
+                navbar.classList.add("navbar-colored");
+                logo.src = "../images/logo/logocolor-black.png";
+            } else {
+                navbar.classList.add("navbar-transparent");
+                navbar.classList.remove("navbar-colored");
+                logo.src = "../images/logo/logoNocolor.png";
+            }
+            });
+        </script>
+    </body>
 </html>

@@ -1,0 +1,32 @@
+/* 全站色系（與原站一致） */
+:root{
+--c-bg: #f8f0e6;    /* 米色背景 */
+--c-text: #5a4a3f;  /* 主要深棕文字 */
+--c-mute: #8a8a8a;  /* 次要灰文字 */
+--c-line: #d9cfc4;  /* 淺米棕分隔線 */
+--c-accent: #a08974;/* 暖棕重點色(hover) */
+}
+
+body{
+    background-color: var(--c-bg);
+    font-family: "Noto Serif TC","微軟正黑體", serif; /**/
+    color: var(--c-text);
+}
+
+/* Navbar */
+.navbar-custom{ transition: background-color .3s ease; }
+.navbar-transparent{ background-color: transparent !important; }
+.navbar-colored{ background-color: var(--c-bg) !important; }
+.navbar-colored .nav-link{ color:#000 !important; }
+.navbar-brand img{ height:30px; transition: all .3s ease; }
+.navbar-colored .nav-link:hover{ color:#333 !important; }
+.nav-link { font-size: 0.85rem; }
+
+.section-spacing-sm{ padding:2rem 0; letter-spacing: 0.015rem;}
+.section-spacing-lg{ 
+    padding:8rem 0; 
+    letter-spacing: 0.06rem;
+    border-bottom: 1px solid #8a8a8a34;
+}
+.section-title{ font-size:1.8rem; margin-bottom:2rem; }
+

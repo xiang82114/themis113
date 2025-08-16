@@ -6,55 +6,12 @@
     <title>作品詳情｜同翕設計</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-      body {
-        background-color: #f8f0e6;
-        font-family: "Noto Serif TC", serif;
-        color: #5a4a3f;
-      }
-
-      .navbar-custom {
-        background-color: #f8f0e6;
-        padding: 1rem 0;
-      }
-
-      .navbar-brand img {
-        height: 40px;
-      }
-
-      .hero {
-        position: relative;
-        height: 60vh;
-        background-image: url("/images/ThemisWeb/test1.jpg");
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-      }
-
-      .hero h1 {
-        position: relative;
-        z-index: 1;
-        font-size: 2.5rem;
-      }
 
       .section {
         padding: 4rem 1rem;
       }
 
-      .section-title {
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
-      }
+      
 
       .carousel-inner img {
         object-fit: cover;
@@ -81,11 +38,6 @@
         outline: 2px solid #5a4a3f;
       }
 
-      .info-box dt {
-        font-weight: bold;
-        margin-top: 1rem;
-      }
-
       .img-grid img {
         width: 100%;
         border-radius: 8px;
@@ -93,13 +45,6 @@
       }
 
       @media (max-width: 768px) {
-        .hero {
-          height: 40vh;
-        }
-
-        .hero h1 {
-          font-size: 1.5rem;
-        }
 
         .carousel-inner img {
           height: 40vh;
@@ -110,12 +55,14 @@
           height: 60px;
         }
 
-        .section-title {
-          font-size: 1.5rem;
-          text-align: center;
-        }
       }
     </style>
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="/css/common.css">
+
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="/css/work_detail.css">
+    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
@@ -137,22 +84,33 @@
       </div>
     </nav>
 
-    <section class="hero">
-      <h1>現代住宅 × 簡約風</h1>
-    </section>
-
     <section class="container section">
+      <div class="col-lg-12">
+          <h2>現代住宅 × 簡約風</h2>
+          <hr>
+      </div>
       <h2 class="section-title">空間預覽</h2>
-      <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="/images/ThemisWeb/test1.jpg" class="d-block w-100" alt="作品圖1">
-          </div>
-          <div class="carousel-item">
-            <img src="/images/ThemisWeb/test2.jpg" class="d-block w-100" alt="作品圖2">
-          </div>
-          <div class="carousel-item">
-            <img src="/images/ThemisWeb/test3.jpg" class="d-block w-100" alt="作品圖3">
+      <div id="mainCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner row d-flex justify-content-center">
+          <div class="col-md-8">
+            <div class="carousel-item active">
+              <img src="/images/ThemisWeb/test1.jpg" class="d-block w-100" alt="作品圖1">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/test2.jpg" class="d-block w-100" alt="作品圖2">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/test3.jpg" class="d-block w-100" alt="作品圖3">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/test4.jpg" class="d-block w-100" alt="作品圖4">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/test5.jpg" class="d-block w-100" alt="作品圖5">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/test6.jpg" class="d-block w-100" alt="作品圖6">
+            </div>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
@@ -162,12 +120,16 @@
           <span class="carousel-control-next-icon"></span>
         </button>
       </div>
-      <div class="d-flex flex-wrap gap-2 justify-content-center thumbnail-nav">
+      
+    </section>
+    <div class="d-flex flex-wrap gap-2 justify-content-center thumbnail-nav">
         <img src="/images/ThemisWeb/test1.jpg" class="thumb-img active" data-bs-target="#mainCarousel" data-bs-slide-to="0">
         <img src="/images/ThemisWeb/test2.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="1">
         <img src="/images/ThemisWeb/test3.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="2">
+        <img src="/images/ThemisWeb/test4.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="3">
+        <img src="/images/ThemisWeb/test5.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="4">
+        <img src="/images/ThemisWeb/test6.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="5">
       </div>
-    </section>
 
     <section class="container section">
       <h2 class="section-title">設計概念</h2>
@@ -212,16 +174,37 @@
       <p>我們非常滿意整體規劃，設計細節貼心，團隊也非常用心，真的讓我們感受到家的溫度！</p>
     </section>
 
-    <section class="container section">
-      <h2 class="section-title">案場資訊</h2>
-      <dl class="info-box">
-        <dt>案名：</dt><dd>摩登灰階宅邸</dd>
-        <dt>地點：</dt><dd>台中市</dd>
-        <dt>家庭成員：</dt><dd>夫妻＋雙寶</dd>
-        <dt>坪數：</dt><dd>31 坪</dd>
-        <dt>房屋類型：</dt><dd>中古屋</dd>
-        <dt>格局：</dt><dd>三房兩廳兩衛</dd>
-      </dl>
+    <section class="project-info container my-5">
+      <div class="row">
+        <!-- 左邊：文字內容 -->
+        <div class="col-md-6 mb-4 d-flex flex-column align-items-center">
+          <h2 class="section-title">案場資訊</h2>
+          <p><strong>案名：</strong>摩登灰階宅邸</p>
+          <p><strong>地點：</strong>台中市</p>
+          <p><strong>家庭成員：</strong>夫妻＋雙寶</p>
+          <p><strong>坪數：</strong>31 坪</p>
+          <p><strong>房屋類型：</strong>中古屋</p>
+          <p><strong>格局：</strong>三房兩廳兩衛</p>
+        </div>
+
+        <!-- 右邊：補充圖示 -->
+        <div class="col-md-6 d-flex flex-column align-items-center">
+          <div class="info-image">
+            <img src="/images/layout.png" alt="平面格局圖">
+            <p class="caption">平面格局示意</p>
+          </div>
+
+          <div class="info-icons">
+            <span>👨‍👩‍👧‍👦</span>
+            <p class="caption">夫妻＋雙寶</p>
+          </div>
+
+          <div class="info-map">
+            <img src="/images/map-taichung.png" alt="地圖位置">
+            <p class="caption">地點：台中市</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

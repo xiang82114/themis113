@@ -1,0 +1,160 @@
+/* ===== 共用主題色 ===== */
+:root {
+  --bg: #f8f0e6;
+  --text: #5a4a3f;
+  --muted: #7b6a5e;
+  --line: rgba(0,0,0,.08);
+}
+
+/* ===== 導覽列：滾動後配色、active 樣式、漢堡顏色 ===== */
+.navbar-custom.navbar-transparent .nav-link { color:#fff; }
+.navbar-custom.navbar-colored {
+  background: var(--bg) !important;
+  box-shadow: 0 6px 14px rgba(0,0,0,.06);
+}
+.navbar-custom.navbar-colored .nav-link { color: var(--text) !important; }
+.navbar-custom .nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.navbar-custom .bi-list { color:#fff; }
+.navbar-custom.navbar-colored .bi-list { color: var(--text); }
+
+/* ===== 服務項目 ===== */
+.service-items {
+  background: var(--bg);
+  color: var(--text);
+  padding: 5rem 1rem;
+}
+.service-items,.value-services .section-title{
+  font-family: "Noto Serif TC", serif;
+  text-align: center;
+  margin: 0 0 28px;
+}
+.service-items .col-lg-12 .section-title{
+    text-align: left;
+}
+.service-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.service-item{
+  text-align: center;
+}
+.service-item i{
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+.service-item p{
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: .06em;
+  color: var(--text);
+}
+@media (min-width:640px){
+  .service-grid{ grid-template-columns: repeat(2,1fr); }
+}
+@media (min-width:992px){
+  .service-grid{ grid-template-columns: repeat(4,1fr); } /* 桌機 2×4 */
+}
+
+/* ===== 服務流程 ===== */
+.process-section{
+  background: var(--bg);
+  color: var(--text);
+  padding: clamp(48px,6vw,96px) 16px;
+  border-top: 1px solid var(--line);
+}
+.process-title{
+  font-family: "Noto Serif TC", serif;
+  text-align: center;
+  font-size: clamp(28px,3.2vw,42px);
+  margin: 0 0 36px;
+}
+.process__grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.process__list{ list-style: none; margin:0; padding:0; }
+.process__item{ margin-bottom: 22px; }
+.process__head{
+  display:flex; align-items:center; margin-bottom: 6px;
+}
+.process__head h3{
+  margin:0;
+  font-size: 28px;
+  font-weight: 700;
+  color:#c59b73;   /* 金色編號 */
+}
+.process__head h5{
+  margin:0;
+  font-size: 20px;
+  letter-spacing:.04em;
+}
+.process__desc{
+  margin:0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  letter-spacing:.03em;
+  padding-left: calc(28px + .75rem); /* 和編號對齊一點 */
+}
+@media (min-width:992px){
+  .process__grid{
+    grid-template-columns: repeat(2,1fr); /* 左右兩欄 */
+    gap: 60px;
+  }
+}
+
+/* ===== 八大加值服務（桌機固定 2×4） ===== */
+.value-services{
+  background: var(--bg);
+  color: var(--text);
+  padding: clamp(48px,6vw,96px) 16px;
+  border-top: 1px solid var(--line);
+}
+.value-services .vs-container{ max-width:1200px; margin:0 auto; }
+.value-services .vs-title{
+  font-family:"Noto Serif TC", serif;
+  text-align:center;
+  font-size: clamp(28px,3.2vw,42px);
+  margin: 0 0 36px;
+  letter-spacing:.08em;
+}
+.value-services .vs-grid{
+  display:grid;
+  grid-template-columns: 1fr;           /* 手機 1 欄 */
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+.value-services .vs-item{
+  text-align:center;
+  padding:36px 20px 30px;
+  background: rgba(255,255,255,.18);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  transition: transform .2s ease, background .2s ease;
+}
+.value-services .vs-item i{
+  display:inline-grid; place-items:center;
+  width:54px; height:54px; border-radius:12px;
+  font-size:26px; margin-bottom:14px;
+  border:1px solid var(--line); background:#fff;
+}
+.value-services .vs-item h3{ font-size:21px; margin:6px 0 8px; letter-spacing:.06em; }
+.value-services .vs-item p{ margin:0; font-size:15px; color:var(--muted); }
+.value-services .vs-item:hover{ background:rgba(255,255,255,.35); transform: translateY(-2px); }
+
+/* 平板 2 欄、桌機 4 欄（= 2×4） */
+@media (min-width:640px){
+  .value-services .vs-grid{ grid-template-columns: repeat(2,1fr); }
+}
+@media (min-width:992px){
+  .value-services .vs-grid{ grid-template-columns: repeat(4,1fr); }
+}
