@@ -13,45 +13,6 @@
 
     <!-- 自訂樣式：盡量貼齊首頁色系與導覽列風格 -->
     <style>
-      :root {
-        --bg: #f8f0e6;
-        --text: #5a4a3f;
-        --accent: #b4937a;
-        --white: #ffffff;
-        --muted: #a69486;
-      }
-      html, body { height: 100%; }
-      body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: "Noto Serif TC", serif;
-      }
-      /* Navbar（套用與首頁一致的 class 與透明效果） */
-      .navbar-custom {
-        transition: background-color .3s ease, box-shadow .3s ease, padding .3s ease;
-        padding: .8rem 0;
-        backdrop-filter: saturate(150%) blur(6px);
-      }
-      .navbar-transparent {
-        background-color: rgba(0,0,0,0);
-        box-shadow: none;
-      }
-      .navbar-solid {
-        background-color: rgba(255,255,255,.9);
-        box-shadow: 0 2px 10px rgba(0,0,0,.06);
-      }
-      .navbar-brand img { height: 30px; transition: filter .3s ease; }
-      .navbar-custom .nav-link { color: #fff; }
-      .navbar-solid .nav-link { color: var(--text); }
-      .navbar-custom .nav-link.active {
-        font-weight: 700;
-        text-decoration: underline;
-        text-underline-offset: 6px;
-        text-decoration-thickness: 2px;
-      }
-      .navbar-toggler { border: none; font-size: 1.4rem; }
-      .navbar-toggler:focus { box-shadow: none; }
-      .nav-link { font-size: 0.85rem; font-family: 微軟正黑體; }
 
       /* 首屏間距（避免被 fixed-top navbar 蓋住） */
       .page-top-offset { padding-top: 84px; }
@@ -99,26 +60,42 @@
         .page-top-offset { padding-top: 72px; }
       }
     </style>
+    <style>
+      .contact-info dl {
+        text-align: center;
+      }
+    </style>
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="/css/common.css">
   </head>
   <body>
-    <!-- 導覽列（與首頁一致） -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
-      <div class="container px-4">
+    <!-- 遮罩 -->
+    <div id="splash">
+        <div class="splash-logo text-center">
+            <div class="title m-3">
+                <img src="/images/logo/logoNocolor.png" alt="">  
+            </div>
+            <p>體 驗 夢 想 實 現 的 美 好</p>
+        </div>
+    </div>
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
+        <div class="container px-4">
           <a class="navbar-brand" href="/index.html">
-              <img src="../images/logo/logocolor-black.png" alt="logo" />
+              <img id="navbarLogo" src="/images/logo/logoNocolor.png" alt="logo" />
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-              <span class="navbar-toggler-icon"></span>
+              <span class="bi bi-list fs-1 text-white"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
               <ul class="navbar-nav">
-              <li class="nav-item"><a class="nav-link text-dark me-3" href="/index.html">關於我們</a></li>
-              <li class="nav-item"><a class="nav-link text-dark me-3 active" href="/Work/work.html">設計作品</a></li>
-              <li class="nav-item"><a class="nav-link text-dark me-3" href="/Process/process.html">服務流程</a></li>
-              <li class="nav-item"><a class="nav-link text-dark me-3" href="/Contact/contact.html">聯繫我們</a></li>
+              <li class="nav-item"><a class="nav-link me-3" href="/index.html">關於我們</a></li>
+              <li class="nav-item"><a class="nav-link me-3" href="/Work/work.html">設計作品</a></li>
+              <li class="nav-item"><a class="nav-link me-3" href="/Process/process.html">服務流程</a></li>
+              <li class="nav-item"><a class="nav-link me-3 active" href="/Contact/contact.html">聯繫我們</a></li>
               </ul>
           </div>
-      </div>
+        </div>
     </nav>
 
     <main class="page-top-offset">
@@ -126,8 +103,8 @@
         <h1 class="section-title">聯絡我們</h1>
         <div class="row g-4 justify-content-center">
           <!-- 表單 -->
-          <div class="col-12 col-lg-6">
-            <div class="form-card">
+          <div class="col-12 col-lg-6 d-flex">
+            <div class="form-card flex-fill">
               <p class="form-help">感謝您的資訊，我們將會盡快與您聯繫。</p>
               <form name="myform" id="myform" action="contact.php" method="post" novalidate>
                 <input type="hidden" name="Mode" value="Post_Send" />
@@ -187,14 +164,14 @@
                     <div class="input-group">
                       <input type="text" name="PostAuthCode" id="PostAuthCode" class="form-control" aria-label="驗證碼輸入" />
                       <span class="input-group-text p-0">
-                        <img src="AuthCode.php" id="AuthCode" alt="驗證碼" style="height:42px; cursor:pointer; border-radius:0 12px 12px 0" title="點擊更新驗證碼" />
+                        <img src="/images/captcha.png" id="AuthCode" alt="驗證碼" style="height:42px; cursor:pointer; border-radius:0 12px 12px 0" title="點擊更新驗證碼" />
                       </span>
                     </div>
                     <div class="form-text">點擊圖片可重新產生驗證碼</div>
                   </div>
 
                   <div class="col-12 d-grid d-sm-flex gap-2">
-                    <button type="submit" class="btn-accent">送出</button>
+                    <button type="submit" class="btn btn-outline-secondary">送出</button>
                     <button type="reset" class="btn btn-outline-secondary">清除</button>
                   </div>
                 </div>
@@ -203,28 +180,28 @@
           </div>
 
           <!-- 地圖 + 聯絡資料 -->
-          <div class="col-12 col-lg-6">
-            <div class="row g-4">
-              <div class="col-12">
-                <div class="ratio ratio-4x3 map-wrap">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.918830050824!2d121.51092857469447!3d25.070740136812343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a937fa9730a7%3A0x271711c0e1ac3a94!2zMTAz5Y-w5YyX5biC5aSn5ZCM5Y2A6YeN5oW25YyX6Lev5LiJ5q61MjQ0LTHomZ8!5e0!3m2!1szh-TW!2stw!4v1748589209356!5m2!1szh-TW!2stw"
-                    style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
+          <div class="col-12 col-lg-6 d-flex">
+            <div class="card-wrapper flex-fill d-flex flex-column h-100">
+              
+              <!-- 地圖 -->
+              <div class="ratio ratio-4x3 map-wrap">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.918830050824!2d121.51092857469447!3d25.070740136812343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a937fa9730a7%3A0x271711c0e1ac3a94!2zMTAz5Y-w5YyX5biC5aSn5ZCM5Y2A6YeN5oW25YyX6Lev5LiJ5q61MjQ0LTHomZ8!5e0!3m2!1szh-TW!2stw!4v1748589209356!5m2!1szh-TW!2stw"
+                  style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
               </div>
-              <div class="col-12">
-                <div class="form-card contact-info">
-                  <h4>同翕設計</h4>
-                  <dl>
-                    <dd><span>ADD ｜</span> 台北市大同區 重慶北路三段244-1號1樓</dd>
-                    <dd class="tel"><span>TEL ｜</span> (02) 2598-9803</dd>
-                    <dd class="tel"><span>FAX ｜</span> (02) 2595-2578</dd>
-                    <dd class="tel"><span>Mobile ｜</span> 0986-500-977</dd>
-                    <dd><span>E-Mail ｜</span> themis113@gmail.com</dd>
-                    <dd><span>Line ID ｜</span> themis113</dd>
-                  </dl>
-                </div>
+
+              <!-- 聯絡資訊卡片，垂直＆水平置中 -->
+              <div class="form-card contact-info flex-fill d-flex flex-column justify-content-center align-items-center text-center">
+                <h4>同翕設計</h4>
+                <dl>
+                  <dd><span>ADD ｜</span> 台北市大同區 重慶北路三段244-1號1樓</dd>
+                  <dd><span>TEL ｜</span> (02) 2598-9803</dd>
+                  <dd><span>FAX ｜</span> (02) 2595-2578</dd>
+                  <dd><span>Mobile ｜</span> 0986-500-977</dd>
+                  <dd><span>E-Mail ｜</span> themis113@gmail.com</dd>
+                  <dd><span>Line ID ｜</span> themis113</dd>
+                </dl>
               </div>
             </div>
           </div>
@@ -244,12 +221,12 @@
               navbar.classList.remove("navbar-transparent");
               navbar.classList.add("navbar-colored");
               // 切換為彩色 logo
-              logo.src = "images/logo/logocolor-black.png";
+              logo.src = "/images/logo/logocolor-black.png";
           } else {
               navbar.classList.add("navbar-transparent");
               navbar.classList.remove("navbar-colored");
               // 切換為無色 logo
-              logo.src = "images/logo/logoNocolor.png";
+              logo.src = "/images/logo/logoNocolor.png";
           }
       });
 
@@ -273,5 +250,6 @@
         }, false);
       })();
     </script>
+    <script src="/js/common.js"></script>
   </body>
 </html>

@@ -71,23 +71,32 @@
         <link rel="stylesheet" href="/css/process.css">
     </head>
     <body>
+        <!-- 遮罩 -->
+        <div id="splash">
+            <div class="splash-logo text-center">
+                <div class="title m-3">
+                    <img src="/images/logo/logoNocolor.png" alt="">  
+                </div>
+                <p>體 驗 夢 想 實 現 的 美 好</p>
+            </div>
+        </div>
         <!-- 導覽列 -->
         <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
             <div class="container px-4">
-            <a class="navbar-brand" href="/index.html">
-                <img id="navbarLogo" src="../images/logo/logoNocolor.png" alt="logo" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="bi bi-list fs-1 text-white"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link text-white me-3" href="/index.html">關於我們</a></li>
-                <li class="nav-item"><a class="nav-link text-white me-3 active" href="/Work/work.html">設計作品</a></li>
-                <li class="nav-item"><a class="nav-link text-white me-3" href="/Process/process.html">服務流程</a></li>
-                <li class="nav-item"><a class="nav-link text-white me-3" href="/Contact/contact.html">聯繫我們</a></li>
-                </ul>
-            </div>
+              <a class="navbar-brand" href="/index.html">
+                  <img id="navbarLogo" src="../images/logo/logoNocolor.png" alt="logo" />
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                  <span class="bi bi-list fs-1 text-white"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                  <ul class="navbar-nav">
+                  <li class="nav-item"><a class="nav-link me-3" href="/index.html">關於我們</a></li>
+                  <li class="nav-item"><a class="nav-link me-3" href="/Work/work.html">設計作品</a></li>
+                  <li class="nav-item"><a class="nav-link me-3 active" href="/Process/process.html">服務流程</a></li>
+                  <li class="nav-item"><a class="nav-link me-3" href="/Contact/contact.html">聯繫我們</a></li>
+                  </ul>
+              </div>
             </div>
         </nav>
         <section class="container service-items row">
@@ -254,7 +263,7 @@
 
         <section class="value-services">
           <div class="vs-container">
-            <h2 class="section-title">八大加值服務</h2>
+            <h2 class="section-title">多項加值服務</h2>
 
             <div class="vs-grid">
               <!-- 1 -->
@@ -336,5 +345,6 @@
             }
             });
         </script>
+        <script src="/js/common.js"></script>
     </body>
 </html>

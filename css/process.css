@@ -7,16 +7,12 @@
 }
 
 /* ===== 導覽列：滾動後配色、active 樣式、漢堡顏色 ===== */
-.navbar-custom.navbar-transparent .nav-link { color:#fff; }
 .navbar-custom.navbar-colored {
   background: var(--bg) !important;
   box-shadow: 0 6px 14px rgba(0,0,0,.06);
 }
 .navbar-custom.navbar-colored .nav-link { color: var(--text) !important; }
-.navbar-custom .nav-link.active {
-  text-decoration: underline;
-  text-underline-offset: 6px;
-}
+
 .navbar-custom .bi-list { color:#fff; }
 .navbar-custom.navbar-colored .bi-list { color: var(--text); }
 

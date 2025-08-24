@@ -13,6 +13,38 @@ body{
     color: var(--c-text);
 }
 
+/* 遮罩樣式 */
+#splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #757171d5; /* 背景色可自訂 */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+/* 中間 Logo 或文字 */
+.splash-logo {
+  font-size: 1.5rem;
+  font-weight: thin;
+  color: var(--bg-soft);
+  opacity: 1;
+  animation: fadeIn 1s ease forwards;
+}
+.splash-logo .title{
+    line-height: 1.5;
+    font-size: 3rem;
+}
+/* 隱藏遮罩動畫 */
+#splash.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Navbar */
 .navbar-custom{ transition: background-color .3s ease; }
 .navbar-transparent{ background-color: transparent !important; }
@@ -21,6 +53,20 @@ body{
 .navbar-brand img{ height:30px; transition: all .3s ease; }
 .navbar-colored .nav-link:hover{ color:#333 !important; }
 .nav-link { font-size: 0.85rem; }
+.navbar-custom .nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* ===== 導覽列：滾動後配色、active 樣式、漢堡顏色 ===== */
+.navbar-custom.navbar-colored {
+  background: var(--bg) !important;
+  box-shadow: 0 6px 14px rgba(0,0,0,.06);
+}
+.navbar-custom.navbar-colored .nav-link { color: var(--text) !important; }
+
+.navbar-custom .bi-list { color:#fff; }
+.navbar-custom.navbar-colored .bi-list { color: var(--text); }
 
 .section-spacing-sm{ padding:2rem 0; letter-spacing: 0.015rem;}
 .section-spacing-lg{ 
