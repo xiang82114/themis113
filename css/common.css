@@ -69,7 +69,7 @@ body{
 .navbar-custom.navbar-colored .bi-list { color: var(--text); }
 
 .section-spacing-sm{ padding:2rem 0; letter-spacing: 0.015rem;}
-.section-spacing-lg{ 
+.section-spacing-lg .container{ 
     padding:8rem 0; 
     letter-spacing: 0.06rem;
     border-bottom: 1px solid #8a8a8a34;
