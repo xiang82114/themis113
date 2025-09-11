@@ -66,3 +66,14 @@
 @media (prefers-reduced-motion: reduce){
   .hero .cta-primary, .hero .cta-outline{ transition:none; }
 }
+
+
+/*精選作品 過濾*/
+/* --- Filter Bar --- */
+.filter-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:16px 0 24px}
+.filter-bar .form-select{min-width:160px}
+.filter-reset{white-space:nowrap}
+.project-card.is-hidden{pointer-events:none;opacity:0;transform:scale(.98);transition:opacity .25s ease,transform .25s ease}
+.project-card{transition:opacity .25s ease,transform .25s ease}
+.empty-state{display:none;text-align:center;color:#6c757d;padding:24px 0}
+.empty-state.show{display:block}

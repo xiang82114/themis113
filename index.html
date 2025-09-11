@@ -224,49 +224,85 @@
     <section class="section-spacing-lg">
       <div class="container">
         <h2 class="section-title">精選作品</h2>
+        <div class="filter-bar">
+          <select id="filter-size" class="form-select form-select-sm" aria-label="依坪數篩選">
+            <option value="">坪數（全部）</option>
+            <option value="s-20">小於20坪</option>
+            <option value="s-20-35">20–35坪</option>
+            <option value="s-35-50">35–50坪</option>
+            <option value="s-50p">50坪以上</option>
+          </select>
+
+          <select id="filter-budget" class="form-select form-select-sm" aria-label="依預算篩選">
+            <option value="">預算（全部）</option>
+            <option value="b-100">100萬以下</option>
+            <option value="b-100-200">100–200萬</option>
+            <option value="b-200-400">200–400萬</option>
+            <option value="b-400p">400萬以上</option>
+          </select>
+
+          <select id="filter-style" class="form-select form-select-sm" aria-label="依風格篩選">
+            <option value="">風格（全部）</option>
+            <option value="modern">現代</option>
+            <option value="minimal">簡約</option>
+            <option value="japanese">日式/暖木</option>
+            <option value="nordic">北歐</option>
+            <option value="mix">混搭</option>
+            <option value="gray">灰階/莫蘭迪</option>
+          </select>
+
+          <button id="filter-reset" class="btn btn-outline-secondary btn-sm filter-reset">清除篩選</button>
+        </div>
+        <div id="emptyState" class="empty-state">目前沒有符合條件的作品</div>
+
         <div class="row text-center">
           <div class="col-md-5 mb-3">
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="800">
+            <div class="project-card" data-size="s-35-50" data-budget="b-200-400" data-style="modern minimal" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="800">
               <a href="Work/detail/themis-modern.html">
                 <img src="images/ThemisWeb/test1.jpg" class="img-fluid" alt="作品1">
                 <div class="project-info">現代住宅 × 簡約風</div>
               </a>
             </div>
           </div>
+
           <div class="col-md-3 mb-3">
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
+            <div class="project-card" data-size="s-20-35" data-budget="b-100-200" data-style="japanese" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
               <a href="Work/detail/themis-modern.html">
                 <img src="images/ThemisWeb/test2.jpg" class="img-fluid" alt="作品2">
                 <div class="project-info">日式暖木風空間</div>
               </a>
             </div>
           </div>
+
           <div class="col-md-4 mb-3">
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
+            <div class="project-card" data-size="s-35-50" data-budget="b-200-400" data-style="japanese nordic" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
               <a href="Work/detail/themis-Zhubei-L.html">
                 <img src="images/ThemisWeb/L/L01.jpg" class="img-fluid" alt="作品3">
                 <div class="project-info">竹北L宅 × 暖木風</div>
               </a>
             </div>
           </div>
+
           <div class="col-md-4 mb-3">
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="800">
+            <div class="project-card" data-size="s-20" data-budget="b-100" data-style="mix" data-aos="zoom-in" data-aos-delay="0" data-aos-duration="800">
               <a href="Work/detail/themis-modern.html">
                 <img src="images/ThemisWeb/test4.jpg" class="img-fluid" alt="作品4">
                 <div class="project-info">混搭風小宅</div>
               </a>
             </div>
           </div>
+
           <div class="col-md-3 mb-3">
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
+            <div class="project-card" data-size="s-35-50" data-budget="b-200-400" data-style="gray modern" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
               <a href="Work/detail/themis-modern.html">
                 <img src="images/ThemisWeb/test5.jpg" class="img-fluid" alt="作品5">
                 <div class="project-info">摩登灰階宅邸</div>
               </a>
             </div>
           </div>
+
           <div class="col-md-5 mb-3">
-            <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
+            <div class="project-card" data-size="s-20-35" data-budget="b-100-200" data-style="nordic" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
               <a href="Work/detail/themis-modern.html">
                 <img src="images/ThemisWeb/test6.jpg" class="img-fluid" alt="作品6">
                 <div class="project-info">北歐風溫馨小家</div>
@@ -274,6 +310,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -437,6 +474,65 @@
         }
       });
     </script>
+    <script>
+      (function () {
+        const sizeSel = document.getElementById('filter-size');
+        const budgetSel = document.getElementById('filter-budget');
+        const styleSel = document.getElementById('filter-style');
+        const resetBtn = document.getElementById('filter-reset');
+        const emptyState = document.getElementById('emptyState');
+
+        // 把每張卡片和其外層欄位綁在一起（確保隱藏整個欄位）
+        const items = Array.from(document.querySelectorAll('.project-card')).map(card => {
+          const col = card.closest('[class*="col-"]') || card.parentElement;
+          return { card, col };
+        });
+
+        function matchStyle(selected, dataValue) {
+          if (!selected) return true;      // 未選 → 通過
+          if (!dataValue) return false;
+          // 允許多風格（空白分隔），命中任一即可
+          return dataValue.split(/\s+/).includes(selected);
+        }
+
+        function applyFilter() {
+          const size = sizeSel.value;
+          const budget = budgetSel.value;
+          const style = styleSel.value;
+
+          let visibleCount = 0;
+
+          items.forEach(({ card, col }) => {
+            const ok =
+              (size === ''   || card.dataset.size   === size) &&
+              (budget === '' || card.dataset.budget === budget) &&
+              (style === ''  || matchStyle(style, card.dataset.style));
+
+            // 用 Bootstrap 的 d-none 直接隱藏欄位，避免 AOS 內聯樣式干擾
+            col.classList.toggle('d-none', !ok);
+            if (ok) visibleCount++;
+          });
+
+          emptyState.classList.toggle('show', visibleCount === 0);
+
+          // 重新整理 AOS 的計算（不會強制顯示 d-none 的元素）
+          if (window.AOS) setTimeout(() => AOS.refreshHard(), 50);
+        }
+
+        [sizeSel, budgetSel, styleSel].forEach(sel => sel && sel.addEventListener('change', applyFilter));
+        resetBtn && resetBtn.addEventListener('click', () => {
+          sizeSel.value = '';
+          budgetSel.value = '';
+          styleSel.value = '';
+          applyFilter();
+        });
+
+        // 初始執行一次
+        applyFilter();
+      })();
+    </script>
+
+
     <script src="/js/common.js"></script>
   </body>
 </html>
