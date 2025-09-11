@@ -1,0 +1,68 @@
+/* === Hero CTA 增強（維持原風格）=== */
+:root{
+  --ink:#62595096;         /* 暖炭灰：主文字（米色木質背景上更柔和） */
+  --ink-2:#f8ecdc;       /* 次文字 */
+  --brand:#f1c19394;       /* 金棕：主色（與木色同色相） */
+  --brand-900:#7a5e43;   /* hover 更深一階 */
+  --radius:12px;
+}
+
+.hero h1, .hero p { text-shadow: 0 2px 12px rgba(0,0,0,.25); } /* 提高照片上可讀性 */
+.hero .hero-cta { color: var(--ink); }
+
+.hero .cta-lead{
+  margin-top:.75rem; 
+  font-size:.95rem; 
+  letter-spacing:.06em; 
+  color:var(--ink-2);
+}
+
+/* 只增強互動，不覆蓋 .btn 的原有樣式 */
+.hero .cta-primary, 
+.hero .cta-outline{
+  font-weight:700; 
+  border-radius:var(--radius);
+  transition:transform .18s ease, box-shadow .18s ease,
+             background-color .24s ease, color .24s ease, border-color .24s ease;
+  will-change:transform, box-shadow;
+  backdrop-filter: blur(2px);
+}
+
+/* 主按鈕：深金棕底、白字；hover 微浮起 + 加深 */
+.hero .cta-primary{
+  background:var(--brand); 
+  color:#fff; 
+  border:0;
+  box-shadow:0 6px 14px rgba(0,0,0,.12);
+}
+.hero .cta-primary:hover{
+  transform:translateY(-2px);
+  background:var(--brand-900);
+  box-shadow:0 14px 28px rgba(0,0,0,.22);
+}
+.hero .cta-primary:active{ 
+  transform:translateY(0); 
+  box-shadow:0 8px 18px rgba(0,0,0,.18); 
+}
+
+/* 次按鈕：描邊同主色；hover 時填滿同色、文字轉白 */
+.hero .cta-outline{
+  color:var(--brand);
+  background:transparent;
+  border:1.6px solid var(--brand);
+}
+.hero .cta-outline:hover{
+  background:var(--brand);
+  color:#fff;
+  transform:translateY(-1px);
+  box-shadow:0 10px 22px rgba(0,0,0,.18);
+}
+.hero .cta-outline:active{ 
+  transform:translateY(0); 
+  box-shadow:0 6px 14px rgba(0,0,0,.14); 
+}
+
+/* 使用者偏好少動態時，關閉動畫 */
+@media (prefers-reduced-motion: reduce){
+  .hero .cta-primary, .hero .cta-outline{ transition:none; }
+}
