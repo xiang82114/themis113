@@ -103,6 +103,12 @@ body{
 .navbar-custom .bi-list { color:#fff; }
 .navbar-custom.navbar-colored .bi-list { color: var(--text); }
 
+/* 最上面的section */
+.top-section {
+    margin-top: 20px;
+    padding: 5rem 1rem;
+}
+
 .section-spacing-sm{ padding:2rem 0; letter-spacing: 0.015rem;}
 .section-spacing-lg .container{ 
     padding:8rem 0; 
