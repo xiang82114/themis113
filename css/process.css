@@ -20,7 +20,6 @@
 .service-items {
   background: var(--bg);
   color: var(--text);
-  padding: 5rem 1rem;
 }
 .service-items,.value-services .section-title{
   font-family: "Noto Serif TC", serif;
@@ -61,7 +60,7 @@
 .process-section{
   background: var(--bg);
   color: var(--text);
-  padding: clamp(48px,6vw,96px) 16px;
+  padding: 16px;
   border-top: 1px solid var(--line);
 }
 .process-title{
