@@ -443,65 +443,6 @@
         }
       });
     </script>
-    <script>
-      (function () {
-        const sizeSel = document.getElementById('filter-size');
-        const budgetSel = document.getElementById('filter-budget');
-        const styleSel = document.getElementById('filter-style');
-        const resetBtn = document.getElementById('filter-reset');
-        const emptyState = document.getElementById('emptyState');
-
-        // 把每張卡片和其外層欄位綁在一起（確保隱藏整個欄位）
-        const items = Array.from(document.querySelectorAll('.project-card')).map(card => {
-          const col = card.closest('[class*="col-"]') || card.parentElement;
-          return { card, col };
-        });
-
-        function matchStyle(selected, dataValue) {
-          if (!selected) return true;      // 未選 → 通過
-          if (!dataValue) return false;
-          // 允許多風格（空白分隔），命中任一即可
-          return dataValue.split(/\s+/).includes(selected);
-        }
-
-        function applyFilter() {
-          const size = sizeSel.value;
-          const budget = budgetSel.value;
-          const style = styleSel.value;
-
-          let visibleCount = 0;
-
-          items.forEach(({ card, col }) => {
-            const ok =
-              (size === ''   || card.dataset.size   === size) &&
-              (budget === '' || card.dataset.budget === budget) &&
-              (style === ''  || matchStyle(style, card.dataset.style));
-
-            // 用 Bootstrap 的 d-none 直接隱藏欄位，避免 AOS 內聯樣式干擾
-            col.classList.toggle('d-none', !ok);
-            if (ok) visibleCount++;
-          });
-
-          emptyState.classList.toggle('show', visibleCount === 0);
-
-          // 重新整理 AOS 的計算（不會強制顯示 d-none 的元素）
-          if (window.AOS) setTimeout(() => AOS.refreshHard(), 50);
-        }
-
-        [sizeSel, budgetSel, styleSel].forEach(sel => sel && sel.addEventListener('change', applyFilter));
-        resetBtn && resetBtn.addEventListener('click', () => {
-          sizeSel.value = '';
-          budgetSel.value = '';
-          styleSel.value = '';
-          applyFilter();
-        });
-
-        // 初始執行一次
-        applyFilter();
-      })();
-    </script>
-
-
     <script src="/js/common.js"></script>
   </body>
 </html>
