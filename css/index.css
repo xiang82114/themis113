@@ -77,3 +77,8 @@
 .project-card{transition:opacity .25s ease,transform .25s ease}
 .empty-state{display:none;text-align:center;color:#6c757d;padding:24px 0}
 .empty-state.show{display:block}
+
+
+.about-us .eng-p {
+  font-size: 0.8rem;
+}

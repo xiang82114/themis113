@@ -25,7 +25,15 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 2s cubic-bezier(0.3,0,1,0);
+  opacity: 1;                /* 預設透明 */
+  animation: splash-sequence 2s forwards; /* 總共跑 2 秒 */
+}
+
+@keyframes splash-sequence {
+  0%   { opacity: 0; }   /* 開始透明 */
+  20%  { opacity: 1; }   /* 0.8 秒淡入 */
+  80%  { opacity: 1; }   /* 中間停留（顯示 2.4 秒） */
+  100% { opacity: 0; }   /* 最後 0.8 秒快速消失 */
 }
 /* 中間 Logo 或文字 */
 .splash-logo {

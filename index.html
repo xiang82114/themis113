@@ -43,7 +43,7 @@
         section .section-title,.about-us h2{ text-align:center; }
       }
       .about-us h2{ font-size: 1.5rem; }
-      .about-us p{ font-size:1.0rem; line-height:1.8; }
+      .about-us p{ font-size: 0.9rem; line-height:1.8; }
 
       /* ===== 服務流程（配合原站色系） ===== */
       .process{ background: var(--c-bg); letter-spacing:.08em; }
@@ -111,7 +111,6 @@
             <div class="title m-3">
                 <img src="images/logo/turn.png" alt="">  
             </div>
-            <!-- <p>體 驗 夢 想 實 現 的 美 好</p> -->
         </div>
     </div>
     <!-- 導覽列 -->
@@ -140,8 +139,7 @@
       <p>打造安心、溫度與質感並存的居住空間</p>
       <div class="hero-cta">
         <a href="/Contact/contact.html" class="btn cta-primary">立即預約諮詢</a>
-        <a href="/Work/work.html" class="btn cta-outline">瀏覽設計作品</a>
-        <p class="cta-lead">你的理想家，<strong>只差一步</strong></p>
+        <a href="/Work/work.html" class="btn cta-primary">瀏覽設計作品</a>
       </div>
     </section>
 
@@ -150,7 +148,9 @@
       <div class="container px-4 about-us">
         <div class="row align-items-center">
           <div class="col-md-6 mb-4 mb-md-0 p-4 d-flex flex-column justify-content-center align-items-center">
-            <h2 class="mb-3">品牌理念</h2>
+            <div class="w-100">
+              <h2 class="mb-3">品牌理念</h2>
+            </div>
             <p class="brand-lead">
               同翕設計的起點，不只是為了解決空間問題，而是源於一個信念「設計可以讓人更靠近自己想要的生活。」<br>
 
@@ -161,14 +161,8 @@
               我們走得不快，但走得真實，因為我們始終相信，溫柔的力量，才能留下長久的感動。<br>
 
               同翕設計團隊
-          </div>
-          <div class="col-md-6 mb-4 mb-md-0 p-4 d-flex justify-content-center align-items-center">
-            <div class="col-md-8">
-              <img src="images/ThemisWeb/about.png" alt="品牌理念" class="img-fluid rounded shadow-sm" loading="lazy">
-            </div>
-          </div>
-          <div class="col-md-12 mb-4 mb-md-0 p-4 d-flex justify-content-center align-items-center">
-            <p>
+            </p>
+            <p class="eng-p">
               Themis Design’s starting point was never just about solving spatial problems; <br>
               it began with a belief: <br>
               “Design can bring people closer to the life they truly want.”<br>
@@ -177,6 +171,11 @@
               Here, design is not the end goal, but a way to connect people, dreams, and everyday life.<br>
               We move forward not in haste, but with authenticity—because we’ve always believed that it’s the power of gentleness that leaves a lasting impression.
             </p>
+          </div>
+          <div class="col-md-6 mb-4 mb-md-0 p-4 d-flex justify-content-center align-items-center">
+            <div class="col-md-10">
+              <img src="images/ThemisWeb/about.png" alt="品牌理念" class="img-fluid rounded shadow-sm" loading="lazy">
+            </div>
           </div>
         </div>
       </div>
@@ -187,7 +186,7 @@
       <div class="container px-4 about-us">
         <div class="row align-items-center">
           <div class="col-md-6 mb-4 mb-md-0 p-4 d-flex justify-content-center align-items-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
               <img src="images/designer.png" alt="關於我們" class="img-fluid rounded shadow-sm" loading="lazy">
             </div>
           </div>
@@ -201,9 +200,7 @@
               在同翕，我們把每一個案子，都當作一次與生活深刻對話的機會；<br>
               我們不只設計一個「家」，更在意如何讓空間承載關係、夢想與未來。
             </p>
-          </div>
-          <div class="col-md-12 mb-4 mb-md-0 p-4 d-flex justify-content-center align-items-center">
-            <p>
+            <p class="eng-p">
               Themis Design is a team brought together by a shared belief: that space can transform life.<br>
               We come from different backgrounds, but we are united by one conviction—<br>
               “space can become the gentlest bridge between people.”<br>
@@ -225,36 +222,6 @@
     <section class="section-spacing-lg">
       <div class="container">
         <h2 class="section-title">精選作品</h2>
-        <div class="filter-bar">
-          <select id="filter-size" class="form-select form-select-sm" aria-label="依坪數篩選">
-            <option value="">坪數（全部）</option>
-            <option value="s-20">小於20坪</option>
-            <option value="s-20-35">20–35坪</option>
-            <option value="s-35-50">35–50坪</option>
-            <option value="s-50p">50坪以上</option>
-          </select>
-
-          <select id="filter-budget" class="form-select form-select-sm" aria-label="依預算篩選">
-            <option value="">預算（全部）</option>
-            <option value="b-100">100萬以下</option>
-            <option value="b-100-200">100–200萬</option>
-            <option value="b-200-400">200–400萬</option>
-            <option value="b-400p">400萬以上</option>
-          </select>
-
-          <select id="filter-style" class="form-select form-select-sm" aria-label="依風格篩選">
-            <option value="">風格（全部）</option>
-            <option value="modern">現代</option>
-            <option value="minimal">簡約</option>
-            <option value="japanese">日式/暖木</option>
-            <option value="nordic">北歐</option>
-            <option value="mix">混搭</option>
-            <option value="gray">灰階/莫蘭迪</option>
-          </select>
-
-          <button id="filter-reset" class="btn btn-outline-secondary btn-sm filter-reset">清除篩選</button>
-        </div>
-        <div id="emptyState" class="empty-state">目前沒有符合條件的作品</div>
 
         <div class="row text-center">
           <div class="col-md-5 mb-3">
@@ -318,7 +285,7 @@
     <!-- 服務流程（新版・色系一致） -->
     <section class="process">
       <div class="process__container row">
-        <div class="col-md-2 d-flex flex-column justify-content-between mb-3 p-4">
+        <div class="col-md-4 d-flex flex-column justify-content-between mb-3 p-4">
           <header class="process__header">
             <h2 class="section-title">服務流程</h2>
             <p class="process__subtitle">將室內設計的服務流程系統化，提供專業有效率的服務體驗</p>
@@ -330,7 +297,7 @@
             <a href="/Contact/contact.html" class="process__link">立即諮詢同翕設計 <span class="process__arrow" aria-hidden>▸</span></a>
           </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
           <div class="process__grid">
             <!-- 左欄 01-04 -->
             <ol class="process__list">
@@ -343,7 +310,7 @@
                   <p class="process__desc">經客戶彙整基本需求後，由設計師電訪，安排諮詢會議</p>
                 </div>
               </li>
-              <li class="process__item" data-aos="fade-up" data-aos-delay="100">
+              <li class="process__item" data-aos="fade-up" data-aos-delay="200">
                 <div class="process__head">
                   <h3 class="me-3">02</h3>
                   <h5>現場丈量／諮詢</h5>
@@ -352,7 +319,7 @@
                   <p class="process__desc">勘查結構、水電、採光與動線，釐清限制與需求優先度</p>
                 </div>
               </li>
-              <li class="process__item" data-aos="fade-up" data-aos-delay="200">
+              <li class="process__item" data-aos="fade-up" data-aos-delay="400">
                 <div class="process__head">
                   <h3 class="me-3">03</h3>
                   <h5>初步提案（平面配置）</h5>
@@ -361,7 +328,7 @@
                   <p class="process__desc">提供平面配置與動線建議，評估初步工程費用</p>
                 </div>
               </li>
-              <li class="process__item" data-aos="fade-up" data-aos-delay="300">
+              <li class="process__item" data-aos="fade-up" data-aos-delay="600">
                 <div class="process__head">
                   <h3 class="me-3">04</h3>
                   <h5>設計合約簽訂</h5>
@@ -370,7 +337,7 @@
                   <p class="process__desc">確認服務範疇、進度與付款節點，開始深化設計</p>
                 </div>
               </li>
-              <li class="process__item" data-aos="fade-up" data-aos-delay="400">
+              <li class="process__item" data-aos="fade-up" data-aos-delay="800">
                 <div class="process__head">
                   <h3 class="me-3">05</h3>
                   <h5>設計規劃(3D/材質/機電)</h5>
@@ -392,7 +359,7 @@
                   <p class="process__desc">確認各空間尺寸與細節，凍結圖說與工程預算</p>
                 </div>
               </li>
-              <li class="process__item" data-aos="fade-up" data-aos-delay="100">
+              <li class="process__item" data-aos="fade-up" data-aos-delay="200">
                 <div class="process__head">
                   <h3 class="me-3">07</h3>
                   <h5>工程合約／排程</h5>
@@ -401,7 +368,7 @@
                   <p class="process__desc">確認工期、分段驗收與付款節點，施工前說明</p>
                 </div>
               </li>
-              <li class="process__item" data-aos="fade-up" data-aos-delay="200">
+              <li class="process__item" data-aos="fade-up" data-aos-delay="400">
                 <div class="process__head">
                   <h3 class="me-3">08</h3>
                   <h5>工程準備</h5>
@@ -410,7 +377,7 @@
                   <p class="process__desc">料件下單、工班安排、社區施工申請與電梯使用申請</p>
                 </div>
               </li>
-              <li class="process__item" data-aos="fade-up" data-aos-delay="300">
+              <li class="process__item" data-aos="fade-up" data-aos-delay="600">
                 <div class="process__head">
                   <h3 class="me-3">09</h3>
                   <h5>施工管理／進度回報</h5>
@@ -419,7 +386,7 @@
                   <p class="process__desc">定期會勘與里程碑驗收，提供進度照片與重點提醒</p>
                 </div>
               </li>
-              <li class="process__item" data-aos="fade-up" data-aos-delay="400">
+              <li class="process__item" data-aos="fade-up" data-aos-delay="800">
                 <div class="process__head">
                   <h3 class="me-3">10</h3>
                   <h5>完工驗收／保固</h5>
