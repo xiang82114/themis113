@@ -88,5 +88,5 @@ body{
     letter-spacing: 0.06rem;
     border-bottom: 1px solid #8a8a8a34;
 }
-.section-title{ font-size:1.8rem; margin-bottom:2rem; }
+.section-title{ font-size:1.8rem; margin-bottom:2rem; font-weight: bold;}
 
