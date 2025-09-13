@@ -39,6 +39,9 @@ body{
     line-height: 1.5;
     font-size: 3rem;
 }
+.splash-logo .title img{
+    width: 100%;
+}
 /* 隱藏遮罩動畫 */
 #splash.hide {
   opacity: 0;
@@ -54,13 +57,16 @@ body{
 .navbar-colored .nav-link:hover{ color:#333 !important; }
 .nav-link { font-size: 0.85rem; }
 .navbar-custom .nav-link.active {
+  color: #f8f0e6;
   text-decoration: underline;
   text-underline-offset: 6px;
 }
-
+.nav-link {
+  color: #f8f0e6;
+}
 /* ===== 導覽列：滾動後配色、active 樣式、漢堡顏色 ===== */
 .navbar-custom.navbar-colored {
-  background: var(--bg) !important;
+  background: var(--c-bg) !important;
   box-shadow: 0 6px 14px rgba(0,0,0,.06);
 }
 .navbar-custom.navbar-colored .nav-link { color: var(--text) !important; }
