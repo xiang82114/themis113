@@ -64,14 +64,12 @@ body{
 .navbar-brand img{ height:30px; transition: all .3s ease; }
 .navbar-colored .nav-link:hover{ color:#333 !important; }
 .nav-link { font-size: 0.85rem; }
+
 .navbar-custom .nav-link.active {
-  color: #f8f0e6;
   text-decoration: underline;
   text-underline-offset: 6px;
 }
-.nav-link {
-  color: #f8f0e6;
-}
+
 /* ===== 導覽列：滾動後配色、active 樣式、漢堡顏色 ===== */
 .navbar-custom.navbar-colored {
   background: var(--c-bg) !important;

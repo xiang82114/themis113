@@ -7,6 +7,16 @@
   --radius:12px;
 }
 
+.navbar-custom .nav-link.active {
+  color: #f8f0e6;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.nav-link {
+  color: #f8f0e6;
+}
+
 .hero h1, .hero p { text-shadow: 0 2px 12px rgba(0,0,0,.25); } /* 提高照片上可讀性 */
 .hero .hero-cta { color: var(--ink); }
 
