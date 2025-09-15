@@ -58,7 +58,21 @@ body{
   opacity: 0;
   pointer-events: none;
 }
-
+@media (max-width:1200px){
+  #splash .splash-logo .title img{
+      transform: scale(1.2);
+  }
+}
+@media (max-width:992px){
+  #splash .splash-logo .title img{
+      transform: scale(1.5);
+  }
+}
+@media (max-width:768px){
+  #splash .splash-logo .title img{
+      transform: scale(2.0);
+  }
+}
 @media (max-width:576px){
   #splash .splash-logo .title img{
       transform: scale(3.0);
