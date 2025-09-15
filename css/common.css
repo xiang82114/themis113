@@ -33,8 +33,10 @@ body{
   0%   { opacity: 1; }   /* 開始透明 */
   20%  { opacity: 1; }   /* 0.8 秒淡入 */
   80%  { opacity: 1; }   /* 中間停留（顯示 2.4 秒） */
-  100% { opacity: 0; }   /* 最後 0.8 秒快速消失 */
+  100% { opacity: 1; }   /* 最後 0.8 秒快速消失 */
 }
+
+
 /* 中間 Logo 或文字 */
 .splash-logo {
   font-size: 1.5rem;
@@ -50,10 +52,17 @@ body{
 .splash-logo .title img{
     width: 100%;
 }
+
 /* 隱藏遮罩動畫 */
 #splash.hide {
   opacity: 0;
   pointer-events: none;
+}
+
+@media (max-width:576px){
+  #splash .splash-logo .title img{
+      transform: scale(3.0);
+  }
 }
 
 /* Navbar */
