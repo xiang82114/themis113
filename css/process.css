@@ -169,3 +169,95 @@
     border-top: 0;    
 }
 
+/* ===== Charging (收費方式) ===== */
+.charging { padding-top: 2rem; padding-bottom: 2rem; }
+.charging-box{
+  background: #efefec; /* 淡灰米色底，可依品牌色調整 */
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+@media (min-width: 992px){
+  .charging-box{ padding: 2rem 2.25rem; }
+}
+
+/* 左圖 */
+.charging-photo{
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.charging-photo img{
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 767.98px){
+  .charging-photo img{ height: 260px; }
+}
+
+/* 中央標題 */
+.charging-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+.charging-zh{
+  letter-spacing: .4rem;
+  color: #5a4a3f;
+  font-weight: 600;
+  font-size: clamp(20px, 2.4vw, 24px);
+}
+.charging-en{
+  font-family: "Times New Roman", "Noto Serif TC", serif;
+  font-style: italic;
+  font-size: clamp(28px, 3vw, 40px);
+  color: #2f3a4a;
+  opacity: .9;
+}
+
+/* 右側條列 */
+.charging-list{
+  color: #555;
+  line-height: 1.9;
+}
+.charging-heading{
+  margin: 0 0 .5rem;
+  color: #6b5a4b;
+  font-weight: 600;
+}
+.charging-group{
+  padding: 1rem 0 1.2rem;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.charging-group:last-child{ border-bottom: 0; }
+
+.charging-list ul{ margin: 0; padding-left: 1.1rem; }
+.charging-list li{
+  margin: .25rem 0;
+  list-style: none;         /* 拿掉預設圓點，改用版面符號 */
+  position: relative;
+}
+.charging-list li::before{
+  content: "•";
+  position: absolute;
+  left: -1.1rem;
+  top: .05rem;
+  font-size: 1rem;
+  color: #a08a78;
+}
+
+/* 置中豎線符號的視覺 */
+.charging-list .dot{
+  display: inline-block;
+  margin: 0 .5rem;
+  color: #bcb5ad;
+}
+
+/* 欄間距微調（比預設更寬） */
+@media (min-width: 992px){
+  .charging .row{ --bs-gutter-x: 2rem; }
+}
+
+
