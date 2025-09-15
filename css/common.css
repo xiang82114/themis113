@@ -27,6 +27,7 @@ body{
   justify-content: center;
   opacity: 1;                /* 預設透明 */
   animation: splash-sequence 2s forwards; /* 總共跑 2 秒 */
+  pointer-events: all;   /* 阻擋點擊事件 */
 }
 
 @keyframes splash-sequence {
