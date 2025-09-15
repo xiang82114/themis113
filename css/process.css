@@ -172,7 +172,6 @@
 /* ===== Charging (收費方式) ===== */
 .charging { padding-top: 2rem; padding-bottom: 2rem; }
 .charging-box{
-  background: #efefec; /* 淡灰米色底，可依品牌色調整 */
   border-radius: 6px;
   padding: 1.5rem;
 }
@@ -239,14 +238,14 @@
   list-style: none;         /* 拿掉預設圓點，改用版面符號 */
   position: relative;
 }
-.charging-list li::before{
+/* .charging-list li::before{
   content: "•";
   position: absolute;
   left: -1.1rem;
   top: .05rem;
   font-size: 1rem;
   color: #a08a78;
-}
+} */
 
 /* 置中豎線符號的視覺 */
 .charging-list .dot{
