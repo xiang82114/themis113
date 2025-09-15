@@ -30,7 +30,7 @@ body{
 }
 
 @keyframes splash-sequence {
-  0%   { opacity: 0; }   /* 開始透明 */
+  0%   { opacity: 1; }   /* 開始透明 */
   20%  { opacity: 1; }   /* 0.8 秒淡入 */
   80%  { opacity: 1; }   /* 中間停留（顯示 2.4 秒） */
   100% { opacity: 0; }   /* 最後 0.8 秒快速消失 */
