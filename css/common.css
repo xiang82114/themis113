@@ -83,7 +83,7 @@ body{
 .navbar-transparent{ background-color: transparent !important; }
 .navbar-colored{ background-color: var(--c-bg) !important; }
 .navbar-colored .nav-link{ color:#000 !important; }
-.navbar-brand img{ height:30px; transition: all .3s ease; }
+.navbar-brand img{ height:45px; transition: all .3s ease; }
 .navbar-colored .nav-link:hover{ color:#333 !important; }
 .nav-link { font-size: 0.85rem; }
 
