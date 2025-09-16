@@ -27,14 +27,12 @@ body{
   justify-content: center;
   opacity: 1;                /* 預設透明 */
   animation: splash-sequence 2s forwards; /* 總共跑 2 秒 */
-  pointer-events: all;   /* 阻擋點擊事件 */
+  pointer-events: auto; /* ←顯示時擋住點擊 */
 }
 
 @keyframes splash-sequence {
-  0%   { opacity: 1; }   /* 開始透明 */
-  20%  { opacity: 1; }   /* 0.8 秒淡入 */
-  80%  { opacity: 1; }   /* 中間停留（顯示 2.4 秒） */
-  100% { opacity: 0; }   /* 最後 0.8 秒快速消失 */
+  0%, 80% { opacity: 1; visibility: visible; pointer-events: auto; }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; }
 }
 
 
