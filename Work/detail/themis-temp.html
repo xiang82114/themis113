@@ -60,6 +60,45 @@
 
     <!-- 共用樣式 -->
     <link rel="stylesheet" href="/css/work_detail.css">
+
+    <style>
+      .thumbnail-nav {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;          /* 給捲軸一點空間 */
+        max-width: 100%;
+      }
+
+      .thumb-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      .thumb-img {
+        flex: 0 0 auto;               /* 固定大小，不被壓縮 */
+        width: 150px;
+        height: 105px;
+        margin-right: 0.5rem;
+        border-radius: 4px;
+        object-fit: cover;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      /* 顯示最多 8 張，超過就必須滑動 */
+      .thumbnail-nav {
+        max-width: calc(150px * 8 + 0.5rem * 7); /* 8 張縮圖 + 間距 */
+        margin: 0 auto;
+      }
+
+      /* 美化滾動條 */
+      .thumbnail-nav::-webkit-scrollbar { height: 8px; }
+      .thumbnail-nav::-webkit-scrollbar-thumb { background: #c8b8a8; border-radius: 4px; }
+      .thumbnail-nav::-webkit-scrollbar-track { background: transparent; }
+
+    </style>
     
   </head>
   <body>
@@ -130,7 +169,8 @@
       </div>
       
     </section>
-    <div class="d-flex flex-wrap gap-2 justify-content-center thumbnail-nav">
+    <div class="thumbnail-nav">
+      <div class="thumb-wrapper d-flex flex-nowrap">
         <img src="/images/ThemisWeb/L/L01.jpg" class="thumb-img active" data-bs-target="#mainCarousel" data-bs-slide-to="0">
         <img src="/images/ThemisWeb/L/L02.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="1">
         <img src="/images/ThemisWeb/L/L03.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="2">
@@ -141,6 +181,7 @@
         <img src="/images/ThemisWeb/L/L08.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="7">
         <img src="/images/ThemisWeb/L/L09.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="8">
       </div>
+    </div>
 
     <section class="container section">
       <h2 class="section-title">設計概念</h2>
