@@ -5,7 +5,7 @@
 --c-mute: #8a8a8a;  /* 次要灰文字 */
 --c-line: #d9cfc4;  /* 淺米棕分隔線 */
 --c-accent: #a08974;/* 暖棕重點色(hover) */
---bs-body-font-family: "Noto Sans TC", "PingFang TC", "Heiti TC",
+--bs-body-font-family: "Noto Serif TC", "PingFang TC", "Heiti TC",
                          "Source Han Sans TC", system-ui, -apple-system, sans-serif;
 }
 
