@@ -9,7 +9,7 @@
 
 body{
     background-color: var(--c-bg);
-    font-family: "Noto Serif TC","微軟正黑體", serif; /**/
+    font-family: "Noto Serif TC", serif; /*,"微軟正黑體"*/
     color: var(--c-text);
 }
 
