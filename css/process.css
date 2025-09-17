@@ -27,7 +27,6 @@
   padding: 5rem 1rem;
 }
 .service-items,.value-services .section-title{
-  font-family: "Noto Serif TC", serif;
   text-align: center;
   margin: 20px;
 }
@@ -72,7 +71,6 @@
   padding: 5rem 1rem;
 }
 .process-title{
-  font-family: "Noto Serif TC", serif;
   text-align: center;
   font-size: clamp(28px,3.2vw,42px);
   margin: 0 0 36px;
@@ -121,7 +119,6 @@
 }
 .value-services .vs-container{ max-width:1200px; margin:0 auto; border-top:1px solid var(--c-line);}
 .value-services .vs-title{
-  font-family:"Noto Serif TC", serif;
   text-align:center;
   font-size: clamp(28px,3.2vw,42px);
   margin: 0 0 36px;
@@ -208,7 +205,6 @@
   font-size: clamp(20px, 2.4vw, 24px);
 }
 .charging-en{
-  font-family: "Times New Roman", "Noto Serif TC", serif;
   font-style: italic;
   font-size: clamp(28px, 3vw, 40px);
   color: #2f3a4a;

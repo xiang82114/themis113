@@ -5,12 +5,17 @@
 --c-mute: #8a8a8a;  /* 次要灰文字 */
 --c-line: #d9cfc4;  /* 淺米棕分隔線 */
 --c-accent: #a08974;/* 暖棕重點色(hover) */
+--bs-body-font-family: "Noto Sans TC", "PingFang TC", "Heiti TC",
+                         "Source Han Sans TC", system-ui, -apple-system, sans-serif;
 }
 
 body{
     background-color: var(--c-bg);
-    font-family: "Noto Serif TC", serif; /*,"微軟正黑體"*/
+    /*font-family: "Noto Serif TC", serif; ,"微軟正黑體"*/
+    font-family: var(--bs-body-font-family);
     color: var(--c-text);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
 }
 
 /* 遮罩樣式 */
