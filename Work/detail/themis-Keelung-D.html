@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日常拾光｜同翕設計｜台北室內設計裝修｜Themis interior design</title>
+    <link rel="icon" href="/images/logo/LOGO.png" type="image/png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 放在 head 裡，Bootstrap 後、你的 common.css 前 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      .section {
+        padding: 5rem 1rem;
+      }
+
+      .carousel-inner img {
+        object-fit: cover;
+        height: 60vh;
+        border-radius: 8px;
+      }
+
+      .thumbnail-nav {
+        margin-top: 1rem;
+      }
+
+      .thumb-img {
+        width: 150px;
+        height: 105px;
+        object-fit: cover;
+        opacity: 0.5;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .thumb-img.active {
+        opacity: 1;
+        outline: 2px solid #5a4a3f;
+      }
+
+      .img-grid img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+
+        .carousel-inner img {
+          height: 40vh;
+        }
+
+        .thumb-img {
+          width: 90px;
+          height: 60px;
+        }
+
+      }
+    </style>
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="/css/common.css">
+
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="/css/work_detail.css">
+
+    <style>
+      .thumbnail-nav {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;          /* 給捲軸一點空間 */
+        max-width: 100%;
+      }
+
+      .thumb-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      .thumb-img {
+        flex: 0 0 auto;               /* 固定大小，不被壓縮 */
+        width: 150px;
+        height: 105px;
+        margin-right: 0.5rem;
+        border-radius: 4px;
+        object-fit: cover;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      /* 顯示最多 8 張，超過就必須滑動 */
+      .thumbnail-nav {
+        max-width: calc(150px * 8 + 0.5rem * 7); /* 8 張縮圖 + 間距 */
+        margin: 0 auto;
+      }
+
+      /* 美化滾動條 */
+      .thumbnail-nav::-webkit-scrollbar { height: 8px; }
+      .thumbnail-nav::-webkit-scrollbar-thumb { background: #c8b8a8; border-radius: 4px; }
+      .thumbnail-nav::-webkit-scrollbar-track { background: transparent; }
+
+    </style>
+    
+  </head>
+  <body>
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
+      <div class="container px-4">
+        <a class="navbar-brand" href="../../index.html">
+          <img id="navbarLogo" src="/images/logo/logocolor-green.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link me-3" href="../../index.html">關於我們</a></li>
+            <li class="nav-item"><a class="nav-link me-3 active" href="/Work/work.html">設計作品</a></li>
+            <li class="nav-item"><a class="nav-link me-3" href="/Process/process.html">服務流程</a></li>
+            <li class="nav-item"><a class="nav-link me-3" href="/Contact/contact.html">聯繫我們</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="container section mt-2">
+      <div class="col-lg-12">
+          <h2>日常拾光</h2>
+          <hr>
+      </div>
+      <h2 class="section-title">空間預覽</h2>
+      <div id="mainCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner row d-flex justify-content-center">
+          <div class="col-md-8">
+            <div class="carousel-item active">
+              <img src="/images/ThemisWeb/K-D/K-D01.jpg" class="d-block w-100" alt="作品圖1">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/K-D/K-D02.jpg" class="d-block w-100" alt="作品圖2">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/K-D/K-D03.jpg" class="d-block w-100" alt="作品圖3">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/K-D/K-D04.jpg" class="d-block w-100" alt="作品圖4">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/K-D/K-D05.jpg" class="d-block w-100" alt="作品圖5">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/K-D/K-D06.jpg" class="d-block w-100" alt="作品圖6">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/ThemisWeb/K-D/K-D07.jpg" class="d-block w-100" alt="作品圖7">
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+      
+    </section>
+    <div class="thumbnail-nav">
+      <div class="thumb-wrapper d-flex flex-nowrap">
+        <img src="/images/ThemisWeb/K-D/K-D01.jpg" class="thumb-img active" data-bs-target="#mainCarousel" data-bs-slide-to="0">
+        <img src="/images/ThemisWeb/K-D/K-D02.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="1">
+        <img src="/images/ThemisWeb/K-D/K-D03.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="2">
+        <img src="/images/ThemisWeb/K-D/K-D04.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="3">
+        <img src="/images/ThemisWeb/K-D/K-D05.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="4">
+        <img src="/images/ThemisWeb/K-D/K-D06.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="5">
+        <img src="/images/ThemisWeb/K-D/K-D07.jpg" class="thumb-img" data-bs-target="#mainCarousel" data-bs-slide-to="6">
+      </div>
+    </div>
+
+    <section class="container section">
+      <h2 class="section-title">設計概念</h2>
+      <p>這是一個能讓時間慢下來的空間，柔和的米色像晨光灑進，木質的溫潤讓每一步都更輕柔。每一處隱藏式收納都經過精心設計，讓生活遠離雜亂，展示櫃裡的物品輕聲訴說著主人的故事。而那柔和的燈光，像月光輕拂，將每個夜晚都化為靜謐的時光。這樣的設計，不只是美，更是一種用心打造的生活哲學，一個讓人找回節奏的避風港。</p>
+    </section>
+
+    <section class="container section">
+      <h2 class="section-title">平面配置圖</h2>
+      <div class="row img-grid">
+        <div class="col-md-6">
+          <p class="fw-bold">原始平面圖</p>
+          <img src="/images/ThemisWeb/L/Plan/01-01_0.png" alt="原始平面圖">
+        </div>
+        <div class="col-md-6">
+          <p class="fw-bold">現況平面圖</p>
+          <img src="/images/ThemisWeb/L/Plan/02-01_0.png" alt="現況平面圖">
+        </div>
+      </div>
+    </section>
+    <section class="container section">
+      <h2 class="section-title">實景圖</h2>
+      <div class="row img-grid d-flex align-items-center justify-content-center">
+        <div class="col-md-10">
+          <p class="fw-bold">客廳 實景圖</p>
+          <img src="/images/ThemisWeb/K-D/K-D01.jpg" alt="客廳3D">
+        </div>
+        <div class="col-md-10">
+          <p class="fw-bold">客廳玄關 實景圖</p>
+          <img src="/images/ThemisWeb/K-D/K-D02.jpg" alt="客廳玄關3D">
+        </div>
+        <div class="col-md-10">
+          <p class="fw-bold">玄關 實景圖</p>
+          <img src="/images/ThemisWeb/K-D/K-D03.jpg" alt="玄關3D">
+        </div>
+        <div class="col-md-10">
+          <p class="fw-bold">書房 實景圖</p>
+          <img src="/images/ThemisWeb/K-D/K-D04.jpg" alt="書房3D">
+        </div>
+        <div class="col-md-10">
+          <p class="fw-bold">主臥 實景圖</p>
+          <img src="/images/ThemisWeb/K-D/K-D05.jpg" alt="主臥3D">
+        </div>
+        <div class="col-md-10">
+          <p class="fw-bold">客廳玄關 實景圖</p>
+          <img src="/images/ThemisWeb/K-D/K-D06.jpg" alt="客廳玄關3D">
+        </div>
+        <div class="col-md-10">
+          <p class="fw-bold">餐廳玄關 實景圖</p>
+          <img src="/images/ThemisWeb/K-D/K-D07.jpg" alt="餐廳玄關3D">
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2 class="section-title">3D 模擬圖</h2>
+      <div class="row img-grid d-flex align-items-center justify-content-center">
+        <div class="col-md-6">
+          <p class="fw-bold">玄關 3D 圖</p>
+          <img src="/images/ThemisWeb/L/3D/竹北 林公館3D_1.jpg" alt="玄關3D">
+        </div>
+        <div class="col-md-6">
+          <p class="fw-bold">主臥 3D 圖</p>
+          <img src="/images/ThemisWeb/L/3D/竹北 林公館3D_2.jpg" alt="主臥3D">
+        </div>
+        <div class="col-md-6">
+          <p class="fw-bold">主臥陽台 3D 圖</p>
+          <img src="/images/ThemisWeb/L/3D/竹北 林公館3D_3.jpg" alt="主臥陽台3D">
+        </div>
+        <div class="col-md-6">
+          <p class="fw-bold">客廳 3D 圖</p>
+          <img src="/images/ThemisWeb/L/3D/竹北 林公館3D_4.jpg" alt="客廳3D">
+        </div>
+        <div class="col-md-6">
+          <p class="fw-bold">書房 3D 圖</p>
+          <img src="/images/ThemisWeb/L/3D/竹北 林公館3D_5.jpg" alt="書房3D">
+        </div>
+        <div class="col-md-6">
+          <p class="fw-bold">客廳 3D 圖</p>
+          <img src="/images/ThemisWeb/L/3D/竹北 林公館3D_6.jpg" alt="客廳3D">
+        </div>
+        <div class="col-md-6">
+          <p class="fw-bold">客廳 3D 圖</p>
+          <img src="/images/ThemisWeb/L/3D/竹北 林公館3D_7.jpg" alt="客廳3D">
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2 class="section-title">情感回饋</h2>
+      <p>屋主非常重視收納的機能，
+        但也不希望整體空間看起來太過呆板、制式。
+        經過多次討論，我們終於找到了他們最喜歡、也最適合的方案。
+
+        在交屋的那一刻，
+        我們都露出了開心的笑容
+        那是一種「這就是我們想要的家」的滿足感，
+        也對於未來有更多的幸福想像
+
+        謝謝選擇我們，
+        希望這個家陪著你們紀錄很多回憶，寫下很多故事</p>
+    </section>
+
+    <section class="project-info container my-5">
+      <div class="row">
+        <!-- 左邊：文字內容 -->
+        <div class="col-md-12 mb-4 d-flex flex-column align-items-center">
+          <h2 class="section-title">案場資訊</h2>
+          <p><strong>案名：</strong>日常拾光</p>
+          <p><strong>地點：</strong>基隆市</p>
+          <p><strong>家庭成員：</strong>夫妻&毛寶</p>
+          <p><strong>坪數：</strong>24坪</p>
+          <p><strong>房屋類型：</strong>新古屋</p>
+          <p><strong>格局：</strong>三房一廳兩衛</p>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        window.addEventListener("scroll", function () {
+            const navbar = document.querySelector(".navbar");
+            const logo = document.getElementById("navbarLogo");
+
+            if (window.scrollY > 50) {
+                navbar.classList.remove("navbar-transparent");
+                navbar.classList.add("navbar-colored");
+            } else {
+                navbar.classList.add("navbar-transparent");
+                navbar.classList.remove("navbar-colored");
+            }
+        });
+    </script>
+    <script src="/js/common.js"></script>
+  </body>
+</html>
