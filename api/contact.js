@@ -1,27 +1,23 @@
 // api/contact.js
-// CommonJS handler for Vercel serverless (static site)
-// npm i resend
-const { Resend } = require('resend');
+// Serverless (Vercel, static site). 延遲載入 'resend'，避免沒裝套件時 health=1 也 500。
 
 const isDebug = process.env.DEBUG_CONTACT === '1';
 
-// 安全的 HTML escape
+// 安全 HTML escape
 const esc = (s = '') =>
-  String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-// 解析 JSON body（雙保險）
+// 解析 JSON（雙保險）
 async function parseJson(req) {
-  if (req.body && typeof req.body === 'object') return req.body; // 某些環境已預先 parse
-  return new Promise((resolve) => {
+  if (req.body && typeof req.body === 'object') return req.body;
+  return new Promise(resolve => {
     let data = '';
-    req.on('data', (c) => (data += c));
-    req.on('end', () => {
-      try { resolve(JSON.parse(data || '{}')); } catch { resolve({}); }
-    });
+    req.on('data', c => (data += c));
+    req.on('end', () => { try { resolve(JSON.parse(data || '{}')); } catch { resolve({}); } });
   });
 }
 
-// 回覆 JSON
+// 回傳 JSON
 function sendJson(res, status, payload) {
   res.statusCode = status;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -29,15 +25,15 @@ function sendJson(res, status, payload) {
 }
 
 module.exports = async (req, res) => {
-  // 用 URL 解析 query（相容所有環境）
-  let health = false;
+  // 解析 query（相容所有環境）
+  let isHealth = false;
   try {
     const u = new URL(req.url, 'http://localhost');
-    health = u.searchParams.get('health') === '1';
-  } catch (_) { /* ignore */ }
+    isHealth = u.searchParams.get('health') === '1';
+  } catch {}
 
-  // 健康檢查：GET /api/contact?health=1
-  if (req.method === 'GET' && health) {
+  // ✅ 健康檢查：永遠不要在這之前 require 任何可能缺的套件
+  if (req.method === 'GET' && isHealth) {
     const checks = {
       has_RESEND_API_KEY: !!process.env.RESEND_API_KEY,
       has_TURNSTILE_SECRET_KEY: !!process.env.TURNSTILE_SECRET_KEY,
@@ -64,10 +60,19 @@ module.exports = async (req, res) => {
   if (!RESEND_API_KEY) return sendJson(res, 500, { message: isDebug ? '缺少 RESEND_API_KEY' : '寄信失敗，請稍候再試' });
   if (!TURNSTILE_SECRET_KEY) return sendJson(res, 500, { message: isDebug ? '缺少 TURNSTILE_SECRET_KEY' : '驗證失敗，請稍候再試' });
 
+  // ⏳ 這裡才載入 'resend'（避免健康檢查被阻斷）
+  let Resend;
+  try {
+    Resend = require('resend').Resend;
+  } catch (e) {
+    if (isDebug) console.error('require("resend") 失敗：', e);
+    return sendJson(res, 500, { message: isDebug ? '未安裝 resend 套件（請執行 npm i resend 並重新部署）' : '系統錯誤' });
+  }
+
   try {
     const body = await parseJson(req);
     const { Name, EMail, Tel, WT, Room, Money, Square, Message } = body || {};
-    const token = body?.['cf-turnstile-response']; // Turnstile token
+    const token = body?.['cf-turnstile-response'];
 
     // 前置檢核
     const errors = [];
@@ -93,11 +98,11 @@ module.exports = async (req, res) => {
       });
       tf = await tfRes.json();
     } catch (e) {
-      if (isDebug) console.error('Turnstile fetch error:', e);
+      if (isDebug) console.error('Turnstile 連線失敗：', e);
       return sendJson(res, 500, { message: isDebug ? 'Turnstile 連線失敗' : '驗證失敗，請稍後再試' });
     }
     if (!tf?.success) {
-      if (isDebug) console.error('Turnstile verify failed:', tf);
+      if (isDebug) console.error('Turnstile 驗證失敗：', tf);
       return sendJson(res, 400, { message: '驗證失敗，請刷新後再試' });
     }
 
@@ -130,7 +135,7 @@ LINE ID: ${WT || ''}
 備註:
 ${Message || ''}`;
 
-    // 寄信（Resend）
+    // 寄信
     const resend = new Resend(RESEND_API_KEY);
     const { error } = await resend.emails.send({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
@@ -142,13 +147,13 @@ ${Message || ''}`;
     });
 
     if (error) {
-      if (isDebug) console.error('Resend error:', error);
+      if (isDebug) console.error('Resend 寄信失敗：', error);
       return sendJson(res, 500, { message: isDebug ? `Resend 寄信失敗：${error?.message || 'unknown'}` : '寄信失敗，請稍候再試' });
     }
 
     return sendJson(res, 200, { ok: true });
   } catch (e) {
-    if (isDebug) console.error('Handler error:', e);
+    if (isDebug) console.error('Handler 錯誤：', e);
     return sendJson(res, 500, { message: isDebug ? `伺服器錯誤：${e?.message || e}` : '系統錯誤' });
   }
 };
