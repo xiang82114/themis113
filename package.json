@@ -1,6 +1,9 @@
 {
-  "name": "themisdesign-site",
+  "name": "themisdesign-static",
+  "version": "1.0.0",
   "private": true,
+  "description": "ThemisDesign static site with Vercel serverless email endpoint",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "vercel dev",
     "build": "echo \"Static site - no build\""
