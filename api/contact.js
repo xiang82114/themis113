@@ -1,13 +1,12 @@
 // api/contact.js
-// Serverless (Vercel, static site). 延遲載入 'resend'，避免沒裝套件時 health=1 也 500。
-
+// 延遲載入 'resend'，即使沒安裝也能通過 health 檢查；純 HTML 專案可用。
 const isDebug = process.env.DEBUG_CONTACT === '1';
 
-// 安全 HTML escape
+// escape HTML
 const esc = (s = '') =>
   String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-// 解析 JSON（雙保險）
+// parse JSON
 async function parseJson(req) {
   if (req.body && typeof req.body === 'object') return req.body;
   return new Promise(resolve => {
@@ -17,7 +16,7 @@ async function parseJson(req) {
   });
 }
 
-// 回傳 JSON
+// JSON response
 function sendJson(res, status, payload) {
   res.statusCode = status;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -25,14 +24,14 @@ function sendJson(res, status, payload) {
 }
 
 module.exports = async (req, res) => {
-  // 解析 query（相容所有環境）
+  // parse query
   let isHealth = false;
   try {
     const u = new URL(req.url, 'http://localhost');
     isHealth = u.searchParams.get('health') === '1';
   } catch {}
 
-  // ✅ 健康檢查：永遠不要在這之前 require 任何可能缺的套件
+  // GET health
   if (req.method === 'GET' && isHealth) {
     const checks = {
       has_RESEND_API_KEY: !!process.env.RESEND_API_KEY,
@@ -50,7 +49,7 @@ module.exports = async (req, res) => {
     return sendJson(res, 405, { message: 'Method Not Allowed' });
   }
 
-  // 必要環境變數
+  // env
   const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
   const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || '';
   const TO_EMAIL = process.env.TO_EMAIL || 'themis11303@gmail.com';
@@ -60,13 +59,13 @@ module.exports = async (req, res) => {
   if (!RESEND_API_KEY) return sendJson(res, 500, { message: isDebug ? '缺少 RESEND_API_KEY' : '寄信失敗，請稍候再試' });
   if (!TURNSTILE_SECRET_KEY) return sendJson(res, 500, { message: isDebug ? '缺少 TURNSTILE_SECRET_KEY' : '驗證失敗，請稍候再試' });
 
-  // ⏳ 這裡才載入 'resend'（避免健康檢查被阻斷）
+  // lazy require
   let Resend;
   try {
     Resend = require('resend').Resend;
   } catch (e) {
     if (isDebug) console.error('require("resend") 失敗：', e);
-    return sendJson(res, 500, { message: isDebug ? '未安裝 resend 套件（請執行 npm i resend 並重新部署）' : '系統錯誤' });
+    return sendJson(res, 500, { message: isDebug ? '未安裝 resend（請 npm i resend）' : '系統錯誤' });
   }
 
   try {
@@ -74,7 +73,7 @@ module.exports = async (req, res) => {
     const { Name, EMail, Tel, WT, Room, Money, Square, Message } = body || {};
     const token = body?.['cf-turnstile-response'];
 
-    // 前置檢核
+    // validations
     const errors = [];
     if (!Name) errors.push('請填寫姓名');
     if (!EMail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(EMail)) errors.push('請填寫有效 Email');
@@ -83,7 +82,7 @@ module.exports = async (req, res) => {
     if (!token) errors.push(isDebug ? '缺少 Turnstile token（cf-turnstile-response）' : '驗證失敗，請重試');
     if (errors.length) return sendJson(res, 400, { message: errors.join('，') });
 
-    // Turnstile 驗證
+    // verify Turnstile
     const ip = (req.headers['x-forwarded-for'] || '').toString().split(',')[0].trim();
     let tf;
     try {
@@ -106,7 +105,7 @@ module.exports = async (req, res) => {
       return sendJson(res, 400, { message: '驗證失敗，請刷新後再試' });
     }
 
-    // 組信
+    // mail content
     const subject = `【同翕設計聯絡表單】${Name}`;
     const html = `
       <div style="font-family:Arial,'Noto Sans TC',sans-serif">
@@ -135,7 +134,7 @@ LINE ID: ${WT || ''}
 備註:
 ${Message || ''}`;
 
-    // 寄信
+    // send via Resend
     const resend = new Resend(RESEND_API_KEY);
     const { error } = await resend.emails.send({
       from: `${FROM_NAME} <${FROM_EMAIL}>`,
