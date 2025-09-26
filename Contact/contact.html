@@ -124,10 +124,19 @@
 
                   <div class="col-sm-6">
                     <label for="Tel" class="form-label">電話 TEL</label>
-                    <input name="Tel" id="Tel" type="tel" inputmode="tel"
-                      class="form-control" placeholder="例如：0912-345-678"
+                    <input
+                      name="Tel"
+                      id="Tel"
+                      type="tel"
+                      inputmode="tel"
+                      class="form-control"
+                      placeholder="例如：0912-345-678"
                       autocomplete="tel"
-                      pattern="^(0[2-9]\d{7,8}|09\d{2}-?\d{3}-?\d{3})$" />
+                      required
+                      title="請輸入市話（0開頭，共8~10碼數字）或手機（09xx-xxx-xxx 或 09xxxxxxxx）"
+                      pattern="^(0[2-9]\d{7,8}|09\d{2}[-\s\uFF0D]?\d{3}[-\s\uFF0D]?\d{3})$"
+                    />
+                    <div class="invalid-feedback">請輸入正確的市話或手機（手機可用 09xx-xxx-xxx）</div>
                     <div class="form-text">市話或手機（手機可用 09xx-xxx-xxx）</div>
                   </div>
 
@@ -245,6 +254,39 @@
       }
       window.addEventListener("scroll", updateNavbarState);
       window.addEventListener("load", updateNavbarState);
+
+      // ===== 電話欄位正規化 & 自動格式化 =====
+      (function () {
+        const tel = document.getElementById('Tel');
+
+        // 將全形數字轉半形
+        const toAsciiDigits = (str) =>
+          str.replace(/[０-９]/g, (d) => String.fromCharCode(d.charCodeAt(0) - 0xFF10 + 0x30));
+
+        // 各種 dash 統一成半形減號 -
+        const normalizeDash = (str) =>
+          str.replace(/[‐-–—\u2212\u2010-\u2015\uFF0D]/g, '-');
+
+        tel.addEventListener('input', () => {
+          let v = tel.value;
+
+          // 1) 正規化：全形數字 -> 半形、dash 統一、去除空白
+          v = toAsciiDigits(v);
+          v = normalizeDash(v);
+          v = v.replace(/\s+/g, '');
+
+          // 2) 若是手機（09 開頭 + 10 碼），自動排版成 XXXX-XXX-XXX
+          const digits = v.replace(/-/g, '');
+          if (/^09\d{8}$/.test(digits)) {
+            v = digits.replace(/^(\d{4})(\d{3})(\d{3})$/, '$1-$2-$3');
+          } else {
+            // 非手機先不要硬加 dash，避免干擾市話輸入
+            v = v.replace(/-/g, '');
+          }
+
+          tel.value = v;
+        }, { passive: true });
+      })();
 
       // 前端驗證 + 串接 /api/contact
       (function () {
