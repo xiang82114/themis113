@@ -288,7 +288,7 @@
         }, { passive: true });
       })();
 
-      // 前端驗證 + 串接 /api/contact
+      // 前端驗證 + 串接 /api/contact（修正版：鍵名對應 + Turnstile Token 檢查）
       (function () {
         const form = document.getElementById('myform');
         const btn = document.getElementById('submitBtn');
@@ -298,22 +298,21 @@
           alertBox.className = 'alert ' + (ok ? 'alert-success' : 'alert-danger');
           alertBox.textContent = msg;
           alertBox.classList.remove('d-none');
-          // 5 秒後自動隱藏
-          setTimeout(() => alertBox.classList.add('d-none'), 5000);
+          setTimeout(() => alertBox.classList.add('d-none'), 6000);
         }
 
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
 
-          // 蜜罐擋掉機器人
+          // 1) 蜜罐：有值就擋掉（機器人）
           if (form.company && form.company.value) {
             showAlert(false, '送出失敗，請稍後再試');
             return;
           }
 
+          // 2) Bootstrap 原生驗證
           if (!form.checkValidity()) {
             form.classList.add('was-validated');
-            // 聚焦第一個無效欄位
             const firstInvalid = form.querySelector(':invalid');
             if (firstInvalid) {
               firstInvalid.focus({ preventScroll: false });
@@ -322,27 +321,61 @@
             return;
           }
 
+          // 3) 取得 Turnstile token（必須在 <form> 內才會有這個隱藏欄位）
+          const tokenInput = form.querySelector('input[name="cf-turnstile-response"]');
+          const token = tokenInput && tokenInput.value;
+          if (!token) {
+            showAlert(false, '驗證失敗：未取得人機驗證 token，請重新整理後再試');
+            return;
+          }
+
+          // 4) 用 FormData 取值 → 轉換為後端期待的鍵名
+          const fd = new FormData(form);
+          const raw = Object.fromEntries(fd.entries());
+
+          const payload = {
+            // 後端必填
+            name: (raw.Name || '').trim(),
+            email: (raw.EMail || '').trim(),
+            space_type: raw.Room || '',
+            budget: raw.Money || '',
+            message: (raw.Message || '').trim(),
+
+            // 後端選填
+            phone: (raw.Tel || '').trim(),
+
+            // 將 Turnstile token 一起送（後端支援這個名稱）
+            'cf-turnstile-response': token,
+
+            // 其他欄位保留（非必填，方便郵件內顯示）
+            company: raw.company || '',
+            square: raw.Square || '',
+            wt: raw.WT || ''
+          };
+
+          // 5) 送出中狀態
           btn.disabled = true;
           const origText = btn.textContent;
           btn.textContent = '送出中…';
 
           try {
-            const payload = Object.fromEntries(new FormData(form).entries());
             const res = await fetch('/api/contact', {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
               body: JSON.stringify(payload)
             });
 
             const data = await res.json().catch(() => ({}));
             if (!res.ok) throw new Error(data.message || '送出失敗，請稍候重試');
 
-            showAlert(true, '已送出，我們會盡快與您聯繫，感謝！');
+            showAlert(true, data.message || '已送出，我們會盡快與您聯繫，感謝！');
             form.reset();
-            // 重新整理 Turnstile token（避免重複送）
+
+            // 重置 Turnstile（避免二次送出用舊 token）
             if (window.turnstile && typeof window.turnstile.reset === 'function') {
               window.turnstile.reset();
             }
+            form.classList.remove('was-validated');
           } catch (err) {
             showAlert(false, err.message || '送出失敗，請稍候重試');
           } finally {
