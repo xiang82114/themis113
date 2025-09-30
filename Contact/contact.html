@@ -69,6 +69,16 @@
 
     <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <!-- 範例：允許本站與常用第三方（CDN、Cloudflare Turnstile、Google Maps iframe） -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self' https:;
+      script-src 'self' https://cdn.jsdelivr.net https://challenges.cloudflare.com https://www.google.com https://maps.googleapis.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+      font-src https://fonts.gstatic.com;
+      img-src 'self' data: https:;
+      frame-src https://www.google.com https://challenges.cloudflare.com https://www.google.com;
+      connect-src 'self' https://challenges.cloudflare.com https://api.resend.com https:;
+    ">
   </head>
   <body>
     <!-- 遮罩 -->
@@ -131,12 +141,16 @@
                   <div class="col-sm-6">
                     <label for="Tel" class="form-label">電話 TEL</label>
                     <input
+                      id="Tel"
+                      name="Tel"
                       type="tel"
-                      name="phone"
-                      id="phone"
-                      pattern="^(?:0[2-9]\d{7,8}|09\d{2}(?:[-\s\uFF0D]?\d{3}){2})$"
+                      inputmode="tel"
+                      class="form-control"
+                      placeholder="例如：0912-345-678"
+                      autocomplete="tel"
                       required
-                      placeholder="例如 021234567 或 0912-345-678"
+                      title="請輸入市話（0開頭，共8~10碼數字）或手機（09xx-xxx-xxx 或 09xxxxxxxx）"
+                      pattern="^(?:0[2-9]\d{7,8}|09\d{2}(?:[-\s\uFF0D]?\d{3}){2})$"
                     />
                     <div class="invalid-feedback">請輸入正確的市話或手機（手機可用 09xx-xxx-xxx）</div>
                     <div class="form-text">市話或手機（手機可用 09xx-xxx-xxx）</div>
@@ -257,10 +271,14 @@
     </script>
 
     <script>
-
-      // ===== 電話欄位正規化 & 自動格式化 =====
+      // ===== 電話欄位正規化 & 自動格式化（防護版） =====
       (function () {
         const tel = document.getElementById('Tel');
+
+        if (!tel) {
+          console.warn('[contact] Tel input not found — skipping phone normalization.');
+          return;
+        }
 
         // 將全形數字轉半形
         const toAsciiDigits = (str) =>
@@ -268,10 +286,10 @@
 
         // 各種 dash 統一成半形減號 -
         const normalizeDash = (str) =>
-          str.replace(/[‐-–—\u2212\u2010-\u2015\uFF0D]/g, '-');
+          str.replace(/[‐\u2010-\u2015\-\u2212\uFF0D–—]/g, '-');
 
         tel.addEventListener('input', () => {
-          let v = tel.value;
+          let v = tel.value || '';
 
           // 1) 正規化：全形數字 -> 半形、dash 統一、去除空白
           v = toAsciiDigits(v);
@@ -291,77 +309,82 @@
         }, { passive: true });
       })();
 
-      // 前端驗證 + 串接 /api/contact（修正版：鍵名對應 + Turnstile Token 檢查）
+
+      // ===== 前端驗證 + 串接 /api/contact（修正版，含防護檢查） =====
       (function () {
         const form = document.getElementById('myform');
         const btn = document.getElementById('submitBtn');
         const alertBox = document.getElementById('formAlert');
 
-        function showAlert(ok, msg) {
+        function safeShowAlert(ok, msg) {
+          if (!alertBox) {
+            console.warn('[contact] alertBox not found:', msg);
+            return;
+          }
           alertBox.className = 'alert ' + (ok ? 'alert-success' : 'alert-danger');
           alertBox.textContent = msg;
           alertBox.classList.remove('d-none');
           setTimeout(() => alertBox.classList.add('d-none'), 6000);
         }
 
+        if (!form) {
+          console.error('[contact] form element #myform not found — aborting submit handler.');
+          return;
+        }
+
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
 
-          // 1) 蜜罐：有值就擋掉（機器人）
-          if (form.company && form.company.value) {
-            showAlert(false, '送出失敗，請稍後再試');
-            return;
-          }
-
-          // 2) Bootstrap 原生驗證
-          if (!form.checkValidity()) {
-            form.classList.add('was-validated');
-            const firstInvalid = form.querySelector(':invalid');
-            if (firstInvalid) {
-              firstInvalid.focus({ preventScroll: false });
-              firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-            return;
-          }
-
-          // 3) 取得 Turnstile token（必須在 <form> 內才會有這個隱藏欄位）
-          const tokenInput = form.querySelector('input[name="cf-turnstile-response"]');
-          const token = tokenInput && tokenInput.value;
-          if (!token) {
-            showAlert(false, '驗證失敗：未取得人機驗證 token，請重新整理後再試');
-            return;
-          }
-
-          // 4) 用 FormData 取值 → 轉換為後端期待的鍵名
-          const fd = new FormData(form);
-          const raw = Object.fromEntries(fd.entries());
-
-          const payload = {
-            // 後端必填
-            name: (raw.Name || '').trim(),
-            email: (raw.EMail || '').trim(),
-            space_type: raw.Room || '',
-            budget: raw.Money || '',
-            message: (raw.Message || '').trim(),
-
-            // 後端選填
-            phone: (raw.Tel || '').trim(),
-
-            // 將 Turnstile token 一起送（後端支援這個名稱）
-            'cf-turnstile-response': token,
-
-            // 其他欄位保留（非必填，方便郵件內顯示）
-            company: raw.company || '',
-            square: raw.Square || '',
-            wt: raw.WT || ''
-          };
-
-          // 5) 送出中狀態
-          btn.disabled = true;
-          const origText = btn.textContent;
-          btn.textContent = '送出中…';
-
           try {
+            // 1) 蜜罐：有值就擋掉（機器人）
+            if (form.company && form.company.value) {
+              safeShowAlert(false, '送出失敗，請稍後再試');
+              return;
+            }
+
+            // 2) Bootstrap 原生驗證
+            if (!form.checkValidity()) {
+              form.classList.add('was-validated');
+              const firstInvalid = form.querySelector(':invalid');
+              if (firstInvalid) {
+                firstInvalid.focus({ preventScroll: false });
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+              return;
+            }
+
+            // 3) 取得 Turnstile token（由 Turnstile 自動插入 form 內）
+            const tokenInput = form.querySelector('input[name="cf-turnstile-response"]');
+            const token = tokenInput && tokenInput.value;
+            if (!token) {
+              safeShowAlert(false, '驗證失敗：未取得人機驗證 token，請重新整理後再試');
+              return;
+            }
+
+            // 4) 轉成後端期待鍵名（注意：我們現在用 Name/EMail/Tel/Room/Money/Square/Message/WT/company）
+            const fd = new FormData(form);
+            const raw = Object.fromEntries(fd.entries());
+
+            const payload = {
+              name: (raw.Name || '').trim(),
+              email: (raw.EMail || '').trim(),
+              space_type: raw.Room || '',
+              budget: raw.Money || '',
+              message: (raw.Message || '').trim(),
+              phone: (raw.Tel || '').trim(),
+              'cf-turnstile-response': token,
+              company: raw.company || '',
+              square: raw.Square || '',
+              wt: raw.WT || ''
+            };
+
+            // 5) 送出中狀態（有 btn 才做）
+            if (btn) {
+              btn.disabled = true;
+              var origText = btn.textContent;
+              btn.textContent = '送出中…';
+            }
+
             const res = await fetch('/api/contact', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -369,21 +392,27 @@
             });
 
             const data = await res.json().catch(() => ({}));
-            if (!res.ok) throw new Error(data.message || '送出失敗，請稍候重試');
 
-            showAlert(true, data.message || '已送出，我們會盡快與您聯繫，感謝！');
+            if (!res.ok) {
+              throw new Error(data.message || '送出失敗，請稍後重試');
+            }
+
+            safeShowAlert(true, data.message || '已送出，我們會盡快與您聯繫，感謝！');
             form.reset();
 
-            // 重置 Turnstile（避免二次送出用舊 token）
+            // 重置 Turnstile（若有支援）
             if (window.turnstile && typeof window.turnstile.reset === 'function') {
-              window.turnstile.reset();
+              try { window.turnstile.reset(); } catch (e) { console.warn('[contact] turnstile.reset error', e); }
             }
             form.classList.remove('was-validated');
           } catch (err) {
-            showAlert(false, err.message || '送出失敗，請稍候重試');
+            safeShowAlert(false, err.message || '送出失敗，請稍候重試');
+            console.error('[contact] submit error', err);
           } finally {
-            btn.disabled = false;
-            btn.textContent = origText;
+            if (btn) {
+              btn.disabled = false;
+              btn.textContent = (typeof origText !== 'undefined') ? origText : '送出';
+            }
           }
         });
       })();
