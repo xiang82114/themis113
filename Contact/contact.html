@@ -131,16 +131,12 @@
                   <div class="col-sm-6">
                     <label for="Tel" class="form-label">電話 TEL</label>
                     <input
-                      name="Tel"
-                      id="Tel"
                       type="tel"
-                      inputmode="tel"
-                      class="form-control"
-                      placeholder="例如：0912-345-678"
-                      autocomplete="tel"
+                      name="phone"
+                      id="phone"
+                      pattern="^(?:0[2-9]\d{7,8}|09\d{2}(?:[-\s\uFF0D]?\d{3}){2})$"
                       required
-                      title="請輸入市話（0開頭，共8~10碼數字）或手機（09xx-xxx-xxx 或 09xxxxxxxx）"
-                      pattern="^(0[2-9]\d{7,8}|09\d{2}[-\s\uFF0D]?\d{3}[-\s\uFF0D]?\d{3})$"
+                      placeholder="例如 021234567 或 0912-345-678"
                     />
                     <div class="invalid-feedback">請輸入正確的市話或手機（手機可用 09xx-xxx-xxx）</div>
                     <div class="form-text">市話或手機（手機可用 09xx-xxx-xxx）</div>
