@@ -112,13 +112,24 @@ body{
     padding: 5rem 1rem 1rem 1rem;
 }
 
+.top-section.text-center{  
+  padding: 2rem 1rem 2rem 1rem;
+}
+
+.top-section.text-center .section-title {
+  padding-bottom: 20px;
+}
 .section-spacing-sm{ padding:2rem 0; letter-spacing: 0.015rem;}
 .section-spacing-lg .container{ 
-    padding:8rem 0; 
+    padding:4rem 0; 
     letter-spacing: 0.06rem;
     border-bottom: 1px solid #8a8a8a34;
 }
 section .section-spacing-lg .section-title,h2 {
   font-size:1.8rem; margin-bottom:2rem;
   font-weight: 700;
+}
+.vs-container .section-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
