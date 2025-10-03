@@ -11,14 +11,83 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet"/>
     <style>
       /* Hero */
-      .hero{
-        position:relative; height:100vh;
-        background:url("images/hero-bgc.jpg") center/cover no-repeat;
-        display:flex; flex-direction:column; justify-content:center; align-items:center;
-        text-align:center; color:#fff;
+      /* ===== Hero：三張圖片淡入淡出輪播 ===== */
+      .hero {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        /* 背景圖片改由 .hero-slider 控制 */
       }
-      .hero::before{ content:""; position:absolute; inset:0; background:rgba(0,0,0,.35); z-index:0; }
-      .hero>*{ position:relative; z-index:1; }
+
+      /* 輪播容器（位於最底層） */
+      .hero-slider {
+        position: absolute;
+        inset: 0;            /* top:0; right:0; bottom:0; left:0; */
+        z-index: 0;
+        pointer-events: none; /* 讓上層按鈕可點擊 */
+      }
+
+      /* 每張 slide */
+      .hero-slider .slide {
+        position: absolute;
+        inset: 0;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        opacity: 0;
+        will-change: opacity;
+        animation: hero-fade 18s infinite;
+        transition: opacity 1s ease;
+      }
+
+      /* 依序延遲，三張等分 18s (每張約 6s 可見) */
+      .hero-slider .slide:nth-child(1) { animation-delay: 0s; }
+      .hero-slider .slide:nth-child(2) { animation-delay: 6s; }
+      .hero-slider .slide:nth-child(3) { animation-delay: 12s; }
+
+      /* 淡入淡出關鍵影格（每張在中間可見一段時間） */
+      @keyframes hero-fade {
+        0%    { opacity: 0; }
+        5%    { opacity: 1; }    /* 快速淡入 */
+        33.333% { opacity: 1; }  /* 保持可見 */
+        38.333% { opacity: 0; }  /* 淡出 */
+        100%  { opacity: 0; }
+      }
+
+      /* 疊層：遮罩（保留原本半透明遮罩） */
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* 內容置於最上層，確保按鈕與文字可互動與可讀 */
+      .hero .hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 1rem;
+      }
+
+      /* 小螢幕時按鈕置中寬度 */
+      @media (max-width: 576px) {
+        .hero .btn { display:block; width:100%; margin: .5rem auto; }
+      }
+
+      /* 使用者偏好少動態時，關閉輪播動畫（尊重減少動態） */
+      @media (prefers-reduced-motion: reduce) {
+        .hero-slider .slide { animation-play-state: paused !important; opacity: 0 !important; }
+        .hero-slider .slide:first-child { opacity: 1 !important; } /* 顯示第一張作為靜態背景 */
+      }
+      
       .btn-custom{ background:#f3ede87a; border:none; padding:.75rem 1.5rem; margin:.5rem; }
 
       /* Projects */
@@ -137,11 +206,21 @@
 
     <!-- 主視覺 -->
     <section class="hero vh-100">
-      <h1>體驗夢想實現的美好</h1>
-      <p>打造安心、溫度與質感並存的居住空間</p>
-      <div class="hero-cta">
-        <a href="/Contact/contact.html" class="btn cta-primary">立即預約諮詢</a>
-        <a href="/Work/work.html" class="btn cta-primary">瀏覽設計作品</a>
+      <!-- 輪播圖片（背景） -->
+      <div class="hero-slider" aria-hidden="true">
+        <div class="slide" style="background-image: url('images/hero-bgc.jpg');"></div>
+        <div class="slide" style="background-image: url('images/hero-bgc2.jpg');"></div>
+        <div class="slide" style="background-image: url('images/hero-bgc3.jpg');"></div>
+      </div>
+
+      <!-- 內容（文字與按鈕） -->
+      <div class="hero-content">
+        <h1>體驗夢想實現的美好</h1>
+        <p>打造安心、溫度與質感並存的居住空間</p>
+        <div class="hero-cta">
+          <a href="/Contact/contact.html" class="btn cta-primary">立即預約諮詢</a>
+          <a href="/Work/work.html" class="btn cta-primary">瀏覽設計作品</a>
+        </div>
       </div>
     </section>
 
