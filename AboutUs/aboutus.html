@@ -1,202 +1,164 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>關於我們｜台北室內設計裝修｜Themis interior design</title>
-    <meta name="description" content="同翕設計的起點，不只是為了解決空間問題，而是源於一個信念：設計可以讓人更靠近自己想要的生活。我們相信，每個空間的背後，都有人的故事與期待。">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet"/>
-    <style>
-      /* Hero */
-      .hero{
-        position:relative; height:100vh;
-        background:url("images/hero-bgc.jpg") center/cover no-repeat;
-        display:flex; flex-direction:column; justify-content:center; align-items:center;
-        text-align:center; color:#fff;
-      }
-      .hero::before{ content:""; position:absolute; inset:0; background:rgba(0,0,0,.35); z-index:0; }
-      .hero>*{ position:relative; z-index:1; }
-      .btn-custom{ background:#f3ede87a; border:none; padding:.75rem 1.5rem; margin:.5rem; }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>關於我們｜同翕設計｜台北室內設計裝修｜Themis interior design</title>
+        <link rel="icon" href="../images/logo/LOGO.png" type="image/png" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- 放在 head 裡，Bootstrap 後、你的 common.css 前 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+        <style>
 
-      /* Projects */
-      .project-card{ overflow:hidden; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,.05); height: 300px;}
-      .project-card img{ display:block; width:100%; transition: transform .6s ease; height: 100%;}
-      .project-card:hover img{ transform: scale(1.2);}
+            .work-card {
+                position: relative;
+                overflow: hidden;
+                border-radius: 8px;
+                background-color: #fff;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                aspect-ratio: 4 / 3; /* 強制比例 */
+            }
 
-      .project-info {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(248, 240, 230, 0.6);
-        color: #5a4a3f;
-        padding: 1rem;
-        text-align: center;
-        font-weight: bold;
-        font-size: 0.8rem;
-        transition: transform 0.3s ease;
-      }
+            .work-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* 超過就裁切 */
+                transition: transform 0.5s ease;
+                display: block;
+            }
 
-      @media (max-width:576px){
-        .hero .btn-custom{ display:block; width:100%; margin:.5rem auto; opacity:.85; }
-        section .section-title,.about-us h2{ text-align:center; }
-      }
-      .about-us h2{ font-size: 1.5rem; }
-      .about-us p{ font-size: 0.9rem; line-height:1.8; }
+            .work-card:hover img {
+                transform: scale(1.05);
+            }
 
-      /* ===== 服務流程（配合原站色系） ===== */
-      .process{ background: var(--c-bg); letter-spacing:.08em; }
-      .process__container{ margin:0 auto; padding:72px 20px 90px; }
-      .process__header{ margin-bottom:36px; }
-      .process__title{
-        font-size:clamp(32px,4vw,56px); font-weight:700; line-height:1.15; margin:0 0 12px; color:var(--c-text);
-      }
-      .process__subtitle{ font-size: clamp(10px,1.8vw,12.8px); color:var(--c-mute); margin:0; }
+            .work-info {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(248, 240, 230, 0.9);
+                color: #5a4a3f;
+                padding: 1rem;
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.1rem;
+                transition: transform 0.3s ease;
+                letter-spacing: 0.3rem;
+            }
 
-      .process__grid{ display:grid; grid-template-columns:1fr; gap:8px 80px; margin:24px 0 48px; }
-      @media (min-width:992px){ 
-        .process__grid{ grid-template-columns:1fr 1fr; }        
-      }
-      @media (max-width:576px){
-        .process__container{
-          flex-wrap:wrap-reverse;
-        }
-      }
+            @media (max-width: 576px) {
+                .hero h1 {
+                    font-size: 1.75rem;
+                }
+                .work-info {
+                    font-size: 1rem;
+                    padding: 0.75rem;
+                }
+                .navbar-collapse {
+                    background-color: #f8f0e6;
+                    padding: 1rem;
+                }
+            }
+        </style>
+        <!-- 共用樣式 -->
+        <link rel="stylesheet" href="/css/common.css">
 
-      .process__list{ list-style:none; margin:0; padding:0; }
-      /* .process__item{
-        display:grid; grid-template-columns:auto 1fr; column-gap:22px; align-items:start; padding:22px 0 24px; position:relative;
-      } */
-       .process__head{
-          display: flex;
-          align-items: center;
-       }
-      /* .process__item + .process__item{ border-top:1px solid var(--c-line); } */
-
-      .process__num{
-        font-size:clamp(28px,3.2vw,40px); font-weight:700; color:var(--c-text);
-        line-height:1; min-width:52px; text-align:left; letter-spacing:.06em;
-      }
-      .process__body{margin: 20px; position:relative; padding-left:20px; height: 36px;}
-      .process__body::before{ height: 32px;
-        content:""; position:absolute; left:0; top:.55em; bottom:.55em; width:1px; background:var(--c-line);
-      }
-      .process__itemTitle{ font-size:clamp(18px,2.2vw,24px); font-weight:700; margin:0 0 6px; color:var(--c-text); }
-      .process__desc{ font-size:clamp(14px,1.8vw,16px); color:var(--c-mute); margin:0; }
-
-      .process__cta{ margin: 24px 0 48px; font-size:12px;}
-      .process__link{
-        display:inline-flex; align-items:center; gap:10px; font-size:12px; color:var(--c-text);
-        text-decoration:none; padding:5px 2px; border-bottom:1px solid var(--c-line);
-        transition: color .2s ease, border-color .2s ease, transform .2s ease;
-      }
-      .process__link:hover{ color:var(--c-accent); border-color:var(--c-accent); transform: translateX(2px); }
-      .process__arrow{ font-size:18px; margin-left:2px; }
-    </style>
-
-    <!-- AOS CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
-
-    <!-- 共用樣式 -->
-    <link rel="stylesheet" href="/css/common.css">
-
-    <!-- 這頁面自己的樣式放最後-->
-    <link rel="stylesheet" href="/css/index.css">
-  </head>
-  <body>
-    <!-- 遮罩 -->
-    <div id="splash">
-        <div class="splash-logo text-center">
-            <div class="title m-3">
-                <img src="images/logo/turn.png" alt="">  
+        <!-- 這頁面自己的樣式放最後 -->
+        <link rel="stylesheet" href="/css/process.css">
+    </head>
+    <body>
+        <!-- 遮罩 -->
+        <div id="splash">
+            <div class="splash-logo text-center">
+                <div class="title m-3">
+                    <img src="../images/logo/turn.png" alt="">
+                </div>
             </div>
         </div>
-    </div>
-    <!-- 導覽列 -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
-      <div class="container px-4">
-        <a class="navbar-brand" href="../index.html">
-          <img id="navbarLogo" src="images/logo/logoNocolor.png" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link me-3 active" href="aboutus.html">關於我們</a></li>
-            <li class="nav-item"><a class="nav-link me-3" href="/Work/work.html">設計作品</a></li>
-            <li class="nav-item"><a class="nav-link me-3" href="/Process/process.html">服務流程</a></li>
-            <li class="nav-item"><a class="nav-link me-3" href="/Contact/contact.html">聯繫我們</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- 關於我們 -->
-    <section class="section-spacing-lg">
-      <div class="container px-4 about-us">
-        <div class="row align-items-center">
-          <div class="col-md-6 mb-4 mb-md-0 p-4 d-flex justify-content-center align-items-center">
-            <div class="col-md-12">
-              <img src="images/designer.jpg" alt="關於我們" class="img-fluid rounded shadow-sm" loading="lazy">
+        <!-- 導覽列 -->
+        <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
+            <div class="container px-4">
+              <a class="navbar-brand" href="/index.html">
+                  <img id="navbarLogo" src="../images/logo/logocolor-green.png" alt="logo" />
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                  <span class="bi bi-list fs-1 text-white"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                  <ul class="navbar-nav">
+                  <li class="nav-item"><a class="nav-link me-3 active" href="/AboutUs/aboutus.html">關於我們</a></li>
+                  <li class="nav-item"><a class="nav-link me-3" href="/Work/work.html">設計作品</a></li>
+                  <li class="nav-item"><a class="nav-link me-3" href="/Process/process.html">服務流程</a></li>
+                  <li class="nav-item"><a class="nav-link me-3" href="/Contact/contact.html">聯繫我們</a></li>
+                  </ul>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <h2 class="mb-3">關於我們</h2>
-            <p>
-              同翕設計是一群相信空間可以改變生活的人，一個由理念聚合的團隊，我們來自不同背景，卻有一個共通點「都相信空間可以成為人與人之間最溫柔的橋樑。」<br>
+        </nav>
+        <section class="container top-section">
+            <div class="col-lg-12">
+                <h2 class="section-title">關於我們</h2>
+            </div>
+        </section>
 
-              我們不急著追求華麗與速度，而是願意花時間理解每個人的故事與需求。因為我們知道，真正貼近人的設計，來自於真誠的聆聽與細膩的轉化。<br>
+        <!-- 關於我們 -->
+        <section class="section-spacing-lg">
+            <div class="container px-4 about-us">
+                <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0 p-4 d-flex justify-content-center align-items-center">
+                    <div class="col-md-12">
+                    <img src="images/designer.jpg" alt="關於我們" class="img-fluid rounded shadow-sm" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2 class="mb-3">關於我們</h2>
+                    <p>
+                    同翕設計是一群相信空間可以改變生活的人，一個由理念聚合的團隊，我們來自不同背景，卻有一個共通點「都相信空間可以成為人與人之間最溫柔的橋樑。」<br>
 
-              在同翕，我們把每一個案子，都當作一次與生活深刻對話的機會；<br>
-              我們不只設計一個「家」，更在意如何讓空間承載關係、夢想與未來。
-            </p>
-            <p class="eng-p">
-              Themis Design is a team brought together by a shared belief: that space can transform life.<br>
-              We come from different backgrounds, but we are united by one conviction—<br>
-              “space can become the gentlest bridge between people.”<br>
+                    我們不急著追求華麗與速度，而是願意花時間理解每個人的故事與需求。因為我們知道，真正貼近人的設計，來自於真誠的聆聽與細膩的轉化。<br>
 
-              We are in no rush for extravagance or speed; instead, we take the time to understand each person's story and needs.<br>
-              Because we know that truly human-centered design is born from sincere listening and thoughtful transformation.<br>
+                    在同翕，我們把每一個案子，都當作一次與生活深刻對話的機會；<br>
+                    我們不只設計一個「家」，更在意如何讓空間承載關係、夢想與未來。
+                    </p>
+                    <p class="eng-p">
+                    Themis Design is a team brought together by a shared belief: that space can transform life.<br>
+                    We come from different backgrounds, but we are united by one conviction—<br>
+                    “space can become the gentlest bridge between people.”<br>
 
-              At Themis, every project is an opportunity to have a deep conversation with life itself.<br>
-              We don't just design a “home”; we care about how a space can hold relationships, dreams, and the future.<br>
+                    We are in no rush for extravagance or speed; instead, we take the time to understand each person's story and needs.<br>
+                    Because we know that truly human-centered design is born from sincere listening and thoughtful transformation.<br>
 
-              Our hope is to make design approachable, relatable, and lasting.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+                    At Themis, every project is an opportunity to have a deep conversation with life itself.<br>
+                    We don't just design a “home”; we care about how a space can hold relationships, dreams, and the future.<br>
 
-    </div>
-    <div class="footer m-3">
-      <div class="text-center">
-        <p class="Copyright">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
-      </div>
-    </div>
+                    Our hope is to make design approachable, relatable, and lasting.
+                    </p>
+                </div>
+                </div>
+            </div>
+        </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init();
-      window.addEventListener("scroll", function() {
-        const navbar = document.querySelector(".navbar");
-        const logo = document.getElementById("navbarLogo");
-        if (window.scrollY > 50) {
-          navbar.classList.remove("navbar-transparent");
-          navbar.classList.add("navbar-colored");
-          logo.src = "images/logo/logocolor-green.png";
-        } else {
-          navbar.classList.add("navbar-transparent");
-          navbar.classList.remove("navbar-colored");
-          logo.src = "images/logo/logoNocolor.png";
-        }
-      });
-    </script>
-    <script src="/js/common.js"></script>
-  </body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script>
+            AOS.init();
+
+            window.addEventListener("scroll", function () {
+                const navbar = document.querySelector(".navbar");
+                const logo = document.getElementById("navbarLogo");
+
+                if (window.scrollY > 50) {
+                    navbar.classList.remove("navbar-transparent");
+                    navbar.classList.add("navbar-colored");
+                } else {
+                    navbar.classList.add("navbar-transparent");
+                    navbar.classList.remove("navbar-colored");
+                }
+            });
+        </script>
+        <script src="/js/common.js"></script>
+    </body>
 </html>
