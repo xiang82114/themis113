@@ -133,3 +133,7 @@ section .section-spacing-lg .section-title,h2 {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.carousel-inner {
+  width: auto;
+}
