@@ -7,7 +7,18 @@
 --c-accent: #a08974;/* 暖棕重點色(hover) */
 --bs-body-font-family: "Noto Serif TC", "PingFang TC", "Heiti TC",
                          "Source Han Sans TC", system-ui, -apple-system, sans-serif;
+  --text-default: #212529;        /* 主要文字 */
+  --text-muted: #6c757d;         /* bootstrap muted */
+  --text-faint: rgba(0,0,0,0.65);/* 較淡（建議段落） */
+  --text-ghost: rgba(0,0,0,0.5);  /* 更淡（輔助性文字） */
+  --para-letter: 0.08em;    /* 字母間距 */
 }
+
+/* 三個層級的 class */
+.text-muted { color: var(--text-muted) !important; }   /* 整站套用方便 */
+.text-faint  { color: var(--text-faint)  !important; } 
+.text-ghost  { color: var(--text-ghost)  !important; }
+.text-spacing  { letter-spacing: var(--para-letter);   /* 字母間距（英文效果較明顯） */ }
 
 body{
     background-color: var(--c-bg);
