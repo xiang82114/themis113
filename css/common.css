@@ -19,6 +19,7 @@
 .text-faint  { color: var(--text-faint)  !important; } 
 .text-ghost  { color: var(--text-ghost)  !important; }
 .text-spacing  { letter-spacing: var(--para-letter);   /* 字母間距（英文效果較明顯） */ }
+.text-14 { font-size: 14px;}
 .text-12 { font-size: 12px;}
 
 body{
@@ -138,7 +139,7 @@ body{
     border-bottom: 1px solid #8a8a8a34;
 }
 section .section-spacing-lg .section-title,h2 {
-  font-size:1.8rem; margin-bottom:2rem;
+  font-size:2.2rem; margin-bottom:2rem;
   font-weight: 700;
 }
 .vs-container .section-title {
