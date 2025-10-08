@@ -1,4 +1,8 @@
+.top-section {
+    padding: 9px 1rem 1rem 1rem;
+}
 .top-section .col-lg-12 .section-title {
+    padding: 0;
     padding-top: 20px;
     border-top: 0;    
 }
