@@ -1,0 +1,15 @@
+.top-section .col-lg-12 .section-title {
+    padding-top: 20px;
+    border-top: 0;    
+}
+.top-section .col-lg-12 .section-title h2{
+    margin-bottom: 2rem;
+}
+
+.top-section .section-title {    
+    border-top: 1px solid var(--c-line);
+}
+
+.top-section.text-center .section-title {
+    padding-bottom: 0;
+}

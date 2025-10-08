@@ -150,3 +150,8 @@ section .section-spacing-lg .section-title,h2 {
 .carousel-inner {
   width: auto;
 }
+
+.footer .Copyright{
+    text-align: center;
+    color:  rgba(90, 74, 63,0.6);
+}

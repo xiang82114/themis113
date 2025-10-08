@@ -134,6 +134,7 @@
     position: relative;
     .Copyright{
         text-align: center;
+        color:  rgba(#5a4a3f,0.8);
     }
 }
 
