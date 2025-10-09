@@ -11,8 +11,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet"/>
     <style>
-      /* Hero */
-      /* ===== Hero：三張圖片淡入淡出輪播 ===== */
+      :root{
+        --slide-visible-time: 10s; /* 每張顯示時間（可調） */
+        --slides-count: 3;
+        --slide-duration: calc(var(--slide-visible-time) * var(--slides-count)); /* 整個循環時長 */
+        --brand: #8a5a3b;
+        --brand-900: #6f432b;
+        --c-bg: #fbf8f5;
+        --c-text: #3c2f2a;
+        --c-mute: #7a6b66;
+        --c-line: rgba(60,47,42,0.08);
+        --c-accent: #b08b6b;
+      }
+
+      html,body{height:100%; margin:0; font-family: "Noto Serif TC", serif; color: #3c2f2a;}
+
+      /* ===== 基本 navbar ===== */
+      .navbar-custom { transition: background .25s ease, box-shadow .25s ease; }
+      .navbar-transparent { background: transparent; box-shadow: none; }
+      .navbar-colored { background: rgba(255,255,255,0.98); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+
+      /* ===== Hero：三張圖片淡入淡出輪播 + 中心慢放大 ===== */
       .hero {
         position: relative;
         height: 100vh;
@@ -23,7 +42,6 @@
         align-items: center;
         text-align: center;
         color: #fff;
-        /* 背景圖片改由 .hero-slider 控制 */
       }
 
       /* 輪播容器（位於最底層） */
@@ -32,37 +50,50 @@
         inset: 0;            /* top:0; right:0; bottom:0; left:0; */
         z-index: 0;
         pointer-events: none; /* 讓上層按鈕可點擊 */
+        overflow: hidden;
       }
 
-      /* 每張 slide */
-      .hero-slider .slide {
+      /* 每張 slide 使用單一動畫：同時控制 opacity 與 scale */
+      .hero-slider .slide{
         position: absolute;
         inset: 0;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         opacity: 0;
-        will-change: opacity;
-        animation: hero-fade 18s infinite;
-        transition: opacity 1s ease;
+        transform: scale(1);
+        transform-origin: center center;
+        will-change: opacity, transform;
+        animation-name: hero-slide;
+        animation-duration: var(--slide-duration);
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+        pointer-events: none;
       }
 
-      /* 依序延遲，三張等分 18s (每張約 6s 可見) */
-      .hero-slider .slide:nth-child(1) { animation-delay: 0s; }
-      .hero-slider .slide:nth-child(2) { animation-delay: 6s; }
-      .hero-slider .slide:nth-child(3) { animation-delay: 12s; }
+      /* 每張 slide 的延遲（依 --slide-visible-time 計算）*/
+      .hero-slider .slide:nth-child(1){ animation-delay: 0s; }
+      .hero-slider .slide:nth-child(2){ animation-delay: calc(var(--slide-visible-time) * 1); }
+      .hero-slider .slide:nth-child(3){ animation-delay: calc(var(--slide-visible-time) * 2); }
 
-      /* 淡入淡出關鍵影格（每張在中間可見一段時間） */
-      @keyframes hero-fade {
-        0%    { opacity: 0; }
-        5%    { opacity: 1; }    /* 快速淡入 */
-        33.333% { opacity: 1; }  /* 保持可見 */
-        38.333% { opacity: 0; }  /* 淡出 */
-        100%  { opacity: 0; }
+      /* 動畫關鍵影格：
+         0%: 隱藏 scale 1
+         5%: 快速淡入到可見
+         85%: 保持可見並慢放大到 1.2
+         93%: 開始淡出（仍維持放大）
+         100%: 隱藏（結束）
+      */
+      @keyframes hero-slide {
+        0%   { opacity: 0; transform: scale(1); }
+        5%   { opacity: 1; transform: scale(1); }
+        85%  { opacity: 1; transform: scale(1.2); }
+        93%  { opacity: 0; transform: scale(1.2); }
+        100% { opacity: 0; transform: scale(1.2); }
       }
 
-      /* 疊層：遮罩（保留原本半透明遮罩） */
-      .hero::before {
+      /* 疊層遮罩（半透明） */
+      .hero::before{
         content: "";
         position: absolute;
         inset: 0;
@@ -71,51 +102,24 @@
         pointer-events: none;
       }
 
-      /* 內容置於最上層，確保按鈕與文字可互動與可讀 */
-      .hero .hero-content {
+      /* 內容置於最上層 */
+      .hero .hero-content{
         position: relative;
         z-index: 2;
         padding: 0 1rem;
       }
 
-      /* 小螢幕時按鈕置中寬度 */
+      /* RWD：小螢幕按鈕置中、寬度 */
       @media (max-width: 576px) {
         .hero .btn { display:block; width:100%; margin: .5rem auto; }
       }
 
-      /* 使用者偏好少動態時，關閉輪播動畫（尊重減少動態） */
+      /* 尊重使用者系統偏好減少動態（accessibility） */
       @media (prefers-reduced-motion: reduce) {
-        .hero-slider .slide { animation-play-state: paused !important; opacity: 0 !important; }
-        .hero-slider .slide:first-child { opacity: 1 !important; } /* 顯示第一張作為靜態背景 */
+        :root{ --slide-visible-time: 0s; }
+        .hero-slider .slide { animation-play-state: paused !important; opacity: 0 !important; transform: none !important; }
+        .hero-slider .slide:first-child { opacity: 1 !important; transform: none !important; }
       }
-      
-      .btn-custom{ background:#f3ede87a; border:none; padding:.75rem 1.5rem; margin:.5rem; }
-
-      /* Projects */
-      .project-card{ overflow:hidden; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,.05); height: 300px;}
-      .project-card img{ display:block; width:100%; transition: transform .6s ease; height: 100%;}
-      .project-card:hover img{ transform: scale(1.2);}
-
-      .project-info {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(248, 240, 230, 0.6);
-        color: #5a4a3f;
-        padding: 1rem;
-        text-align: center;
-        font-weight: bold;
-        font-size: 0.8rem;
-        transition: transform 0.3s ease;
-      }
-
-      @media (max-width:576px){
-        .hero .btn-custom{ display:block; width:100%; margin:.5rem auto; opacity:.85; }
-        section .section-title,.about-us h2{ text-align:center; }
-      }
-      .about-us h2{ font-size: 1.5rem; }
-      .about-us p{ font-size: 0.9rem; line-height:1.8; }
 
       /* ===== 服務流程（配合原站色系） ===== */
       .process{ background: var(--c-bg); letter-spacing:.08em; }
@@ -165,6 +169,10 @@
       }
       .process__link:hover{ color:var(--c-accent); border-color:var(--c-accent); transform: translateX(2px); }
       .process__arrow{ font-size:18px; margin-left:2px; }
+      .container.top-section { padding: 4rem 0; letter-spacing: 0.06rem; border-bottom: 1px solid #8a8a8a34; }
+      .work-card { position: relative; overflow: hidden; border-radius: 8px; background-color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); aspect-ratio: 4 / 3; }
+      .work-card img{ width:100%; height:100%; object-fit:cover; transition: transform .5s ease; display:block; }
+      .work-card:hover img{ transform: scale(1.05); }
     </style>
 
     <!-- AOS CSS -->
@@ -181,10 +189,11 @@
     <div id="splash">
         <div class="splash-logo text-center">
             <div class="title m-3">
-                <img src="images/logo/turn.png" alt="">  
+                <img src="images/logo/turn.png" alt="">
             </div>
         </div>
     </div>
+
     <!-- 導覽列 -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
       <div class="container">
@@ -446,6 +455,7 @@
     </section>
 
     </div>
+
     <div class="footer m-3">
       <div class="text-center">
         <p class="Copyright">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
@@ -486,77 +496,5 @@
         }
       });
     </script>
-    <script>
-      /* 簡單緩動函數（可替換為你喜歡的 easing） */
-      function easeInOutQuad(t){ return t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t; }
-
-      /* 平滑滾動主函式：targetY (px), duration (ms) */
-      function smoothScrollTo(targetY, duration = 700){
-        const startY = window.scrollY || window.pageYOffset;
-        const diff = targetY - startY;
-        if (Math.abs(diff) < 1) return; // 已經到位
-        let start = null;
-        function step(timestamp){
-          if (!start) start = timestamp;
-          const elapsed = timestamp - start;
-          const t = Math.min(1, elapsed / duration);
-          const eased = easeInOutQuad(t);
-          window.scrollTo(0, Math.round(startY + diff * eased));
-          if (t < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      }
-
-      /* 全站攔截：處理各種帶 # 的連結（#id, page.html#id, /path#id） */
-      /* 設定：預設動畫時間（ms）與 navbar offset（若有固定 header） */
-      (function(){
-        const DEFAULT_DURATION = 5000; // ← 調整這裡為你想要的速度（ms），數字越大越慢
-        const header = document.querySelector('.navbar'); // 若 navbar 高度不可預期，可改成固定數字
-        const headerOffset = header ? header.offsetHeight : 0;
-
-        document.addEventListener('click', function(e){
-          const a = e.target.closest('a[href*="#"]');
-          if (!a) return;
-          // 取得絕對 URL（避免相對路徑誤判）
-          const url = new URL(a.href, location.href);
-          const isSamePath = (url.pathname.replace(/\/$/,'') === location.pathname.replace(/\/$/,''));
-          const hash = url.hash || '';
-          if (!hash) return;           // 沒 hash，略過
-          if (!isSamePath) return;     // 指向不同頁面：讓瀏覽器處理（或改成 fetch 與動畫載入）
-          const target = document.querySelector(hash);
-          if (!target) return;
-
-          e.preventDefault(); // 攔截原生跳轉
-          // 計算目的 Y（扣掉 header offset）
-          const targetY = Math.round(target.getBoundingClientRect().top + window.pageYOffset - headerOffset);
-
-          // optional: 更新網址列的 hash（不會觸發跳轉）
-          if (history && history.pushState) {
-            history.pushState(null, '', hash);
-          } else {
-            location.hash = hash;
-          }
-
-          // 先移除 CSS 的 scroll-behavior 以避免衝突（若你有設）
-          const docEl = document.documentElement;
-          const priorScrollBehavior = docEl.style.scrollBehavior;
-          docEl.style.scrollBehavior = 'auto';
-
-          // 執行平滑動畫（DEFAULT_DURATION 可改）
-          smoothScrollTo(targetY, DEFAULT_DURATION);
-
-          // 動畫結束後（保險時間），恢復 scrollBehavior 並把 focus 放上去（但避免滾動）
-          setTimeout(() => {
-            docEl.style.scrollBehavior = priorScrollBehavior || '';
-            // 使元素可 focus（避免無障礙問題），但不觸發滾動
-            const prevTabIndex = target.getAttribute('tabindex');
-            if (!prevTabIndex) target.setAttribute('tabindex', '-1');
-            target.focus({preventScroll: true});
-            if (!prevTabIndex) target.removeAttribute('tabindex');
-          }, DEFAULT_DURATION + 80);
-        }, {passive: false});
-      })();
-    </script>
-    <script src="/js/common.js"></script>
   </body>
 </html>
