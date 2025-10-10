@@ -7,10 +7,10 @@
 --c-accent: #a08974;/* 暖棕重點色(hover) */
 --bs-body-font-family: "Noto Serif TC", "PingFang TC", "Heiti TC",
                          "Source Han Sans TC", system-ui, -apple-system, sans-serif;
-  --text-default: #212529;        /* 主要文字 */
+  --text-default: #5a4a3f;        /* 主要文字 */
   --text-muted: #6c757d;         /* bootstrap muted */
-  --text-faint: rgba(0,0,0,0.65);/* 較淡（建議段落） */
-  --text-ghost: rgba(0,0,0,0.5);  /* 更淡（輔助性文字） */
+  --text-faint: rgba(90, 74, 63,0.65);/* 較淡（建議段落） */
+  --text-ghost: rgba(90, 74, 63,0.5);  /* 更淡（輔助性文字） */
   --para-letter: 0.08em;    /* 字母間距 */
 }
 
@@ -142,6 +142,15 @@ section .section-spacing-lg .section-title,h2 {
   font-size:2.2rem; margin-bottom:2rem;
   font-weight: 700;
 }
+
+h2.smaller{
+    font-size: 1.6rem;
+}
+
+h2.small{
+    font-size: 1.5rem;
+}
+
 .vs-container .section-title {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -151,7 +160,7 @@ section .section-spacing-lg .section-title,h2 {
   width: auto;
 }
 
-.footer .Copyright{
+.Copyright{
     text-align: center;
     color:  rgba(90, 74, 63,0.6);
 }
