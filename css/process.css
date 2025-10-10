@@ -16,6 +16,10 @@
 .navbar-custom .bi-list { color:#fff; }
 .navbar-custom.navbar-colored .bi-list { color: var(--text); }
 
+.top-section .col-lg-12 .section-title {
+    padding-top: 20px;
+}
+
 /* ===== 服務項目 ===== */
 .service-items {
   background: var(--bg);
@@ -28,7 +32,6 @@
 }
 .service-items,.value-services .section-title{
   text-align: center;
-  margin: 20px;
 }
 .service-items .col-lg-12 .section-title{
     text-align: left;
