@@ -1,17 +1,23 @@
 /* 全站色系（與原站一致） */
 :root{
---c-bg: #f8f0e6;    /* 米色背景 */
---c-text: #5a4a3f;  /* 主要深棕文字 */
---c-mute: #8a8a8a;  /* 次要灰文字 */
---c-line: #d9cfc4;  /* 淺米棕分隔線 */
---c-accent: #a08974;/* 暖棕重點色(hover) */
---bs-body-font-family: "Noto Serif TC", "PingFang TC", "Heiti TC",
-                         "Source Han Sans TC", system-ui, -apple-system, sans-serif;
+  --c-bg: #f8f0e6;    /* 米色背景 */
+  --c-text: #5a4a3f;  /* 主要深棕文字 */
+  --c-mute: #8a8a8a;  /* 次要灰文字 */
+  --c-line: #d9cfc4;  /* 淺米棕分隔線 */
+  --c-accent: #a08974;/* 暖棕重點色(hover) */
+  --bs-body-font-family: "Noto Serif TC", "PingFang TC", "Heiti TC",
+                          "Source Han Sans TC", system-ui, -apple-system, sans-serif;
   --text-default: #5a4a3f;        /* 主要文字 */
   --text-muted: #6c757d;         /* bootstrap muted */
   --text-faint: rgba(90, 74, 63,0.65);/* 較淡（建議段落） */
   --text-ghost: rgba(90, 74, 63,0.5);  /* 更淡（輔助性文字） */
   --para-letter: 0.08em;    /* 字母間距 */
+
+  --scrollbar-width: 12px;                /* 滾動條寬度 */
+  --scrollbar-thumb: rgba(160,136,116,0.85); /* 滑桿顏色 */
+  --scrollbar-thumb-hover: rgba(160,136,116,1);
+  --scrollbar-track: rgba(0,0,0,0.04);
+  --scrollbar-transition: 200ms;          /* hover/變化動作速度 */
 }
 
 /* 三個層級的 class */
@@ -285,3 +291,45 @@ h2.small{
   box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 10px 26px rgba(0,0,0,0.32);
   transform: translateY(-3px) scale(1.03);
 }
+
+
+/* WebKit / Chromium（Chrome、Edge、Safari 部分） */
+*::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  border: 3px solid transparent; /* 內距讓 thumb 看起來不貼邊 */
+  background-clip: padding-box;
+  transition: background var(--scrollbar-transition), transform var(--scrollbar-transition), box-shadow var(--scrollbar-transition);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* 如果你想在某些區塊顯示「脈衝動畫」（例如剛載入時提醒使用者可以滾動） */
+.scrollbar-pulse *::-webkit-scrollbar-thumb {
+  animation: thumb-pulse 1.6s ease-in-out infinite;
+}
+@keyframes thumb-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(160,136,116,0.18); }
+  70%  { box-shadow: 0 0 0 8px rgba(160,136,116,0); }
+  100% { box-shadow: 0 0 0 0 rgba(160,136,116,0); }
+}
+
+/* Firefox（支援度較基礎：thin / auto / none 與顏色） */
+html {
+  scrollbar-width: thin; /* auto | thin | none */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); /* thumb track */
+}
+
+/* 手機注意：大部分手機瀏覽器會使用系統 overlay scrollbar，無法被完整改寫 */

@@ -486,10 +486,77 @@
         }
       });
     </script>
+    <script>
+      /* 簡單緩動函數（可替換為你喜歡的 easing） */
+      function easeInOutQuad(t){ return t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t; }
+
+      /* 平滑滾動主函式：targetY (px), duration (ms) */
+      function smoothScrollTo(targetY, duration = 700){
+        const startY = window.scrollY || window.pageYOffset;
+        const diff = targetY - startY;
+        if (Math.abs(diff) < 1) return; // 已經到位
+        let start = null;
+        function step(timestamp){
+          if (!start) start = timestamp;
+          const elapsed = timestamp - start;
+          const t = Math.min(1, elapsed / duration);
+          const eased = easeInOutQuad(t);
+          window.scrollTo(0, Math.round(startY + diff * eased));
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      /* 全站攔截：處理各種帶 # 的連結（#id, page.html#id, /path#id） */
+      /* 設定：預設動畫時間（ms）與 navbar offset（若有固定 header） */
+      (function(){
+        const DEFAULT_DURATION = 5000; // ← 調整這裡為你想要的速度（ms），數字越大越慢
+        const header = document.querySelector('.navbar'); // 若 navbar 高度不可預期，可改成固定數字
+        const headerOffset = header ? header.offsetHeight : 0;
+
+        document.addEventListener('click', function(e){
+          const a = e.target.closest('a[href*="#"]');
+          if (!a) return;
+          // 取得絕對 URL（避免相對路徑誤判）
+          const url = new URL(a.href, location.href);
+          const isSamePath = (url.pathname.replace(/\/$/,'') === location.pathname.replace(/\/$/,''));
+          const hash = url.hash || '';
+          if (!hash) return;           // 沒 hash，略過
+          if (!isSamePath) return;     // 指向不同頁面：讓瀏覽器處理（或改成 fetch 與動畫載入）
+          const target = document.querySelector(hash);
+          if (!target) return;
+
+          e.preventDefault(); // 攔截原生跳轉
+          // 計算目的 Y（扣掉 header offset）
+          const targetY = Math.round(target.getBoundingClientRect().top + window.pageYOffset - headerOffset);
+
+          // optional: 更新網址列的 hash（不會觸發跳轉）
+          if (history && history.pushState) {
+            history.pushState(null, '', hash);
+          } else {
+            location.hash = hash;
+          }
+
+          // 先移除 CSS 的 scroll-behavior 以避免衝突（若你有設）
+          const docEl = document.documentElement;
+          const priorScrollBehavior = docEl.style.scrollBehavior;
+          docEl.style.scrollBehavior = 'auto';
+
+          // 執行平滑動畫（DEFAULT_DURATION 可改）
+          smoothScrollTo(targetY, DEFAULT_DURATION);
+
+          // 動畫結束後（保險時間），恢復 scrollBehavior 並把 focus 放上去（但避免滾動）
+          setTimeout(() => {
+            docEl.style.scrollBehavior = priorScrollBehavior || '';
+            // 使元素可 focus（避免無障礙問題），但不觸發滾動
+            const prevTabIndex = target.getAttribute('tabindex');
+            if (!prevTabIndex) target.setAttribute('tabindex', '-1');
+            target.focus({preventScroll: true});
+            if (!prevTabIndex) target.removeAttribute('tabindex');
+          }, DEFAULT_DURATION + 80);
+        }, {passive: false});
+      })();
+    </script>
     <script src="/js/common.js"></script>
   </body>
 </html>
-
-
-
-
