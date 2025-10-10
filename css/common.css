@@ -164,3 +164,124 @@ h2.small{
     text-align: center;
     color:  rgba(90, 74, 63,0.6);
 }
+
+/* 加到 index.css / common.css */
+.social-fixed{
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1100; /* 確保在最上層 */
+  pointer-events: none; /* 先關掉外層的事件，讓內部 a 可被點擊 */
+}
+.social-fixed .social-btn{
+  pointer-events: auto; /* 讓按鈕可被點擊 */
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  /* 半透明背景（可調）*/
+  background: rgba(255,255,255,0.06);
+  /* background: rgba(0,0,0,0.35); */
+  /* 若背景偏白，改用深色半透明： background: rgba(0,0,0,0.35); */
+  backdrop-filter: blur(6px); /* 若不想用，移除也可 */
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #ffffff; /* icon 顏色 */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+}
+
+/* icon size */
+.social-fixed .social-btn i{
+  font-size: 20px;
+  line-height: 1;
+  display: block;
+}
+
+/* hover / focus styles */
+.social-fixed .social-btn:hover,
+.social-fixed .social-btn:focus{
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.32);
+  background: rgba(255,255,255,0.10);
+  outline: none;
+}
+
+/* 不同社群可自訂色調（選擇性） */
+.social-fixed .social-line{ /* LINE 常見綠色調的輕微強調（可刪） */
+  color: rgba(132, 189, 0, 0.25);
+}
+.social-fixed .social-fb{ /* Facebook */
+  color: rgba(59,89,152,0.25);
+}
+.social-fixed .social-ig{ /* Instagram */
+  color: rgba(225,48,108,0.25);
+}
+
+.social-fixed .social-line:hover{
+  color: rgba(132, 189, 0, 0.6);
+}
+
+.social-fixed .social-fb:hover{
+  color: rgba(59,89,152,0.6);
+}
+
+.social-fixed .social-ig:hover{
+  color: rgba(225,48,108,0.6);
+}
+
+/* RWD：行動裝置縮小按鈕並收邊距 */
+@media (max-width: 767.98px){
+  .social-fixed{
+    right: 12px;
+    bottom: 12px;
+    gap: 8px;
+  }
+  .social-fixed .social-btn{
+    width: 48px;
+    height: 48px;
+  }
+  .social-fixed .social-btn i{
+    font-size: 18px;
+  }
+}
+
+/* 更小裝置或需要更保守的排版，可以把按鈕再縮小 */
+@media (max-width: 420px){
+  .social-fixed{
+    right: 10px;
+    bottom: 10px;
+    gap: 6px;
+  }
+  .social-fixed .social-btn{
+    width: 44px;
+    height: 44px;
+  }
+  .social-fixed .social-btn i{
+    font-size: 16px;
+  }
+}
+
+/* 可選：當視窗寬度變很小時，改成水平排列（如果你希望） */
+/* 
+@media (max-width: 420px){
+  .social-fixed{ flex-direction: row; right: 50%; transform: translateX(50%); }
+}
+*/
+
+/* 可選：隱藏在列印或某些區塊（例如停靠不想擋內容） */
+@media print{
+  .social-fixed{ display: none; }
+}
+
+/* 無障礙：當使用鍵盤 tab 時有明顯 focus 樣式 */
+.social-fixed .social-btn:focus{
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 10px 26px rgba(0,0,0,0.32);
+  transform: translateY(-3px) scale(1.03);
+}
