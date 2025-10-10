@@ -92,3 +92,59 @@
 .about-us .eng-p {
   font-size: 0.8rem;
 }
+
+.container.top-section {
+    padding: 4rem 0;
+    letter-spacing: 0.06rem;
+    border-bottom: 1px solid #8a8a8a34;
+}
+
+.work-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    aspect-ratio: 4 / 3; /* 強制比例 */
+}
+
+.work-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 超過就裁切 */
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.work-card:hover img {
+    transform: scale(1.05);
+}
+
+.work-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(248, 240, 230, 0.9);
+    color: #5a4a3f;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+    letter-spacing: 0.3rem;
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+    .work-info {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+    .navbar-collapse {
+        background-color: #f8f0e6;
+        padding: 1rem;
+    }
+}
