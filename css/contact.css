@@ -1,0 +1,58 @@
+/* 區塊標題 */
+/* .section-title {
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-align: center;
+    margin-bottom: 1.5rem;
+} */
+
+.top-section .col-lg-12 .section-title {
+    padding-top: 20px;
+    border-top: 0;    
+}
+
+.top-section .section-title {
+    /* padding-top: 40px; */
+    border-top: 1px solid var(--c-line);
+}
+
+.top-section.text-center .section-title {
+    padding: 0;
+}
+
+/* 表單卡片與資訊卡 */
+.form-card {
+    background: var(--white);
+    border: none;
+    border-radius: 18px;
+    padding: 1.25rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,.06);
+    
+}
+.form-card label { font-weight: 600; color: var(--muted); margin-bottom: .35rem; padding-left: 5px;}
+.form-card .form-control,
+.form-card .form-select { border-radius: 12px; padding: .6rem .9rem; }
+.form-help { color: var(--muted); font-size: .95rem; }
+
+/* 聯絡資訊區塊 */
+.contact-info dl { margin: 0; text-align: center; }
+.contact-info h4 { font-weight: 700; margin-bottom: 1rem; }
+.contact-info dd { margin: .25rem 0; }
+.contact-info dd span { color: var(--muted); font-weight: 600; }
+
+/* 地圖比例與外觀 */
+.map-wrap { border-radius: 18px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+
+/* 蜜罐欄位（防垃圾機器人） */
+.hp-wrap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+@media (max-width: 991.98px) {
+.navbar-custom .nav-link { color: var(--text); }
+.page-top-offset { padding-top: 72px; }
+}
+@media (max-width: 576px) {
+    .navbar-collapse {
+        background-color: #f8f0e6;
+        padding: 1rem;
+    }
+}
