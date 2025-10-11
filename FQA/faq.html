@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>常見問題｜同翕設計 Themis Design</title>
+    <meta name="description" content="同翕設計常見問題（FAQ）— 關於合作流程、施工品質、預算與時程、風格理念等常見詢問。" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet"/>
+    <!-- 共用與首頁樣式 -->
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/index.css">
+
+    <style>
+      /* FAQ page small custom overrides (match 視覺語彙) */
+      .faq-hero {
+        position: relative;
+        padding: 5.5rem 1rem 3rem;
+        background-image: url('images/hero-bgc2.jpg');
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+      }
+      .faq-hero::before{
+        content:"";
+        position:absolute; inset:0;
+        background: rgba(0,0,0,0.35);
+        z-index:0;
+      }
+      .faq-hero .hero-inner { position:relative; z-index:2; text-align:center; }
+      .faq-hero h1 { font-size: clamp(1.6rem,3.6vw,2.4rem); margin-bottom:.4rem; text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+      .faq-hero p.lead { margin-bottom:1rem; color: rgba(248,236,220,0.95); text-shadow: 0 1px 6px rgba(0,0,0,.25); }
+
+      /* FAQ container */
+      .faq-container { padding: 3.2rem 0 6rem; }
+      .faq-intro { max-width:900px; margin: 0 auto 2rem; color: var(--c-text); text-align:center; }
+      .faq-intro .sub { color: var(--c-mute); }
+
+      /* Accordion styling (light, matching brand) */
+      .accordion-button {
+        background: linear-gradient(180deg, rgba(248,240,230,0.65), rgba(248,240,230,0.9));
+        color: var(--c-text);
+        font-weight: 700;
+        border-radius: 10px;
+      }
+      .accordion-item + .accordion-item { margin-top: .75rem; border: none; }
+      .accordion-body { color: var(--c-mute); line-height:1.9; background: #fff; border-radius: 10px; }
+
+      /* 分組標題 */
+      .faq-group {
+        margin-top: 2.4rem;
+        margin-bottom: .6rem;
+      }
+      .faq-sep {
+        height:1px; background:var(--c-line); margin:1.25rem 0;
+      }
+
+      /* 小螢幕優化 */
+      @media (max-width:576px){
+        .faq-hero { padding: 3.2rem 1rem 2rem; background-position: center 30%; }
+        .faq-container { padding: 2rem 0 4rem; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- splash 與 navbar 與 index.html 相同（共用樣式） -->
+    <div id="splash">
+      <div class="splash-logo text-center">
+        <div class="title m-3">
+          <img src="images/logo/turn.png" alt="Themis" />
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-transparent">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img id="navbarLogo" src="images/logo/logoNocolor.png" alt="Themis Logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link me-3" href="/AboutUs/aboutus.html">關於我們</a></li>
+            <li class="nav-item"><a class="nav-link me-3" href="/Work/work.html">設計作品</a></li>
+            <li class="nav-item"><a class="nav-link me-3" href="/Process/process.html">服務流程</a></li>
+            <li class="nav-item"><a class="nav-link me-3 active" href="/FAQ/faq.html">常見問題</a></li>
+            <li class="nav-item"><a class="nav-link me-3" href="/Contact/contact.html">聯繫我們</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="faq-hero">
+      <div class="container hero-inner">
+        <h1>🏡 常見問題 FAQ</h1>
+        <p class="lead">整理您在合作前、施工中與完工後最常詢問的問題。若找不到答案，歡迎透過「聯繫我們」與我們預約深入諮詢。</p>
+        <a href="/Contact/contact.html" class="btn cta-primary">立即諮詢</a>
+      </div>
+    </section>
+
+    <!-- FAQ content -->
+    <main class="faq-container">
+      <div class="container">
+        <div class="faq-intro">
+          <p class="sub">下面依主題分組，點擊問題可以展開完整回答 — 我們的說明以清楚、透明與實務為主。</p>
+        </div>
+
+        <!-- 第一組：合作與流程 -->
+        <div class="faq-group">
+          <h2 class="section-title small">🔹 關於合作與流程</h2>
+          <div class="accordion" id="faqAccordion1" role="tablist">
+            <!-- Q1 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq1-heading1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1-1" aria-expanded="false" aria-controls="faq1-1">
+                  Q1：設計流程是怎麼進行的？
+                </button>
+              </h2>
+              <div id="faq1-1" class="accordion-collapse collapse" aria-labelledby="faq1-heading1" data-bs-parent="#faqAccordion1">
+                <div class="accordion-body">
+                  A：從初步洽談、丈量、設計提案、預算討論，到施工監工與完工交屋，我們全程陪伴。詳細步驟可參考《服務流程》頁面。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq1-heading2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1-2" aria-expanded="false" aria-controls="faq1-2">
+                  Q2：第一次諮詢需要費用嗎？
+                </button>
+              </h2>
+              <div id="faq1-2" class="accordion-collapse collapse" aria-labelledby="faq1-heading2" data-bs-parent="#faqAccordion1">
+                <div class="accordion-body">
+                  A：第一次諮詢免費，我們會先了解您的生活需求與預算方向，提供初步建議與合作評估。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq1-heading3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1-3" aria-expanded="false" aria-controls="faq1-3">
+                  Q3：同翕設計是以什麼方式收費？
+                </button>
+              </h2>
+              <div id="faq1-3" class="accordion-collapse collapse" aria-labelledby="faq1-heading3" data-bs-parent="#faqAccordion1">
+                <div class="accordion-body">
+                  A：設計費會依據坪數、設計風格、內容複雜度而不同，我們會在提案階段提供透明明確的報價。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq1-heading4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1-4" aria-expanded="false" aria-controls="faq1-4">
+                  Q4：如果我還沒有確定風格，可以先討論嗎？
+                </button>
+              </h2>
+              <div id="faq1-4" class="accordion-collapse collapse" aria-labelledby="faq1-heading4" data-bs-parent="#faqAccordion1">
+                <div class="accordion-body">
+                  A：當然可以。我們擅長透過對話與提問，幫助屋主找到屬於自己的風格與生活樣貌。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq1-heading5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1-5" aria-expanded="false" aria-controls="faq1-5">
+                  Q5：你們有承接舊屋翻新嗎？
+                </button>
+              </h2>
+              <div id="faq1-5" class="accordion-collapse collapse" aria-labelledby="faq1-heading5" data-bs-parent="#faqAccordion1">
+                <div class="accordion-body">
+                  A：是的，我們非常擅長老屋翻新。從結構、安全、動線到光線規劃，都能重新賦予空間新的生命。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-sep" aria-hidden="true"></div>
+
+        <!-- 第二組：施工與品質 -->
+        <div class="faq-group">
+          <h2 class="section-title small">🔹 關於施工與品質</h2>
+          <div class="accordion" id="faqAccordion2" role="tablist">
+            <!-- Q6 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq2-heading6">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-6" aria-expanded="false" aria-controls="faq2-6">
+                  Q6：設計案是由你們自己施工嗎？
+                </button>
+              </h2>
+              <div id="faq2-6" class="accordion-collapse collapse" aria-labelledby="faq2-heading6" data-bs-parent="#faqAccordion2">
+                <div class="accordion-body">
+                  A：我們與長期配合、信任的專業工班合作，確保施工品質穩定。設計師也會親自現場巡查，確保細節落實。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq2-heading7">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-7" aria-expanded="false" aria-controls="faq2-7">
+                  Q7：施工期間可以到現場參觀嗎？
+                </button>
+              </h2>
+              <div id="faq2-7" class="accordion-collapse collapse" aria-labelledby="faq2-heading7" data-bs-parent="#faqAccordion2">
+                <div class="accordion-body">
+                  A：可以，我們會安排合適時間讓屋主了解進度，並隨時保持溝通。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq2-heading8">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-8" aria-expanded="false" aria-controls="faq2-8">
+                  Q8：完工後如果有問題怎麼辦？
+                </button>
+              </h2>
+              <div id="faq2-8" class="accordion-collapse collapse" aria-labelledby="faq2-heading8" data-bs-parent="#faqAccordion2">
+                <div class="accordion-body">
+                  A：我們提供完善的保固與售後服務，若有使用或維修需求，可直接與我們聯繫。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-sep" aria-hidden="true"></div>
+
+        <!-- 第三組：預算與時程 -->
+        <div class="faq-group">
+          <h2 class="section-title small">🔹 關於預算與時程</h2>
+          <div class="accordion" id="faqAccordion3" role="tablist">
+            <!-- Q9 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq3-heading9">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3-9" aria-expanded="false" aria-controls="faq3-9">
+                  Q9：預算有限也能委託設計嗎？
+                </button>
+              </h2>
+              <div id="faq3-9" class="accordion-collapse collapse" aria-labelledby="faq3-heading9" data-bs-parent="#faqAccordion3">
+                <div class="accordion-body">
+                  A：可以，我們會根據預算條件調整設計重點與材質選擇，讓美感與實用兼具。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q10 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq3-heading10">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3-10" aria-expanded="false" aria-controls="faq3-10">
+                  Q10：一般住宅設計施工大約需要多久？
+                </button>
+              </h2>
+              <div id="faq3-10" class="accordion-collapse collapse" aria-labelledby="faq3-heading10" data-bs-parent="#faqAccordion3">
+                <div class="accordion-body">
+                  A：依空間大小與工程項目不同，通常約需 2–5 個月。我們會在簽約時提供明確的時程規劃。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q11 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq3-heading11">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3-11" aria-expanded="false" aria-controls="faq3-11">
+                  Q11：能只委託設計圖面，不含施工嗎？
+                </button>
+              </h2>
+              <div id="faq3-11" class="accordion-collapse collapse" aria-labelledby="faq3-heading11" data-bs-parent="#faqAccordion3">
+                <div class="accordion-body">
+                  A：可以。我們可提供純設計服務，並附上完整圖面與建議清單，供屋主自行找施工團隊。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-sep" aria-hidden="true"></div>
+
+        <!-- 第四組：風格與理念 -->
+        <div class="faq-group">
+          <h2 class="section-title small">🔹 關於風格與理念</h2>
+          <div class="accordion" id="faqAccordion4" role="tablist">
+            <!-- Q12 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq4-heading12">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4-12" aria-expanded="false" aria-controls="faq4-12">
+                  Q12：同翕設計的風格是什麼？
+                </button>
+              </h2>
+              <div id="faq4-12" class="accordion-collapse collapse" aria-labelledby="faq4-heading12" data-bs-parent="#faqAccordion4">
+                <div class="accordion-body">
+                  A：我們不侷限於特定風格，而是以「人的生活」為核心，讓空間自然呈現屋主的性格與故事。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q13 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq4-heading13">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4-13" aria-expanded="false" aria-controls="faq4-13">
+                  Q13：你們如何確保設計成果與3D提案一致？
+                </button>
+              </h2>
+              <div id="faq4-13" class="accordion-collapse collapse" aria-labelledby="faq4-heading13" data-bs-parent="#faqAccordion4">
+                <div class="accordion-body">
+                  A：我們會在施工前進行充分討論與現場確認，確保材質、比例與光線與提案一致。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q14 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq4-heading14">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4-14" aria-expanded="false" aria-controls="faq4-14">
+                  Q14：可以先看過你們的作品再決定合作嗎？
+                </button>
+              </h2>
+              <div id="faq4-14" class="accordion-collapse collapse" aria-labelledby="faq4-heading14" data-bs-parent="#faqAccordion4">
+                <div class="accordion-body">
+                  A：當然可以！歡迎瀏覽《設計作品》頁面，或預約參觀已完工的實際案例。
+                </div>
+              </div>
+            </div>
+
+            <!-- Q15 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq4-heading15">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4-15" aria-expanded="false" aria-controls="faq4-15">
+                  Q15：如果我人在外縣市，還能委託設計嗎？
+                </button>
+              </h2>
+              <div id="faq4-15" class="accordion-collapse collapse" aria-labelledby="faq4-heading15" data-bs-parent="#faqAccordion4">
+                <div class="accordion-body">
+                  A：可以，我們可透過線上會議、圖面與進度分享平台，讓遠距合作也能順暢無礙。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 若要快速聯絡 CTA -->
+        <div class="text-center mt-5">
+          <p class="text-muted">如果上述說明無法完全覆蓋你的問題，歡迎直接聯繫我們或預約免費諮詢。</p>
+          <a href="/Contact/contact.html" class="btn cta-outline">聯絡我們</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- footer（同首頁） -->
+    <div class="footer m-3">
+      <div class="text-center">
+        <p class="Copyright">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
+      </div>
+    </div>
+
+    <!-- social fixed（同首頁） -->
+    <div class="social-fixed" aria-hidden="false">
+      <a class="social-btn social-line" href="https://page.line.me/themis113?fbclid=PAZXh0bgNhZW0CMTEAAaf1nn-ywwaMyQ1K2LJ8QOAJZFQiCqebwJPmIz3_Bg44Hjo-UTP3QTxJpN7v8g_aem_onhYLdyjRJD3DpH1z8L9Mw" target="_blank" rel="noopener noreferrer" aria-label="Themis LINE" title="LINE">
+        <i class="bi bi-line"></i>
+      </a>
+      <a class="social-btn social-fb" href="https://www.facebook.com/p/%E5%90%8C%E7%BF%95%E8%A8%AD%E8%A8%88-Themis-Design-61555042074314/" target="_blank" rel="noopener noreferrer" aria-label="Themis Facebook" title="Facebook">
+        <i class="bi bi-facebook"></i>
+      </a>
+      <a class="social-btn social-ig" href="https://www.instagram.com/themis__design/" target="_blank" rel="noopener noreferrer" aria-label="Themis Instagram" title="Instagram">
+        <i class="bi bi-instagram"></i>
+      </a>
+    </div>
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      // AOS 與 navbar 行為 - 與 index 相仿
+      AOS.init();
+      window.addEventListener("scroll", function() {
+        const navbar = document.querySelector(".navbar");
+        const logo = document.getElementById("navbarLogo");
+        if (window.scrollY > 50) {
+          navbar.classList.remove("navbar-transparent");
+          navbar.classList.add("navbar-colored");
+          if (logo) logo.src = "images/logo/logocolor-green.png";
+        } else {
+          navbar.classList.add("navbar-transparent");
+          navbar.classList.remove("navbar-colored");
+          if (logo) logo.src = "images/logo/logoNocolor.png";
+        }
+      });
+    </script>
+
+    <script src="/js/common.js"></script>
+  </body>
+</html>
