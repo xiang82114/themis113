@@ -1,0 +1,107 @@
+/* 全站色系（與原站一致） */
+:root{
+  --c-bg: #f8f0e6;    /* 米色背景 */
+  --c-text: #5a4a3f;  /* 主要深棕文字 */
+  --c-mute: #8a8a8a;  /* 次要灰文字 */
+  --c-line: #d9cfc4;  /* 淺米棕分隔線 */
+  --c-accent: #a08974;/* 暖棕重點色(hover) */
+  --bs-body-font-family: "Noto Serif TC", "PingFang TC", "Heiti TC",
+                          "Source Han Sans TC", system-ui, -apple-system, sans-serif;
+  --text-default: #5a4a3f;        /* 主要文字 */
+  --text-muted: #6c757d;         /* bootstrap muted */
+  --text-faint: rgba(90, 74, 63,0.65);/* 較淡（建議段落） */
+  --text-ghost: rgba(90, 74, 63,0.5);  /* 更淡（輔助性文字） */
+  --para-letter: 0.08em;    /* 字母間距 */
+
+  --ink:#62595096;         /* 暖炭灰：主文字（米色木質背景上更柔和） */
+  --ink-2:#f8ecdc;       /* 次文字 */
+  --brand:#f1c19394;       /* 金棕：主色（與木色同色相） */
+  --brand-900:#7a5e43;   /* hover 更深一階 */
+  --radius:12px;
+
+  --scrollbar-width: 12px;                /* 滾動條寬度 */
+  --scrollbar-thumb: rgba(160,136,116,0.85); /* 滑桿顏色 */
+  --scrollbar-thumb-hover: rgba(160,136,116,1);
+  --scrollbar-track: rgba(0,0,0,0.04);
+  --scrollbar-transition: 200ms;          /* hover/變化動作速度 */
+}
+/* FAQ page small custom overrides (match 視覺語彙) */
+.faq-hero {
+    position: relative;
+    padding: 5.5rem 1rem 3rem;
+    background-image: url('images/hero-bgc2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+.faq-hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background: rgba(0,0,0,0.35);
+    z-index:0;
+}
+.faq-hero .hero-inner { position:relative; z-index:2; text-align:center; }
+.faq-hero h1 { font-size: clamp(1.6rem,3.6vw,2.4rem); margin-bottom:.4rem; text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.faq-hero p.lead { margin-bottom:1rem; color: rgba(248,236,220,0.95); text-shadow: 0 1px 6px rgba(0,0,0,.25); }
+
+/* FAQ container */
+.faq-container { padding: 3.2rem 0 6rem; }
+.faq-intro { max-width:900px; margin: 0 auto 2rem; color: var(--c-text); text-align:center; }
+.faq-intro .sub { color: var(--c-mute); }
+
+/* Accordion styling (light, matching brand) */
+.accordion-button {
+    background: linear-gradient(180deg, rgba(248,240,230,0.65), rgba(248,240,230,0.9));
+    color: var(--c-text);
+    font-weight: 700;
+    border-radius: 10px;
+}
+.accordion-item + .accordion-item { margin-top: .75rem; border: none; }
+.accordion-body { color: var(--c-mute); line-height:1.9; background: #fff; border-radius: 10px; }
+
+/* 分組標題 */
+.faq-group {
+    margin-top: 2.4rem;
+    margin-bottom: .6rem;
+}
+.faq-sep {
+    height:1px; background:var(--c-line); margin:1.25rem 0;
+}
+
+/* 小螢幕優化 */
+@media (max-width:576px){
+.faq-hero { padding: 3.2rem 1rem 2rem; background-position: center 30%; }
+.faq-container { padding: 2rem 0 4rem; }
+}
+.btn.cta-outline,
+.cta-outline {
+  color: var(--brand);
+  background: transparent;
+  border: 1.6px solid var(--brand);
+  font-weight: 700;
+  border-radius: 12px;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .24s ease, color .24s ease;
+}
+.btn.cta-outline:hover,
+.cta-outline:hover {
+  background: var(--brand);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+}
+
+.cta-primary{
+  background:var(--brand); 
+  color:#fff; 
+  border:0;
+  box-shadow:0 6px 14px rgba(0,0,0,.12);
+}
+.cta-primary:hover{
+  transform:translateY(-2px);
+  background:var(--brand-900);
+  box-shadow:0 14px 28px rgba(0,0,0,.22);
+}
+.cta-primary:active{ 
+  transform:translateY(0); 
+  box-shadow:0 8px 18px rgba(0,0,0,.18); 
+}
