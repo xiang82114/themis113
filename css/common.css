@@ -25,6 +25,7 @@
 .text-faint  { color: var(--text-faint)  !important; } 
 .text-ghost  { color: var(--text-ghost)  !important; }
 .text-spacing  { letter-spacing: var(--para-letter);   /* 字母間距（英文效果較明顯） */ }
+.text-h2s { font-size: 20px;}
 .text-14 { font-size: 14px;}
 .text-12 { font-size: 12px;}
 
