@@ -228,7 +228,7 @@
       </div>
 
       <!-- 內容（文字與按鈕） -->
-      <div class="hero-content">
+      <div class="hero-content" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1200" data-aos-easing="ease-out-cubic">
         <h1>體驗夢想實現的美好</h1>
         <p>打造安心、溫度與質感並存的居住空間</p>
         <div class="hero-cta">
@@ -253,8 +253,9 @@
 
                   在這裡，設計不是目的，而是一種連結人與人、夢想與日常的方式。<br>
                   我們走得不快，但走得真實，因為我們始終相信，溫柔的力量，才能留下長久的感動。<br>
-
-                  同翕設計團隊
+                </p>
+                <p class="w-100 text-end me-3">
+                  - 同翕設計團隊
                 </p>
                 <p class="eng-p text-start">
                   Themis Design's starting point was never just about solving spatial problems; <br>
@@ -494,6 +495,17 @@
           navbar.classList.add("navbar-transparent");
           navbar.classList.remove("navbar-colored");
           logo.src = "images/logo/logoNocolor.png";
+        }
+      });
+    </script>
+    <script>
+      window.addEventListener('load', () => {
+        AOS.init({ duration: 700, easing: 'ease-out-cubic', once: false });
+        // 若初始化後仍沒動畫，手動觸發：
+        const el = document.querySelector('.hero-content[data-aos]');
+        if (el && !el.classList.contains('aos-animate')) {
+          // 小延遲避免跟其他初始化競爭
+          setTimeout(() => el.classList.add('aos-animate'), 120);
         }
       });
     </script>
