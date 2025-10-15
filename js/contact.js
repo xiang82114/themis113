@@ -143,3 +143,49 @@ form.addEventListener('submit', async (e) => {
     }
 });
 })();
+
+// ===== QR 掃碼彈窗行為（contact page） =====
+(function () {
+  const overlay = document.getElementById('qrOverlay');
+  const closeBtn = document.getElementById('qrCloseBtn');
+  if (!overlay || !closeBtn) {
+    console.warn('[contact-qr] qrOverlay or qrCloseBtn not found');
+    return;
+  }
+
+  // 儲存先前 focus 的元素以便還原
+  let previousActive = null;
+
+  function openQr() {
+    previousActive = document.activeElement;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // 防止背景滾動
+    // 聚焦到關閉按鈕，提升可及性
+    closeBtn.focus({ preventScroll: true });
+    // 注意：刻意不加 Esc 鍵監聽，符合「只能按按鈕關閉」需求
+  }
+
+  function closeQr() {
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    try { if (previousActive && typeof previousActive.focus === 'function') previousActive.focus(); } catch (e) {}
+  }
+
+  // 只有按按鈕可以關閉
+  closeBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    closeQr();
+  }, { passive: false });
+
+  // **不再**監聽 overlay 的 click，也不監聽鍵盤 Esc
+  // 若未來要改回可點背景或 Esc 關閉，將下列註解還原即可：
+  // overlay.addEventListener('click', function (e) { if (e.target === overlay) closeQr(); });
+  // document.addEventListener('keydown', onKeyDown);
+
+  // 頁面載入後顯示（等 DOM ready）
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(openQr, 1200);
+  });
+})();

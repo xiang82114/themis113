@@ -231,6 +231,22 @@
     </div>
     <!-- ===== end social fixed buttons ===== -->
 
+    <!-- QR 掃碼彈窗（放在 body 底部） -->
+    <div id="qrOverlay" class="qr-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="qrTitle">
+      <div class="qr-modal" role="document">
+        <div class="qr-body text-center">
+          <img src="../images/themis113_LINE_QR.png" alt="掃描加入 Themis LINE" class="qr-image" />
+          <h3 id="qrTitle" class="qr-title">掃描行動條碼即可將官方帳號加入好友</h3>
+          <p class="qr-desc">
+            請先點選 LINE 應用程式搜尋欄位旁的掃描圖示，再掃描此行動條碼。
+          </p>
+          <div class="qr-actions">
+            <button id="qrCloseBtn" class="btn btn-outline-secondary">已加入官方LINE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <p class="Copyright text-center">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
 
     <!-- Bootstrap JS -->

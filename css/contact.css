@@ -56,3 +56,75 @@
         padding: 1rem;
     }
 }
+
+/* ===== QR 掃碼彈窗樣式（contact page） ===== */
+.qr-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 11000; /* 比 #splash/其他遮罩高些 */
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .26s ease, visibility .26s;
+}
+
+.qr-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.qr-modal {
+  max-width: 520px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+  transform: translateY(6px);
+  transition: transform .26s ease;
+}
+
+.qr-overlay.open .qr-modal { transform: translateY(0); }
+
+/* modal 內容 */
+.qr-body { padding: 4px 8px; color: #333; }
+.qr-image {
+  width: 220px;
+  height: auto;
+  display: block;
+  margin: 8px auto 14px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+.qr-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1f2b2a;
+}
+.qr-desc {
+  font-size: 0.92rem;
+  color: rgba(90,90,90,0.9);
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+/* 按鈕區 */
+.qr-actions { display:flex; justify-content:center; gap:12px; }
+#qrCloseBtn { min-width: 160px; }
+
+/* 點擊 overlay 背景關閉時，避免誤點選 modal 內部 */
+.qr-modal * { user-select: text; }
+
+/* 響應式：小螢幕時縮小 image 與 modal padding */
+@media (max-width: 480px) {
+  .qr-modal { padding: 14px; border-radius: 12px; }
+  .qr-image { width: 160px; margin-bottom: 10px; }
+  #qrCloseBtn { min-width: 130px; font-size: 0.95rem; }
+}
