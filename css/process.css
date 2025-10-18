@@ -257,4 +257,54 @@
   .charging .row{ --bs-gutter-x: 2rem; }
 }
 
+@media (max-width: 991.98px) {
+  .service-items .container,
+  .process-section .container {
+    margin: 0 auto;
+    padding: 3.5rem 1.25rem;
+  }
+  .process__grid {
+    gap: 28px 36px;
+  }
+  .charging-box {
+    padding: 1.5rem;
+  }
+  .value-services .vs-grid {
+    row-gap: 1.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+  .process__desc {
+    padding-left: 0;
+    margin-top: 0.5rem;
+  }
+  .process__head {
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-start;
+  }
+  .value-services .vs-item {
+    padding: 28px 18px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .service-items,
+  .process-section,
+  .value-services {
+    padding: 2.25rem 1rem;
+  }
+  .process-title,
+  .value-services .vs-title {
+    font-size: 1.8rem;
+  }
+  .charging-photo img {
+    height: 220px;
+  }
+}
+
 

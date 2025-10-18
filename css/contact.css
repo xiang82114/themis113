@@ -128,3 +128,42 @@
   .qr-image { width: 160px; margin-bottom: 10px; }
   #qrCloseBtn { min-width: 130px; font-size: 0.95rem; }
 }
+
+@media (max-width: 991.98px) {
+  .top-section {
+    padding: 2.5rem 1.5rem;
+  }
+  .form-card,
+  .card-wrapper {
+    box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+  }
+  .contact-info {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .top-section .row {
+    text-align: left;
+    row-gap: 1.25rem;
+  }
+  .form-card {
+    padding: 1rem;
+  }
+  .map-wrap {
+    height: 260px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .top-section {
+    padding: 2rem 1.25rem;
+  }
+  .form-card .form-control,
+  .form-card .form-select {
+    padding: .55rem .75rem;
+  }
+  .contact-info h4 {
+    font-size: 1.1rem;
+  }
+}

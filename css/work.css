@@ -23,3 +23,33 @@
 .top-section.text-center .section-title {
     padding-bottom: 0;
 }
+
+@media (max-width: 991.98px) {
+    .workstyle {
+        margin: 40px 15px;
+    }
+    .workstyle img {
+        height: 360px;
+    }
+    .top-section {
+        padding: 2.5rem 1.5rem;
+    }
+    .top-section .col-lg-12 .section-title h2 {
+        margin-bottom: 1.75rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .workstyle {
+        margin: 30px 12px;
+    }
+    .workstyle img {
+        height: 240px;
+    }
+    .top-section {
+        padding: 2rem 1.25rem 1.5rem;
+    }
+    .top-section .col-lg-12 .section-title h2 {
+        font-size: 1.75rem;
+    }
+}
