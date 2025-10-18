@@ -18,6 +18,8 @@
   --scrollbar-thumb-hover: rgba(160,136,116,1);
   --scrollbar-track: rgba(0,0,0,0.04);
   --scrollbar-transition: 200ms;          /* hover/變化動作速度 */
+
+  --ink:#62595096;         /* 暖炭灰：主文字（米色木質背景上更柔和） */
 }
 
 /* 三個層級的 class */
@@ -105,7 +107,7 @@ body{
 
 /* Navbar */
 .navbar-custom{ transition: background-color .3s ease; }
-.navbar-transparent{ background-color: transparent !important; }
+.navbar-transparent{ background-color: transparent !important; color: #f8f0e6 !important;}
 .navbar-colored{ background-color: var(--c-bg) !important; }
 .navbar-colored .nav-link{ color:#000 !important; }
 .navbar-brand img{ height:45px; transition: all .3s ease; }
@@ -126,6 +128,19 @@ body{
 
 .navbar-custom .bi-list { color:#fff; }
 .navbar-custom.navbar-colored .bi-list { color: var(--text); }
+
+@media (max-width: 991.98px) {
+    .navbar-transparent .navbar-toggler { 
+      /* border: var(--bs-border-width) solid red; */
+    }
+    .navbar-custom .nav-link {
+        color: var(--ink);
+    }
+    .navbar-custom .nav-link.active {
+        color: var(--brand-900);
+        text-decoration: underline;
+    }
+}
 
 /* 最上面的section */
 .top-section {
