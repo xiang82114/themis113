@@ -7,15 +7,14 @@
   --radius:12px;
 }
 
+/* 透明 Navbar（覆蓋在 Hero 上）使用淺色字 */
+.navbar-transparent .nav-link{ color: #f8f0e6 !important; }
+/* 
 .navbar-custom .nav-link.active {
   color: #f8f0e6;
   text-decoration: underline;
   text-underline-offset: 6px;
-}
-
-.nav-link {
-  color: #f8f0e6;
-}
+} */
 
 .hero h1, .hero p { letter-spacing: 4px; text-shadow: 0 2px 12px rgba(0,0,0,.25); } /* 提高照片上可讀性 */
 .hero .hero-cta { 
