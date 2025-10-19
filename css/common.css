@@ -119,6 +119,7 @@ body{
   position: relative;
   display: inline-block;
   font-size: .85rem;
+  padding-top: .2rem;
   padding-bottom: .2rem;                 /* 騰出下劃線空間 */
   letter-spacing: 0.02em;
   transition: color .28s ease, letter-spacing .28s ease;
