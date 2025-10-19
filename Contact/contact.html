@@ -248,7 +248,7 @@
       </div>
     </div>
 
-    <p data-aos="fade-up" class="Copyright text-center">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
+    <p class="Copyright text-center">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -258,12 +258,41 @@
     <script>
       window.addEventListener('load', () => {
         AOS.init({ duration: 700, easing: 'ease-out-cubic', once: false });
-        // 若初始化後仍沒動畫，手動觸發：
-        const el = document.querySelector('p[data-aos]');
-        if (el && !el.classList.contains('aos-animate')) {
-          // 小延遲避免跟其他初始化競爭
-          setTimeout(() => el.classList.add('aos-animate'), 120);
+
+        const ensureAOS = () => {
+          const elements = document.querySelectorAll('[data-aos]');
+          let refreshed = false;
+
+          elements.forEach((node) => {
+            if (!node.classList.contains('aos-init') && !refreshed) {
+              refreshed = true;
+              AOS.refreshHard();
+            }
+
+            if (!node.classList.contains('aos-animate')) {
+              const rect = node.getBoundingClientRect();
+              const inView = rect.top < window.innerHeight && rect.bottom > 0;
+              if (inView) {
+                node.classList.add('aos-animate');
+              }
+            }
+          });
+        };
+
+        const queueEnsure = () => setTimeout(ensureAOS, 150);
+
+        const splash = document.getElementById('splash');
+        if (!splash || splash.classList.contains('hide')) {
+          queueEnsure();
+        } else {
+          const handleSplash = () => {
+            queueEnsure();
+            window.removeEventListener('themis:splashHidden', handleSplash);
+          };
+          window.addEventListener('themis:splashHidden', handleSplash);
         }
+
+        window.addEventListener('scroll', ensureAOS, { once: true });
       });
     </script>
   </body>

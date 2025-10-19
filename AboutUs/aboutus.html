@@ -86,16 +86,15 @@
               </div>
             </div>
         </nav>
-
         <section class="container top-section">
             <div class="col-lg-12">
                 <h2 class="section-title">關於我們</h2>
             </div>
             <div class="row d-flex justify-content-between text-spacing text-ghost">
-                <div class="col-md-6" data-aos="fade-right">
+                <div class="col-md-6" data-aos="fade-right" data-aos-delay="1200">
                     About us｜品牌理念
                 </div>
-                <div class="col-md-6 text-end" data-aos="fade-left">
+                <div class="col-md-6 text-end" data-aos="fade-left" data-aos-delay="1200">
                     同翕，為連結而設計，為共融而存在。
                 </div>
             </div>
@@ -118,31 +117,31 @@
                         </div>
                         <div class="col-md-7 d-flex flex-column justify-content-around ps-5">
                             <div>
-                                <p data-aos="fade-up" class="fs-4 mb-0">Our Story <span class="fw-light text-ghost">|</span> 我們的故事</p>
-                                <p data-aos="fade-up" class="text-14 text-ghost">設計不只是空間，而是一段與生活的對話。</p>
+                                <p data-aos="fade-up" data-aos-delay="1200" class="fs-4 mb-0">Our Story <span class="fw-light text-ghost">|</span> 我們的故事</p>
+                                <p data-aos="fade-up" data-aos-delay="1200" class="text-14 text-ghost">設計不只是空間，而是一段與生活的對話。</p>
                             </div>
-                            <p data-aos="fade-up" class="text-14">
+                            <p data-aos="fade-up" data-aos-delay="1200" class="text-14">
                                 同翕設計是一群相信空間能改變生活的人。<br>
                                 我們來自不同背景，卻有共同的信念：讓設計成為人與人之間最溫柔的橋樑。<br>
                                 我們不追求浮華與速度，而是專注傾聽故事與需求，細膩轉化為貼近生活的設計。<br>
                                 對我們而言，每個案子都是一次與生活的深刻對話，不只是完成一個家，<br>
                                 而是讓空間承載關係、夢想與未來。
                             </p>
-                            <p data-aos="fade-up" class="fs-5 mb-0 fw-light text-faint">同翕設計｜體驗夢想實現的美好</p>                       
+                            <p data-aos="fade-up" data-aos-delay="1200" class="fs-5 mb-0 fw-light text-faint">同翕設計｜體驗夢想實現的美好</p>                       
                         </div>
                     </div>
                     <div class="col-md-12 mt-5">
-                        <p data-aos="fade-up" class="eng-p text-14 text-ghost">
+                        <p data-aos="fade-up" data-aos-delay="1200" class="eng-p text-14 text-ghost">
                             Themis Design is a team that believes space can transform life.  
                             We come from diverse backgrounds, yet share the same belief:  
                             design can be the gentlest bridge between people.
                         </p>
-                        <p data-aos="fade-up" class="eng-p text-14 text-ghost">
+                        <p data-aos="fade-up" data-aos-delay="1200" class="eng-p text-14 text-ghost">
                             Instead of chasing extravagance and speed,  
                             we focus on listening to stories and needs,  
                             then carefully translating them into designs that truly fit everyday living.
                         </p>
-                        <p data-aos="fade-up" class="eng-p text-14 text-ghost">
+                        <p data-aos="fade-up" data-aos-delay="1200" class="eng-p text-14 text-ghost">
                             For us, every project is a deep dialogue with life itself —  
                             not just creating a home,  
                             but shaping a space that carries relationships, dreams, and the future.
@@ -161,7 +160,7 @@
         <a class="social-btn social-line" href="https://page.line.me/themis113?fbclid=PAZXh0bgNhZW0CMTEAAaf1nn-ywwaMyQ1K2LJ8QOAJZFQiCqebwJPmIz3_Bg44Hjo-UTP3QTxJpN7v8g_aem_onhYLdyjRJD3DpH1z8L9Mw" target="_blank" rel="noopener noreferrer" aria-label="Themis LINE" title="LINE">
             <i class="bi bi-line"></i>
         </a>
-
+  
         <a class="social-btn social-fb" href="https://www.facebook.com/p/%E5%90%8C%E7%BF%95%E8%A8%AD%E8%A8%88-Themis-Design-61555042074314/" target="_blank" rel="noopener noreferrer" aria-label="Themis Facebook" title="Facebook">
             <i class="bi bi-facebook"></i>
         </a>
@@ -169,10 +168,10 @@
         <a class="social-btn social-ig" href="https://www.instagram.com/themis__design/" target="_blank" rel="noopener noreferrer" aria-label="Themis Instagram" title="Instagram">
             <i class="bi bi-instagram"></i>
         </a>
-        </div>
+        </div> 
         <!-- ===== end social fixed buttons ===== -->
 
-        <p data-aos="fade-right" class="Copyright text-center">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
+        <p class="Copyright text-center">Copyright © 2025 同翕設計 Themis Design Interior. Designed by Xavier</p>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -198,20 +197,15 @@
                 AOS.init({ duration: 700, easing: 'ease-out-cubic', once: false });
                 // 若初始化後仍沒動畫，手動觸發：
                 const ensureAOS = () => {
-                    const targets = document.querySelectorAll('p[data-aos]');
-                    let shouldRefresh = false;
+                    const elements = document.querySelectorAll('[data-aos]');
+                    let refreshed = false;
 
-                    targets.forEach((node) => {
-                        if (!node.classList.contains('aos-init')) {
-                            shouldRefresh = true;
+                    elements.forEach((node) => {
+                        if (!node.classList.contains('aos-init') && !refreshed) {
+                            refreshed = true;
+                            AOS.refreshHard();
                         }
-                    });
 
-                    if (shouldRefresh) {
-                        AOS.refreshHard();
-                    }
-
-                    targets.forEach((node) => {
                         if (!node.classList.contains('aos-animate')) {
                             const rect = node.getBoundingClientRect();
                             const inView = rect.top < window.innerHeight && rect.bottom > 0;
@@ -222,7 +216,19 @@
                     });
                 };
 
-                setTimeout(ensureAOS, 200);
+                const queueEnsure = () => setTimeout(ensureAOS, 150);
+
+                const splash = document.getElementById('splash');
+                if (!splash || splash.classList.contains('hide')) {
+                    queueEnsure();
+                } else {
+                    const handleSplash = () => {
+                        queueEnsure();
+                        window.removeEventListener('themis:splashHidden', handleSplash);
+                    };
+                    window.addEventListener('themis:splashHidden', handleSplash);
+                }
+
                 window.addEventListener('scroll', ensureAOS, { once: true });
             });
         </script>
