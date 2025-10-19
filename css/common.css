@@ -1,192 +1,222 @@
-/* 全站色系（與原站一致） */
+/* ==============================
+   全站色系與基礎變數（與原站一致）
+   ============================== */
 :root{
   --c-bg: #f8f0e6;    /* 米色背景 */
   --c-text: #5a4a3f;  /* 主要深棕文字 */
   --c-mute: #8a8a8a;  /* 次要灰文字 */
   --c-line: #d9cfc4;  /* 淺米棕分隔線 */
-  --c-accent: #a08974;/* 暖棕重點色(hover) */
-  --bs-body-font-family: "Noto Serif TC", "PingFang TC", "Heiti TC",
-                          "Source Han Sans TC", system-ui, -apple-system, sans-serif;
-  --text-default: #5a4a3f;        /* 主要文字 */
-  --text-muted: #6c757d;         /* bootstrap muted */
-  --text-faint: rgba(90, 74, 63,0.65);/* 較淡（建議段落） */
-  --text-ghost: rgba(90, 74, 63,0.5);  /* 更淡（輔助性文字） */
-  --para-letter: 0.08em;    /* 字母間距 */
+  --c-accent: #a08974;/* 暖棕重點色(hover/重點) */
 
-  --scrollbar-width: 12px;                /* 滾動條寬度 */
-  --scrollbar-thumb: rgba(160,136,116,0.85); /* 滑桿顏色 */
+  --bs-body-font-family: "Noto Serif TC","PingFang TC","Heiti TC",
+                         "Source Han Sans TC",system-ui,-apple-system,sans-serif;
+
+  /* 文字層級（保留相容） */
+  --text-default: var(--c-text);
+  --text-muted: #6c757d;                   /* bootstrap muted */
+  --text-faint: rgba(90,74,63,0.65);
+  --text-ghost: rgba(90,74,63,0.5);
+  --para-letter: 0.08em;                   /* 英文/大標題字距 */
+
+  /* 自訂滾動條 */
+  --scrollbar-width: 12px;
+  --scrollbar-thumb: rgba(160,136,116,0.85);
   --scrollbar-thumb-hover: rgba(160,136,116,1);
   --scrollbar-track: rgba(0,0,0,0.04);
-  --scrollbar-transition: 200ms;          /* hover/變化動作速度 */
+  --scrollbar-transition: 200ms;
 
-  --ink:#62595096;         /* 暖炭灰：主文字（米色木質背景上更柔和） */
+  /* 墨色（在米色背景上更柔和） */
+  --ink: #62595096;
 }
 
-/* 三個層級的 class */
-.text-muted { color: var(--text-muted) !important; }   /* 整站套用方便 */
-.text-faint  { color: var(--text-faint)  !important; } 
-.text-ghost  { color: var(--text-ghost)  !important; }
-.text-spacing  { letter-spacing: var(--para-letter);   /* 字母間距（英文效果較明顯） */ }
-.text-h2s { font-size: 20px;}
-.text-14 { font-size: 14px;}
-.text-12 { font-size: 12px;}
+/* 三個層級的 class（全站可用） */
+.text-muted { color: var(--text-muted) !important; }
+.text-faint { color: var(--text-faint) !important; }
+.text-ghost { color: var(--text-ghost) !important; }
+.text-spacing { letter-spacing: var(--para-letter); }
+.text-h2s { font-size: 20px; }
+.text-14 { font-size: 14px; }
+.text-12 { font-size: 12px; }
 
+/* ==============================
+   全域排版基礎
+   ============================== */
 body{
-    background-color: var(--c-bg);
-    /*font-family: "Noto Serif TC", serif; ,"微軟正黑體"*/
-    font-family: var(--bs-body-font-family);
-    color: var(--c-text);
-    -webkit-text-size-adjust: 100%;
-    text-rendering: optimizeLegibility;
+  background-color: var(--c-bg);
+  font-family: var(--bs-body-font-family);
+  color: var(--c-text);
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
-/* 遮罩樣式 */
+/* ==============================
+   首屏遮罩（進場淡出）
+   ============================== */
 #splash {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #f8f0e6; /* 背景色可自訂 */
+  inset: 0;
+  background-color: var(--c-bg);
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 1;                /* 預設透明 */
-  animation: splash-sequence 2s forwards; /* 總共跑 2 秒 */
-  pointer-events: auto; /* ←顯示時擋住點擊 */
+  opacity: 1;
+  animation: splash-sequence 2s forwards; /* 總長 2 秒 */
+  pointer-events: auto; /* 顯示時擋住點擊 */
 }
 
 @keyframes splash-sequence {
   0%, 80% { opacity: 1; visibility: visible; pointer-events: auto; }
-  100% { opacity: 0; visibility: hidden; pointer-events: none; }
+  100%    { opacity: 0; visibility: hidden; pointer-events: none; }
 }
 
-
-/* 中間 Logo 或文字 */
+/* 中間 Logo / 文字 */
 .splash-logo {
   font-size: 1.5rem;
-  font-weight: thin;
-  color: var(--bg-soft);
+  font-weight: 300;
+  color: var(--ink);
   opacity: 1;
   animation: fadeIn 1s ease forwards;
 }
 .splash-logo .title{
-    line-height: 1.5;
-    font-size: 3rem;
+  line-height: 1.5;
+  font-size: 3rem;
 }
 .splash-logo .title img{
-    width: 100%;
+  width: 100%;
 }
 
-/* 隱藏遮罩動畫 */
-#splash.hide {
-  opacity: 0;
-  pointer-events: none;
-}
+/* 隱藏遮罩（結束狀態保險） */
+#splash.hide { opacity: 0; pointer-events: none; }
+
 @media (max-width:1200px){
-  #splash .splash-logo .title img{
-      transform: scale(1.2);
-  }
+  #splash .splash-logo .title img{ transform: scale(1.2); }
 }
 @media (max-width:992px){
-  #splash .splash-logo .title img{
-      transform: scale(1.5);
-  }
+  #splash .splash-logo .title img{ transform: scale(1.5); }
 }
 @media (max-width:768px){
-  #splash .splash-logo .title img{
-      transform: scale(2.0);
-  }
+  #splash .splash-logo .title img{ transform: scale(2.0); }
 }
 @media (max-width:576px){
-  #splash .splash-logo .title img{
-      transform: scale(3.0);
+  #splash .splash-logo .title img{ transform: scale(3.0); }
+}
+
+/* ==============================
+   Navbar（透明/著色 + 質感 Hover 動畫）
+   ============================== */
+/* 容器與配色 */
+.navbar-custom{ transition: background-color .3s ease, box-shadow .3s ease; }
+.navbar-transparent{ background-color: transparent !important; color: #f8f0e6 !important; }
+.navbar-colored{
+  background-color: var(--c-bg) !important;
+  box-shadow: 0 6px 14px rgba(0,0,0,.06);
+}
+.navbar-brand img{ height:45px; transition: all .3s ease; }
+
+/* 預設 nav-link 樣式（含質感 hover 動畫） */
+.navbar-custom .nav-link{
+  position: relative;
+  display: inline-block;
+  font-size: .85rem;
+  padding-bottom: .2rem;                 /* 騰出下劃線空間 */
+  letter-spacing: 0.02em;
+  transition: color .28s ease, letter-spacing .28s ease;
+}
+
+/* 著色 Navbar（滾動後）回到站內文字色 */
+.navbar-colored .nav-link{ color: var(--c-text) !important; }
+
+/* 中心展開下劃線（質感 hover） */
+.navbar-custom .nav-link::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-4px;
+  width:0;
+  height:2px;
+  background: var(--c-accent);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  transition: width .32s ease;
+  box-shadow: 0 0 6px rgba(160,137,116,.35);
+}
+
+/* Hover：色彩微變、字距微張、下劃線展開 */
+.navbar-custom .nav-link:hover{
+  color: var(--c-accent) !important;
+  letter-spacing: 0.04em;
+}
+.navbar-custom .nav-link:hover::after{ width: 72%; }
+
+/* Active：維持下劃線顯示 */
+.navbar-custom .nav-link.active{
+  color: var(--c-accent) !important;
+}
+.navbar-custom .nav-link.active::after{ width: 72%; }
+
+/* Icon（漢堡）對應配色 */
+.navbar-custom .bi-list { color:#fff; }
+.navbar-custom.navbar-colored .bi-list { color: var(--c-text); }
+
+/* 行動版展開：確保可讀性 */
+@media (max-width: 991.98px) {
+  .navbar-collapse{ background-color: var(--c-bg); }
+  .navbar-custom .nav-link { color: var(--ink) !important; }
+  .navbar-custom .nav-link.active{
+    color: var(--c-accent) !important;
   }
 }
 
-/* Navbar */
-.navbar-custom{ transition: background-color .3s ease; }
-.navbar-transparent{ background-color: transparent !important; color: #f8f0e6 !important;}
-.navbar-colored{ background-color: var(--c-bg) !important; }
-.navbar-colored .nav-link{ color:#000 !important; }
-.navbar-brand img{ height:45px; transition: all .3s ease; }
-.navbar-colored .nav-link:hover{ color:#333 !important; }
-.nav-link { font-size: 0.85rem; }
-
-.navbar-custom .nav-link.active {
-  text-decoration: underline;
-  text-underline-offset: 6px;
+/* 動畫可及性：偏好減少動態時關閉過場 */
+@media (prefers-reduced-motion: reduce){
+  .navbar-custom .nav-link,
+  .navbar-custom .nav-link::after,
+  .navbar-custom { transition: none !important; }
 }
 
-/* ===== 導覽列：滾動後配色、active 樣式、漢堡顏色 ===== */
-.navbar-custom.navbar-colored {
-  background: var(--c-bg) !important;
-  box-shadow: 0 6px 14px rgba(0,0,0,.06);
-}
-.navbar-custom.navbar-colored .nav-link { color: var(--text) !important; }
+/* ==============================
+   版塊間距與標題
+   ============================== */
+.top-section { padding: 5rem 1rem 1rem; }
+.top-section.text-center{ padding: 2rem 1rem; }
+.top-section.text-center .section-title { padding-bottom: 20px; }
 
-.navbar-custom .bi-list { color:#fff; }
-.navbar-custom.navbar-colored .bi-list { color: var(--text); }
+.section-spacing-sm{ padding:2rem 0; letter-spacing: 0.015rem; }
 
-@media (max-width: 991.98px) {
-    .navbar-transparent .navbar-toggler { 
-      /* border: var(--bs-border-width) solid red; */
-    }
-    .navbar-custom .nav-link {
-        color: var(--ink);
-    }
-    .navbar-custom .nav-link.active {
-        color: var(--brand-900);
-        text-decoration: underline;
-    }
+.section-spacing-lg .container{
+  padding:4rem 0;
+  letter-spacing: 0.06rem;
+  border-bottom: 1px solid #8a8a8a34;
 }
 
-/* 最上面的section */
-.top-section {
-    padding: 5rem 1rem 1rem 1rem;
-}
-
-.top-section.text-center{  
-  padding: 2rem 1rem 2rem 1rem;
-}
-
-.top-section.text-center .section-title {
-  padding-bottom: 20px;
-}
-.section-spacing-sm{ padding:2rem 0; letter-spacing: 0.015rem;}
-.section-spacing-lg .container{ 
-    padding:4rem 0; 
-    letter-spacing: 0.06rem;
-    border-bottom: 1px solid #8a8a8a34;
-}
-section .section-spacing-lg .section-title,h2 {
-  font-size:2.2rem; margin-bottom:2rem;
+/* 注意：原選擇器 `section .section-spacing-lg .section-title,h2` 會同時選中所有 h2；
+   改成更精準的寫法，避免全站 h2 被放大 */
+.section-spacing-lg .section-title,
+.section-spacing-lg h2{
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
   font-weight: 700;
 }
 
-h2.smaller{
-    font-size: 1.6rem;
-}
+h2.smaller{ font-size: 1.6rem; }
+h2.small{ font-size: 1.5rem; }
 
-h2.small{
-    font-size: 1.5rem;
-}
-
-.vs-container .section-title {
+.vs-container .section-title{
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.carousel-inner {
-  width: auto;
-}
+.carousel-inner { width: auto; }
 
 .Copyright{
-    text-align: center;
-    color:  rgba(90, 74, 63,0.6);
+  text-align: center;
+  color: rgba(90,74,63,0.6);
 }
 
+/* ==============================
+   右下角社群浮動按鈕（質感玻璃）
+   ============================== */
 /* 加到 index.css / common.css */
 .social-fixed{
   position: fixed;
@@ -195,38 +225,29 @@ h2.small{
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 1100; /* 確保在最上層 */
-  pointer-events: none; /* 先關掉外層的事件，讓內部 a 可被點擊 */
+  z-index: 1100;             /* 確保在最上層 */
+  pointer-events: none;       /* 外層關閉事件，讓內部 a 可點擊 */
 }
 .social-fixed .social-btn{
-  pointer-events: auto; /* 讓按鈕可被點擊 */
-  width: 56px;
-  height: 56px;
+  pointer-events: auto;
+  width: 56px; height: 56px;
   border-radius: 50%;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center; justify-content: center;
   text-decoration: none;
-  /* 半透明背景（可調）*/
   background: rgba(255,255,255,0.06);
-  /* background: rgba(0,0,0,0.35); */
-  /* 若背景偏白，改用深色半透明： background: rgba(0,0,0,0.35); */
-  backdrop-filter: blur(6px); /* 若不想用，移除也可 */
+  backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.10);
   color: #ffffff; /* icon 顏色 */
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
 }
-
 /* icon size */
 .social-fixed .social-btn i{
-  font-size: 20px;
-  line-height: 1;
-  display: block;
+  font-size: 20px; line-height: 1; display: block;
 }
-
-/* hover / focus styles */
+/* hover / focus */
 .social-fixed .social-btn:hover,
 .social-fixed .social-btn:focus{
   transform: translateY(-3px) scale(1.03);
@@ -235,85 +256,43 @@ h2.small{
   outline: none;
 }
 
-/* 不同社群可自訂色調（選擇性） */
-.social-fixed .social-line{ /* LINE 常見綠色調的輕微強調（可刪） */
-  color: rgba(132, 189, 0, 0.25);
-}
-.social-fixed .social-fb{ /* Facebook */
-  color: rgba(59,89,152,0.25);
-}
-.social-fixed .social-ig{ /* Instagram */
-  color: rgba(225,48,108,0.25);
-}
+/* 可選：品牌色淡化 */
+.social-fixed .social-line{ color: rgba(132,189,0,0.25); }
+.social-fixed .social-fb{   color: rgba(59,89,152,0.25); }
+.social-fixed .social-ig{   color: rgba(225,48,108,0.25); }
 
-.social-fixed .social-line:hover{
-  color: rgba(132, 189, 0, 0.6);
-}
+.social-fixed .social-line:hover{ color: rgba(132,189,0,0.6); }
+.social-fixed .social-fb:hover{   color: rgba(59,89,152,0.6); }
+.social-fixed .social-ig:hover{   color: rgba(225,48,108,0.6); }
 
-.social-fixed .social-fb:hover{
-  color: rgba(59,89,152,0.6);
-}
-
-.social-fixed .social-ig:hover{
-  color: rgba(225,48,108,0.6);
-}
-
-/* RWD：行動裝置縮小按鈕並收邊距 */
+/* RWD：縮小 */
 @media (max-width: 767.98px){
-  .social-fixed{
-    right: 12px;
-    bottom: 12px;
-    gap: 8px;
-  }
-  .social-fixed .social-btn{
-    width: 48px;
-    height: 48px;
-  }
-  .social-fixed .social-btn i{
-    font-size: 18px;
-  }
+  .social-fixed{ right: 12px; bottom: 12px; gap: 8px; }
+  .social-fixed .social-btn{ width: 48px; height: 48px; }
+  .social-fixed .social-btn i{ font-size: 18px; }
 }
-
-/* 更小裝置或需要更保守的排版，可以把按鈕再縮小 */
 @media (max-width: 420px){
-  .social-fixed{
-    right: 10px;
-    bottom: 10px;
-    gap: 6px;
-  }
-  .social-fixed .social-btn{
-    width: 44px;
-    height: 44px;
-  }
-  .social-fixed .social-btn i{
-    font-size: 16px;
-  }
+  .social-fixed{ right: 10px; bottom: 10px; gap: 6px; }
+  .social-fixed .social-btn{ width: 44px; height: 44px; }
+  .social-fixed .social-btn i{ font-size: 16px; }
 }
-
 /* 可選：當視窗寬度變很小時，改成水平排列（如果你希望） */
 /* 
 @media (max-width: 420px){
   .social-fixed{ flex-direction: row; right: 50%; transform: translateX(50%); }
 }
 */
-
-/* 可選：隱藏在列印或某些區塊（例如停靠不想擋內容） */
-@media print{
-  .social-fixed{ display: none; }
-}
-
-/* 無障礙：當使用鍵盤 tab 時有明顯 focus 樣式 */
+@media print{ .social-fixed{ display: none; } }
+/* 鍵盤可見 */
 .social-fixed .social-btn:focus{
   box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 10px 26px rgba(0,0,0,0.32);
   transform: translateY(-3px) scale(1.03);
 }
 
-
-/* WebKit / Chromium（Chrome、Edge、Safari 部分） */
-*::-webkit-scrollbar {
-  width: var(--scrollbar-width);
-  height: var(--scrollbar-width);
-}
+/* ==============================
+   自訂捲動條（WebKit/Chromium）
+   ============================== */
+*::-webkit-scrollbar { width: var(--scrollbar-width); height: var(--scrollbar-width); }
 *::-webkit-scrollbar-track {
   background: var(--scrollbar-track);
   border-radius: 999px;
@@ -321,7 +300,7 @@ h2.small{
 *::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb);
   border-radius: 999px;
-  border: 3px solid transparent; /* 內距讓 thumb 看起來不貼邊 */
+  border: 3px solid transparent;          /* 內距讓 thumb 看起來不貼邊 */
   background-clip: padding-box;
   transition: background var(--scrollbar-transition), transform var(--scrollbar-transition), box-shadow var(--scrollbar-transition);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
@@ -332,7 +311,7 @@ h2.small{
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-/* 如果你想在某些區塊顯示「脈衝動畫」（例如剛載入時提醒使用者可以滾動） */
+/* 可選：脈衝提示 */
 .scrollbar-pulse *::-webkit-scrollbar-thumb {
   animation: thumb-pulse 1.6s ease-in-out infinite;
 }
@@ -342,10 +321,8 @@ h2.small{
   100% { box-shadow: 0 0 0 0 rgba(160,136,116,0); }
 }
 
-/* Firefox（支援度較基礎：thin / auto / none 與顏色） */
-html {
+/* Firefox 基礎捲動條樣式 */
+html{
   scrollbar-width: thin; /* auto | thin | none */
-  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); /* thumb track */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
-
-/* 手機注意：大部分手機瀏覽器會使用系統 overlay scrollbar，無法被完整改寫 */
