@@ -1,11 +1,32 @@
 window.addEventListener("DOMContentLoaded", function () {
-    // 1 秒後加上 hide class 讓遮罩淡出
-    setTimeout(function () {
-    document.getElementById("splash").classList.add("hide");
-    }, 600); // 動畫 0.5 秒
-});
+    const splash = document.getElementById("splash");
+    let emitted = false;
 
-AOS.init();
+    const dispatchHidden = () => {
+        if (emitted) {
+            return;
+        }
+        emitted = true;
+        window.dispatchEvent(new CustomEvent("themis:splashHidden"));
+    };
+
+    if (!splash) {
+        dispatchHidden();
+        return;
+    }
+
+    setTimeout(function () {
+        splash.classList.add("hide");
+
+        const handleTransition = () => {
+            splash.removeEventListener("transitionend", handleTransition);
+            dispatchHidden();
+        };
+
+        splash.addEventListener("transitionend", handleTransition, { once: true });
+        setTimeout(dispatchHidden, 700);
+    }, 600);
+});
 
 window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");
