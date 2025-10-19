@@ -19,11 +19,11 @@ window.addEventListener("scroll", function () {
   if (window.scrollY > 50) {
     navbar.classList.remove("navbar-transparent");
     navbar.classList.add("navbar-colored");
-    if (logo) logo.src = "images/logo/logocolor-green.png";
+    if (logo) logo.src = "../images/logo/logocolor-green.png";
   } else {
     navbar.classList.add("navbar-transparent");
     navbar.classList.remove("navbar-colored");
-    if (logo) logo.src = "images/logo/logoNocolor.png";
+    if (logo) logo.src = "../images/logo/logoNocolor.png";
   }
 });
 
