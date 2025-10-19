@@ -16,7 +16,7 @@
   text-underline-offset: 6px;
 } */
 
-.hero h1, .hero p { letter-spacing: 4px; text-shadow: 0 2px 12px rgba(0,0,0,.25); } /* 提高照片上可讀性 */
+.hero h1, .hero p { letter-spacing: 2px; text-shadow: 0 2px 12px rgba(0,0,0,.25); } /* 提高照片上可讀性 */
 .hero .hero-cta { 
   color: var(--ink); 
   margin: 8px;
@@ -26,7 +26,7 @@
   margin: 8px;
 }
 .hero h1 {
-  letter-spacing: 8px;
+  letter-spacing: 4px;
 }
 
 .hero .cta-lead{

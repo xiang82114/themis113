@@ -121,19 +121,22 @@
         .hero-slider .slide:first-child { opacity: 1 !important; transform: none !important; }
       }
 
+      .section-title {
+        font-weight: 600;
+      }
       /* ===== 服務流程（配合原站色系） ===== */
       .process{ background: var(--c-bg); letter-spacing:.08em; }
       .process__container{ margin:0 auto; padding: 4rem 0;}
       .process__header{ margin-bottom:36px; }
-      .process__header .section-title {
-        margin-left: -12px;
-      }
       .process__title{
         font-size:clamp(32px,4vw,56px); font-weight:700; line-height:1.15; margin:0 0 12px; color:var(--c-text);
       }
+      .row>* {
+        padding: 0 2rem 0 0;
+      }
       .process__subtitle{ font-size: clamp(10px,1.8vw,12.8px); color:var(--c-mute); margin:0; }
 
-      .process__grid{ display:grid; grid-template-columns:1fr; gap:8px 80px; margin:24px 0 48px; }
+      .process__grid{ display:grid; grid-template-columns:1fr; gap:80px; margin:0 0 48px; }
       @media (min-width:992px){ 
         .process__grid{ grid-template-columns:1fr 1fr; }        
       }
@@ -228,7 +231,7 @@
       </div>
 
       <!-- 內容（文字與按鈕） -->
-      <div class="hero-content" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1200" data-aos-easing="ease-out-cubic">
+      <div class="hero-content" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1200" data-aos-easing="ease-out-cubic">
         <h1>體驗夢想實現的美好</h1>
         <p data-aos="fade-up">打造安心、溫度與質感並存的居住空間</p>
         <div class="hero-cta">
@@ -241,60 +244,34 @@
     <!-- 品牌理念 -->
     <div class="container">
       <section class="container top-section text-center">
-        <h2 class="section-title text-start">品牌理念</h2>
+        
         <div class="container about-us">
           <div class="row align-items-center">
-            <div class="col-md-6 mb-4 mb-md-0 p-2 d-flex flex-column justify-content-center align-items-center mb-5">
-                <p data-aos="fade-up" class="brand-lead text-start w-100">
-                  同翕設計的起點，不只是為了解決空間問題，<br>
-                  而是源於一個信念——「設計可以讓人更靠近自己想要的生活。」
-                </p>
+            <div class="col-md-6 mb-4 d-flex flex-column justify-content-center align-items-center mb-5">
+                <h2 class="section-title text-start w-100">品牌理念</h2>
+                <p data-aos="fade-up" class="brand-lead text-start">
+                  同翕設計的起點，不只是為了解決空間問題，而是源於一個信念「設計可以讓人更靠近自己想要的生活。」<br>
 
-                <p data-aos="fade-up" class="brand-lead text-start w-100">
                   我們相信，每個空間的背後，都有人的故事與期待。<br>
-                  於是，我們選擇以理解為出發點，讓設計不只是漂亮，<br>
-                  而是貼近每一份真實的渴望。
-                </p>
+                  於是，我們選擇以理解為出發點，讓設計不只是漂亮，而是貼近每一份真實的渴望。<br>
 
-                <p data-aos="fade-up" class="brand-lead text-start w-100">
-                  在這裡，設計不是目的，<br>
-                  而是一種連結人與人、夢想與日常的方式。
+                  在這裡，設計不是目的，而是一種連結人與人、夢想與日常的方式。<br>
+                  我們走得不快，但走得真實，因為我們始終相信，溫柔的力量，才能留下長久的感動。<br>
                 </p>
-
-                <p data-aos="fade-up" class="brand-lead text-start w-100">
-                  我們走得不快，但走得真實，<br>
-                  因為我們始終相信——溫柔的力量，才能留下長久的感動。
-                </p>
-                <!-- <p data-aos="fade-up" class="w-100 text-end me-3">
-                  - 同翕設計團隊
-                </p> -->
-                
+                <p data-aos="fade-up" class="eng-p text-start">
+                  Themis Design's starting point was never just about solving spatial problems; <br>
+                  it began with a belief: <br>
+                  “Design can bring people closer to the life they truly want.”<br>
+                  We believe that behind every space lies a story and an expectation.<br>
+                  That's why we choose to begin with understanding, so that design is not just about beauty, but about being close to every genuine desire.<br>
+                  Here, design is not the end goal, but a way to connect people, dreams, and everyday life.<br>
+                  We move forward not in haste, but with authenticity—because we've always believed that it's the power of gentleness that leaves a lasting impression.
+                </p>                
             </div>
             <div class="col-md-6 d-flex justify-content-center align-items-center mb-5">
               <div class="col-md-12" data-aos="fade-left">
                 <img src="images/ThemisWeb/about.jpg" alt="品牌理念" class="img-fluid rounded shadow-sm" loading="lazy">
               </div>
-            </div>
-            <div class="col-md-12">
-              <p data-aos="fade-up" class="eng-p text-start w-100">
-                  Themis Design's starting point was never just about solving spatial problems; it began with a belief:
-                  “Design can bring people closer to the life they truly want.”
-              </p>
-              <p data-aos="fade-up" class="eng-p text-start w-100">
-                  We believe that behind every space lies a story and an expectation.
-                  That's why we choose to begin with understanding — <br>
-                  so that design is not just about beauty,
-                  but about being close to every genuine desire.
-              </p>
-              <p data-aos="fade-up" class="eng-p text-start w-100">
-                  Here, design is not the end goal,
-                  but a way to connect people, dreams, and everyday life.
-              </p>
-              <p data-aos="fade-up" class="eng-p text-start w-100">
-                  We move forward not in haste, but with authenticity —
-                  because we've always believed
-                  that it's the power of gentleness that leaves a lasting impression.
-              </p>
             </div>
           </div>
         </div>
