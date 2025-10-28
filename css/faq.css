@@ -29,11 +29,12 @@
 /* Hero 區塊 */
 .faq-hero {
     position: relative;
-    padding: 5.5rem 1rem 3rem;
+    /* padding: 5.5rem 1rem 3rem; */
     background-image: url('/images/hero-bgc3.jpg');
     background-size: cover;
     background-position: center;
     color: #fff;
+    height: 40vh;
 }
 .faq-hero::before{
     content:"";
@@ -143,6 +144,7 @@ h2.small{
 /* 手機版調整 */
 @media (max-width:576px){
     .faq-hero {
+        height: 20vh;
         padding: 3.2rem 1rem 2rem;
         background-position: center 30%;
     }
