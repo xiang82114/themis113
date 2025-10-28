@@ -341,20 +341,12 @@
 
       <!-- 服務流程（新版・色系一致） -->
       <section class="process">
-        <div class="process__container row">
-          <div class="col-md-4 d-flex flex-column justify-content-between mb-3">
-            <header class="process__header">
+        <div class="process__container row">          
+          <div class="col-12 col-md-8 order-1 order-md-2">
+            <header class="process__header process__header-mobile d-md-none">
               <h2 class="section-title">服務流程</h2>
-              <p data-aos="fade-up" class="process__subtitle">我們以系統化流程管理設計專案，確保每一階段都清楚明確，為業主提供高效、安心、充滿信任的設計服務體驗。</p>
+              <p data-aos="fade-up" class="process__subtitle process__mobile-no-aos">我們以系統化流程管理設計專案，確保每一階段都清楚明確，為業主提供高效、安心、充滿信任的設計服務體驗。</p>
             </header>
-            <div class="process__cta">
-              <p data-aos="fade-up"> 若您對同翕設計有任何疑問，歡迎填寫表單與我們聯繫，<br>
-                  我們將由專人儘速回覆，提供合適的協助與說明。
-              </p>
-              <a href="/Contact/contact.html" class="process__link">立即諮詢同翕設計 <span class="process__arrow" aria-hidden>▸</span></a>
-            </div>
-          </div>
-          <div class="col-md-8">
             <div class="process__grid">
               <!-- 左欄 01-04 -->
               <ol class="process__list">
@@ -455,7 +447,18 @@
               </ol>
             </div>
           </div>
-          
+          <div class="col-12 col-md-4 d-flex flex-column justify-content-between mb-3 order-2 order-md-1">
+            <header class="process__header d-none d-md-block">
+              <h2 class="section-title">服務流程</h2>
+              <p data-aos="fade-up" class="process__subtitle process__mobile-no-aos">我們以系統化流程管理設計專案，確保每一階段都清楚明確，為業主提供高效、安心、充滿信任的設計服務體驗。</p>
+            </header>
+            <div class="process__cta">
+              <p data-aos="fade-up" class="process__mobile-no-aos"> 若您對同翕設計有任何疑問，歡迎填寫表單與我們聯繫，<br>
+                  我們將由專人儘速回覆，提供合適的協助與說明。
+              </p>
+              <a href="/Contact/contact.html" class="process__link">立即諮詢同翕設計 <span class="process__arrow" aria-hidden>▸</span></a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -526,6 +529,30 @@
         };
 
         const queueEnsure = () => setTimeout(ensureAOS, 150);
+        const disableMobileProcessAOS = () => {
+          let restored = false;
+          document.querySelectorAll('.process__mobile-no-aos').forEach((node) => {
+            if (!node.dataset.originalAos && node.hasAttribute('data-aos')) {
+              node.dataset.originalAos = node.getAttribute('data-aos');
+            }
+
+            if (window.innerWidth <= 576) {
+              if (node.hasAttribute('data-aos')) {
+                node.removeAttribute('data-aos');
+              }
+              node.classList.remove('aos-init', 'aos-animate');
+            } else if (node.dataset.originalAos && !node.hasAttribute('data-aos')) {
+              node.setAttribute('data-aos', node.dataset.originalAos);
+              restored = true;
+            }
+          });
+
+          if (restored) {
+            queueEnsure();
+          }
+        };
+
+        disableMobileProcessAOS();
 
         const splash = document.getElementById('splash');
         if (!splash || splash.classList.contains('hide')) {
@@ -539,6 +566,7 @@
         }
 
         window.addEventListener('scroll', ensureAOS, { once: true });
+        window.addEventListener('resize', disableMobileProcessAOS);
       });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/dist/lenis.min.js"></script>

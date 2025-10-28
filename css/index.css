@@ -185,6 +185,17 @@
         font-size: 1.05rem;
         letter-spacing: 0.18rem;
     }
+    .about-us .section-title,
+    .about-us .brand-lead,
+    .about-us p {
+        text-align: center !important;
+    }
+    .about-us .section-title {
+        margin: 0 auto 1.25rem;
+    }
+    .about-us .row {
+        text-align: center;
+    }
 }
 
 @media (max-width: 576px) {
@@ -209,5 +220,29 @@
     }
     .hero .hero-cta {
         gap: 0.5rem;
+    }
+    .about-us .section-title {
+        font-size: 1.75rem;
+    }
+    .about-us .brand-lead,
+    .about-us p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    .about-us img {
+        max-width: 85%;
+        margin: 0 auto;
+        display: block;
+    }
+    .process__container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .process__cta,
+    .process__subtitle {
+        text-align: center;
+    }
+    .process__cta {
+        margin-top: 1rem;
     }
 }
