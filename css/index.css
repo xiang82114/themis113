@@ -245,4 +245,7 @@
     .process__cta {
         margin-top: 1rem;
     }
+    .col-12.col-md-8.order-1.order-md-2{
+      padding: 12px;
+    }
 }
