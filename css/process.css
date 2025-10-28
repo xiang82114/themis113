@@ -276,7 +276,8 @@
 
 @media (max-width: 767.98px) {
   .service-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 16px;
   }
   .process__desc {
     padding-left: 0;
