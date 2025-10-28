@@ -14,16 +14,13 @@ AOS.init({
 // === Navbar 顏色切換（維持原行為） ===
 window.addEventListener("scroll", function () {
   const navbar = document.querySelector(".navbar");
-  const logo = document.getElementById("navbarLogo");
   if (!navbar) return;
   if (window.scrollY > 50) {
     navbar.classList.remove("navbar-transparent");
     navbar.classList.add("navbar-colored");
-    if (logo) logo.src = "../images/logo/logocolor-green.png";
   } else {
     navbar.classList.add("navbar-transparent");
     navbar.classList.remove("navbar-colored");
-    if (logo) logo.src = "../images/logo/logoNocolor.png";
   }
 });
 
