@@ -1,4 +1,4 @@
-// ===== 電話欄位正規化 & 自動格式化（防護版） =====
+﻿// ===== 電話欄位正規化 & 自動格式化（防護版） =====
 (function () {
 const tel = document.getElementById('Tel');
 
@@ -155,12 +155,42 @@ form.addEventListener('submit', async (e) => {
 
   // 儲存先前 focus 的元素以便還原
   let previousActive = null;
+  let scrollLocked = false;
+  let savedBodyOverflow = '';
+  let savedBodyPaddingRight = '';
+  let appliedScrollbarPadding = false;
+
+  function lockBodyScroll() {
+    if (scrollLocked) return;
+    savedBodyOverflow = document.body.style.overflow;
+    savedBodyPaddingRight = document.body.style.paddingRight;
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollBarWidth > 0) {
+      const currentPadding = parseFloat(window.getComputedStyle(document.body).paddingRight) || 0;
+      document.body.style.paddingRight = `${currentPadding + scrollBarWidth}px`;
+      appliedScrollbarPadding = true;
+    } else {
+      appliedScrollbarPadding = false;
+    }
+    document.body.style.overflow = 'hidden';
+    scrollLocked = true;
+  }
+
+  function unlockBodyScroll() {
+    if (!scrollLocked) return;
+    document.body.style.overflow = savedBodyOverflow;
+    if (appliedScrollbarPadding) {
+      document.body.style.paddingRight = savedBodyPaddingRight;
+    }
+    appliedScrollbarPadding = false;
+    scrollLocked = false;
+  }
 
   function openQr() {
     previousActive = document.activeElement;
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; // 防止背景滾動
+    lockBodyScroll(); // 防止背景滾動並避免滾動條消失造成位移
     // 聚焦到關閉按鈕，提升可及性
     closeBtn.focus({ preventScroll: true });
     // 注意：刻意不加 Esc 鍵監聽，符合「只能按按鈕關閉」需求
@@ -169,7 +199,7 @@ form.addEventListener('submit', async (e) => {
   function closeQr() {
     overlay.classList.remove('open');
     overlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
     try { if (previousActive && typeof previousActive.focus === 'function') previousActive.focus(); } catch (e) {}
   }
 
@@ -189,3 +219,5 @@ form.addEventListener('submit', async (e) => {
     setTimeout(openQr, 1200);
   });
 })();
+
+
