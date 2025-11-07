@@ -158,33 +158,46 @@ form.addEventListener('submit', async (e) => {
   let scrollLocked = false;
   let savedBodyOverflow = '';
   let savedBodyPaddingRight = '';
-  let appliedScrollbarPadding = false;
+    let appliedScrollbarPadding = false;
+    let lockedNavbars = [];
 
-  function lockBodyScroll() {
-    if (scrollLocked) return;
-    savedBodyOverflow = document.body.style.overflow;
-    savedBodyPaddingRight = document.body.style.paddingRight;
-    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-    if (scrollBarWidth > 0) {
-      const currentPadding = parseFloat(window.getComputedStyle(document.body).paddingRight) || 0;
-      document.body.style.paddingRight = `${currentPadding + scrollBarWidth}px`;
-      appliedScrollbarPadding = true;
-    } else {
+    function lockBodyScroll() {
+      if (scrollLocked) return;
+      savedBodyOverflow = document.body.style.overflow;
+      savedBodyPaddingRight = document.body.style.paddingRight;
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      if (scrollBarWidth > 0) {
+        const currentPadding = parseFloat(window.getComputedStyle(document.body).paddingRight) || 0;
+        document.body.style.paddingRight = `${currentPadding + scrollBarWidth}px`;
+        const navNodes = document.querySelectorAll('.navbar.fixed-top, .navbar.sticky-top');
+        lockedNavbars = Array.from(navNodes).map((nav) => {
+          const savedPadding = nav.style.paddingRight || '';
+          const navPadding = parseFloat(window.getComputedStyle(nav).paddingRight) || 0;
+          nav.style.paddingRight = `${navPadding + scrollBarWidth}px`;
+          return { node: nav, padding: savedPadding };
+        });
+        appliedScrollbarPadding = true;
+      } else {
+        appliedScrollbarPadding = false;
+        lockedNavbars = [];
+      }
+      document.body.style.overflow = 'hidden';
+      scrollLocked = true;
+    }
+
+    function unlockBodyScroll() {
+      if (!scrollLocked) return;
+      document.body.style.overflow = savedBodyOverflow;
+      if (appliedScrollbarPadding) {
+        document.body.style.paddingRight = savedBodyPaddingRight;
+        lockedNavbars.forEach(({ node, padding }) => {
+          node.style.paddingRight = padding;
+        });
+      }
+      lockedNavbars = [];
       appliedScrollbarPadding = false;
+      scrollLocked = false;
     }
-    document.body.style.overflow = 'hidden';
-    scrollLocked = true;
-  }
-
-  function unlockBodyScroll() {
-    if (!scrollLocked) return;
-    document.body.style.overflow = savedBodyOverflow;
-    if (appliedScrollbarPadding) {
-      document.body.style.paddingRight = savedBodyPaddingRight;
-    }
-    appliedScrollbarPadding = false;
-    scrollLocked = false;
-  }
 
   function openQr() {
     previousActive = document.activeElement;
