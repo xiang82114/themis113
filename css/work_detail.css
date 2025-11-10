@@ -77,3 +77,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.thumbnail-nav.thumbs-compact .thumb-wrapper {
+  justify-content: center;
+}
