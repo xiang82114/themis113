@@ -94,3 +94,62 @@ document.addEventListener("click", function (e) {
 // === 在需要阻止平滑滾動的容器（例如彈窗/側欄）加入 data-lenis-prevent ===
 // 文件內若有：<div class="modal" data-lenis-prevent>...</div>
 // 當滑鼠在這個容器內滾動，Lenis 會交回原生滾動，以避免捲動穿透
+
+// === mainCarousel 縮圖同步 active 樣式 ===
+function initCarouselThumbSync() {
+  if (typeof bootstrap === "undefined" || !bootstrap.Carousel) return;
+  const carousels = document.querySelectorAll(".carousel[id]");
+  carousels.forEach((carouselEl) => {
+    const carouselId = carouselEl.getAttribute("id");
+    if (!carouselId) return;
+    const selector = `.thumb-img[data-bs-target="#${carouselId}"][data-bs-slide-to]`;
+    const thumbs = Array.from(document.querySelectorAll(selector));
+    if (!thumbs.length) return;
+
+    const items = Array.from(carouselEl.querySelectorAll(".carousel-item"));
+    if (!items.length) return;
+
+    const setActiveThumb = (index) => {
+      thumbs.forEach((thumb, i) => {
+        thumb.classList.toggle("active", i === index);
+      });
+    };
+
+    let initialIndex = items.findIndex((item) => item.classList.contains("active"));
+    if (initialIndex < 0) initialIndex = 0;
+    setActiveThumb(initialIndex);
+
+    carouselEl.addEventListener("slide.bs.carousel", (event) => {
+      if (typeof event.to === "number") setActiveThumb(event.to);
+    });
+
+    thumbs.forEach((thumb, index) => {
+      thumb.addEventListener("click", () => setActiveThumb(index));
+    });
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initCarouselThumbSync);
+} else {
+  initCarouselThumbSync();
+}
+
+function adjustThumbnailCompaction() {
+  const navs = document.querySelectorAll(".thumbnail-nav");
+  navs.forEach((nav) => {
+    const thumbs = nav.querySelectorAll(".thumb-wrapper .thumb-img");
+    if (!thumbs.length) return;
+    if (thumbs.length <= 8) {
+      nav.classList.add("thumbs-compact");
+    } else {
+      nav.classList.remove("thumbs-compact");
+    }
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", adjustThumbnailCompaction);
+} else {
+  adjustThumbnailCompaction();
+}
