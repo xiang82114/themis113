@@ -165,19 +165,19 @@ h2.small{
 
 .btn.cta-outline,
 .cta-outline {
-  color: var(--brand);
+  min-width: 160px;
+  padding: 0.65rem 1.4rem;
+  border: 1px solid #5a4a3f;
+  color: #5a4a3f;
   background: transparent;
-  border: 1.6px solid var(--brand);
   font-weight: 700;
   border-radius: 12px;
-  transition: transform .18s ease, box-shadow .18s ease, background-color .24s ease, color .24s ease;
+  transition: background-color .2s ease, color .2s ease;
 }
 .btn.cta-outline:hover,
 .cta-outline:hover {
-  background: var(--brand);
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+  background-color: #5a4a3f;
+  color: #f8f0e6;
 }
 
 .cta-primary{
@@ -194,4 +194,11 @@ h2.small{
 .cta-primary:active{
   transform:translateY(0);
   box-shadow:0 8px 18px rgba(0,0,0,.18);
+}
+@media (max-width: 480px) {
+  .btn.cta-outline,
+  .cta-outline {
+    min-width: 130px;
+    font-size: 0.95rem;
+  }
 }
