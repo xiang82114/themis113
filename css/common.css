@@ -248,8 +248,14 @@ h2.small{ font-size: 1.5rem; }
   transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
 }
 /* icon size */
-.social-fixed .social-btn i{
-  font-size: 20px; line-height: 1; display: block;
+.social-fixed .social-btn i,
+.social-fixed .social-btn svg {
+  font-size: 20px; line-height: 1;
+  display: block;
+}
+.social-fixed .social-btn svg {
+  width: 20px;
+  height: 20px;
 }
 /* hover / focus */
 .social-fixed .social-btn:hover,
