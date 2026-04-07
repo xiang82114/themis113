@@ -153,6 +153,22 @@
 }
 
 @media (max-width: 991.98px) {
+    .top-section.text-center.mt-2.pt-0 .row.g-4 > .p-4 {
+        padding: 0 !important;
+    }
+    .navbar-custom .navbar-toggler {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+    }
+    .navbar-custom .navbar-toggler:focus {
+        box-shadow: none !important;
+    }
+    .navbar-custom .navbar-collapse {
+        background-color: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
     .hero {
         padding: 0 2.5rem;
         /* text-align: center; */
@@ -199,6 +215,9 @@
 }
 
 @media (max-width: 576px) {
+    .top-section.text-center.mt-2.pt-0 .row.g-4 > .p-4 {
+        padding: 0 !important;
+    }
     .hero h1 {
         font-size: 1.75rem;
         letter-spacing: 0.22rem;
@@ -211,9 +230,19 @@
         padding: 0.75rem;
         letter-spacing: 0.1rem;
     }
-    .navbar-collapse {
-        background-color: #f8f0e6;
-        padding: 1rem;
+    .navbar-custom .navbar-toggler {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+    }
+    .navbar-custom .navbar-toggler:focus {
+        box-shadow: none !important;
+    }
+    .navbar-custom .navbar-collapse {
+        background-color: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 1rem 0;
     }
     .container.top-section {
         padding: 2.5rem 0;
