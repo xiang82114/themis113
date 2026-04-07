@@ -9,7 +9,7 @@
 }
 
 .top-section .col-lg-12 .section-title {
-    padding-top: 20px;
+    padding-top: 40px;
     border-top: 0;    
 }
 .top-section .col-lg-12 .section-title h2{
@@ -34,6 +34,9 @@
     .top-section {
         padding: 2.5rem 1.5rem;
     }
+    .top-section .col-lg-12 .section-title {
+        padding-top: 32px;
+    }
     .top-section .col-lg-12 .section-title h2 {
         margin-bottom: 1.75rem;
     }
@@ -48,6 +51,9 @@
     }
     .top-section {
         padding: 2rem 1.25rem 1.5rem;
+    }
+    .top-section .col-lg-12 .section-title {
+        padding-top: 28px;
     }
     .top-section .col-lg-12 .section-title h2 {
         font-size: 1.75rem;
