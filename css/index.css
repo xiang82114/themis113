@@ -153,18 +153,18 @@
 }
 
 @media (max-width: 991.98px) {
-    .top-section.text-center.mt-2.pt-0 .row.g-4 > .p-4 {
+    .home-page .top-section.text-center.mt-2.pt-0 .row.g-4 > .p-4 {
         padding: 0 !important;
     }
-    .navbar-custom .navbar-toggler {
+    .home-page .navbar-custom .navbar-toggler {
         background-color: transparent !important;
         border-color: transparent !important;
         box-shadow: none !important;
     }
-    .navbar-custom .navbar-toggler:focus {
+    .home-page .navbar-custom .navbar-toggler:focus {
         box-shadow: none !important;
     }
-    .navbar-custom .navbar-collapse {
+    .home-page .navbar-custom .navbar-collapse {
         background-color: transparent !important;
         border: 0 !important;
         box-shadow: none !important;
@@ -173,10 +173,10 @@
         padding: 0 2.5rem;
         /* text-align: center; */
     }
-    .navbar-custom .nav-link {
+    .home-page .navbar-custom .nav-link {
         color: var(--ink);
     }
-    .navbar-custom .nav-link.active {
+    .home-page .navbar-custom .nav-link.active {
         color: var(--brand-900);
         text-decoration: underline;
     }
@@ -215,7 +215,7 @@
 }
 
 @media (max-width: 576px) {
-    .top-section.text-center.mt-2.pt-0 .row.g-4 > .p-4 {
+    .home-page .top-section.text-center.mt-2.pt-0 .row.g-4 > .p-4 {
         padding: 0 !important;
     }
     .hero h1 {
@@ -230,15 +230,15 @@
         padding: 0.75rem;
         letter-spacing: 0.1rem;
     }
-    .navbar-custom .navbar-toggler {
+    .home-page .navbar-custom .navbar-toggler {
         background-color: transparent !important;
         border-color: transparent !important;
         box-shadow: none !important;
     }
-    .navbar-custom .navbar-toggler:focus {
+    .home-page .navbar-custom .navbar-toggler:focus {
         box-shadow: none !important;
     }
-    .navbar-custom .navbar-collapse {
+    .home-page .navbar-custom .navbar-collapse {
         background-color: transparent !important;
         border: 0 !important;
         box-shadow: none !important;

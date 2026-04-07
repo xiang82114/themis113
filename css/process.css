@@ -13,7 +13,6 @@
 }
 .navbar-custom.navbar-colored .nav-link { color: var(--text) !important; }
 
-.navbar-custom .bi-list { color:#fff; }
 .navbar-custom.navbar-colored .bi-list { color: var(--text); }
 
 .top-section .col-lg-12 .section-title {
