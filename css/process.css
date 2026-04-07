@@ -305,6 +305,9 @@
   .charging-photo img {
     height: 220px;
   }
+  .value-services .vs-grid {
+    border:none;
+  }
 }
 
 
