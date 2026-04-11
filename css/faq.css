@@ -26,6 +26,27 @@
   --scrollbar-transition: 200ms;
 }
 
+.top-section {
+    padding: 9px 1rem 1rem 1rem;
+}
+.top-section .col-lg-12 .section-title {
+    padding: 0;
+    padding-top: 20px;
+    border-top: 0;
+}
+.top-section .col-lg-12 .section-title h2{
+    margin-bottom: 2rem;
+}
+.top-section .section-title {
+    border-top: 1px solid var(--c-line);
+}
+.top-section.text-center .section-title {
+    padding-bottom: 0;
+}
+.top-section {
+    margin-bottom: 1.5rem;
+}
+
 /* Hero 區塊 */
 .faq-hero {
     position: relative;
@@ -61,16 +82,39 @@
 
 /* 內容容器 */
 .faq-container {
-    padding: 3.2rem 0 6rem;
+    padding: 0 0 6rem;
 }
 .faq-intro {
     max-width:900px;
     margin: 0 auto 2rem;
+    padding: 0.7rem 0;
+    border: 0;
+    border-top: 1px solid rgba(90,74,63,0.14);
+    border-bottom: 1px solid rgba(90,74,63,0.14);
+    border-radius: 0;
+    background: transparent;
     color: var(--c-text);
     text-align:center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 .faq-intro .sub {
-    color: var(--c-mute);
+    color: rgba(90,74,63,0.72);
+    text-align: left;
+    line-height: 1.8;
+}
+.faq-intro .cta-outline {
+    flex-shrink: 0;
+    min-width: auto;
+    padding: 0.45rem 1rem;
+    font-size: 0.92rem;
+    border-color: rgba(90,74,63,0.5);
+}
+.faq-intro .cta-outline:hover {
+    background: rgba(90,74,63,0.08);
+    color: #5a4a3f;
 }
 
 /* 手風琴樣式 */
@@ -114,7 +158,7 @@ h2.small{
 
 /* 區塊間距 */
 .faq-group {
-    margin-top: 2.4rem;
+    margin-top: 2rem;
     margin-bottom: .6rem;
 }
 .faq-sep {
@@ -125,11 +169,31 @@ h2.small{
 
 /* 平板尺寸優化 */
 @media (max-width: 991.98px){
+    .top-section {
+        padding: 2.5rem 1.5rem;
+        text-align: left;
+    }
+    .top-section .section-title {
+        border-top: 0;
+        padding-top: 0;
+        text-align: left;
+    }
+    .top-section .col-lg-12 .section-title h2 {
+        margin-bottom: 1.5rem;
+    }
+    .top-section .row .text-center,
+    .top-section .row .text-md-end {
+        text-align: left !important;
+    }
     .faq-container {
-        padding: 2.5rem 0 4.5rem;
+        padding: 0 0 4.5rem;
     }
     .faq-intro {
-        padding: 0 1.5rem;
+        padding: 0.7rem 0;
+        margin-bottom: 1.75rem;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
     }
     .accordion-button {
         font-size: 1rem;
@@ -143,13 +207,19 @@ h2.small{
 
 /* 手機版調整 */
 @media (max-width:576px){
+    .top-section {
+        padding: 2rem 1.25rem 1.5rem;
+    }
+    .top-section .col-lg-12 .section-title h2 {
+        font-size: 1.75rem;
+    }
     .faq-hero {
         height: 30vh;
         padding: 3.2rem 1rem 2rem;
         background-position: center 30%;
     }
     .faq-container {
-        padding: 2rem 0 4rem;
+        padding: 0 0 4rem;
     }
     .accordion-button {
         text-align: left;
@@ -159,7 +229,12 @@ h2.small{
         padding: 1rem;
     }
     .faq-intro {
-        padding: 0 1rem;
+        padding: 0.65rem 0;
+        margin-bottom: 1.5rem;
+    }
+    .faq-intro .sub {
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
 }
 

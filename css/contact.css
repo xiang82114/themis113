@@ -6,18 +6,24 @@
     margin-bottom: 1.5rem;
 } */
 
+.top-section {
+    padding: 9px 1rem 1rem 1rem;
+}
 .top-section .col-lg-12 .section-title {
+    padding: 0;
     padding-top: 20px;
-    border-top: 0;    
+    border-top: 0;
+}
+.top-section .col-lg-12 .section-title h2{
+    margin-bottom: 2rem;
 }
 
 .top-section .section-title {
-    /* padding-top: 40px; */
     border-top: 1px solid var(--c-line);
 }
 
 .top-section.text-center .section-title {
-    padding: 0;
+    padding-bottom: 0;
 }
 
 /* 表單卡片與資訊卡 */
@@ -145,6 +151,19 @@
 @media (max-width: 991.98px) {
   .top-section {
     padding: 2.5rem 1.5rem;
+    text-align: left;
+  }
+  .top-section .section-title {
+    border-top: 0;
+    padding-top: 0;
+    text-align: left;
+  }
+  .top-section .col-lg-12 .section-title h2 {
+    margin-bottom: 1.5rem;
+  }
+  .top-section .row .text-center,
+  .top-section .row .text-md-end {
+    text-align: left !important;
   }
   .form-card,
   .card-wrapper {
@@ -170,7 +189,10 @@
 
 @media (max-width: 575.98px) {
   .top-section {
-    padding: 2rem 1.25rem;
+    padding: 2rem 1.25rem 1.5rem;
+  }
+  .top-section .col-lg-12 .section-title h2 {
+    font-size: 1.75rem;
   }
   .form-card .form-control,
   .form-card .form-select {

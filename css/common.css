@@ -47,6 +47,12 @@ body{
   color: var(--c-text);
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  /* 預留 fixed-top navbar 高度，避免內容貼齊上緣 */
+  padding-top: 70px;
+}
+
+@media (max-width: 576px) {
+  body { padding-top: 50px; }
 }
 
 /* ==============================
