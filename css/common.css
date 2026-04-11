@@ -51,8 +51,13 @@ body{
   padding-top: 70px;
 }
 
+body.home-page {
+  padding-top: 0;
+}
+
 @media (max-width: 576px) {
   body { padding-top: 50px; }
+  body.home-page { padding-top: 0; }
 }
 
 /* ==============================
