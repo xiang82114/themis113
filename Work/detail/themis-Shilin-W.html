@@ -46,6 +46,17 @@
         margin-bottom: 1rem;
       }
 
+      .img-grid-3d .col-md-6 {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .img-grid-3d img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+      }
+
       @media (max-width: 768px) {
 
         .carousel-inner img {
@@ -55,6 +66,10 @@
         .thumb-img {
           width: 90px;
           height: 60px;
+        }
+
+        .img-grid-3d img {
+          height: 220px;
         }
 
       }
@@ -258,14 +273,14 @@
 
     <section class="container section">
       <h2 class="section-title">3D 模擬圖</h2>
-      <div class="row img-grid d-flex align-items-center justify-content-center">
+      <div class="row img-grid img-grid-3d d-flex align-items-center justify-content-center">
         <div class="col-md-6">
           <p class="fw-bold">玄關 3D 圖</p>
           <img src="/images/ThemisWeb/S-W/3D/S-W-3D-7.jpg" alt="玄關3D">
         </div>
         <div class="col-md-6">
-          <p class="fw-bold">玄關</p>
-          <img src="/images/ThemisWeb/S-W/3D/S-W-3D-6.jpg" alt="玄關">
+          <p class="fw-bold">玄關 3D 圖</p>
+          <img src="/images/ThemisWeb/S-W/3D/S-W-3D-6.jpg" alt="玄關3D">
         </div>
         <div class="col-md-6">
           <p class="fw-bold">客廳 3D 圖</p>
