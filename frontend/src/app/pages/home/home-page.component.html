@@ -1,0 +1,20 @@
+<section class="hero">
+  <h1>將空間，設計成你的日常風景</h1>
+  <p>THEMIS 以居住者的生活節奏為核心，提供住宅與商空整合設計服務。</p>
+  <a routerLink="/contact">立即諮詢</a>
+</section>
+
+<section>
+  <h2>精選作品</h2>
+  <p *ngIf="loading()">載入中...</p>
+  <div class="grid" *ngIf="!loading()">
+    <article *ngFor="let work of works()" class="card">
+      <img [src]="work.heroImage" [alt]="work.title" />
+      <div class="card-body">
+        <h3>{{ work.title }}</h3>
+        <p>{{ work.designConcept }}</p>
+        <a [routerLink]="['/works', work.slug]">查看詳情</a>
+      </div>
+    </article>
+  </div>
+</section>

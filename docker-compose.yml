@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: themis-postgres
+    environment:
+      POSTGRES_DB: themis
+      POSTGRES_USER: themis
+      POSTGRES_PASSWORD: themis
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U themis -d themis"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+    container_name: themis-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/themis
+      SPRING_DATASOURCE_USERNAME: themis
+      SPRING_DATASOURCE_PASSWORD: themis
+      APP_CORS_ALLOWED_ORIGINS: http://localhost:8081
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: themis-frontend
+    depends_on:
+      - backend
+    ports:
+      - "8081:80"
+
+volumes:
+  postgres_data:

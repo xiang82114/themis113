@@ -1,0 +1,12 @@
+<section>
+  <h1>作品集</h1>
+  <p *ngIf="loading()">載入中...</p>
+  <div class="grid" *ngIf="!loading()">
+    <article *ngFor="let work of works()" class="card">
+      <img [src]="work.heroImage" [alt]="work.title" />
+      <h3>{{ work.title }}</h3>
+      <p>{{ work.info.location }} ・ {{ work.info.area }}</p>
+      <a [routerLink]="['/works', work.slug]">查看</a>
+    </article>
+  </div>
+</section>

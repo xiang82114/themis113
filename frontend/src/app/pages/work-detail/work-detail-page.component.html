@@ -1,0 +1,24 @@
+<p *ngIf="loading()">載入中...</p>
+<section *ngIf="work() as work" class="detail">
+  <a routerLink="/works" class="back">← 回作品集</a>
+  <h1>{{ work.title }}</h1>
+  <img [src]="work.heroImage" [alt]="work.title" class="hero" />
+  <p>{{ work.designConcept }}</p>
+
+  <div class="info-grid">
+    <p><strong>地點</strong> {{ work.info.location }}</p>
+    <p><strong>坪數</strong> {{ work.info.area }}</p>
+    <p><strong>成員</strong> {{ work.info.members }}</p>
+    <p><strong>格局</strong> {{ work.info.layout }}</p>
+  </div>
+
+  <h2>空間照片</h2>
+  <div class="gallery">
+    <img *ngFor="let image of work.carouselImages" [src]="image" [alt]="work.title" />
+  </div>
+
+  <h2>創意巧思</h2>
+  <p>{{ work.creativeIdeas }}</p>
+  <h2>業主回饋</h2>
+  <blockquote>{{ work.feedback }}</blockquote>
+</section>

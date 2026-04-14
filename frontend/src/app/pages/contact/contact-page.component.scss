@@ -1,0 +1,34 @@
+.contact {
+  max-width: 720px;
+}
+form {
+  display: grid;
+  gap: 0.9rem;
+}
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+}
+input,
+textarea {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #ccd4d3;
+  border-radius: 8px;
+  font: inherit;
+}
+button {
+  width: fit-content;
+  padding: 0.7rem 1.2rem;
+  border: 0;
+  border-radius: 8px;
+  background: #0b6358;
+  color: #fff;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.ok { color: #20744b; }
+.err { color: #b23d3d; }

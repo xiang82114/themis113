@@ -1,0 +1,43 @@
+<section class="contact">
+  <h1>聯絡我們</h1>
+  <p>填寫需求後，我們會盡快與您聯繫。</p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      姓名*
+      <input type="text" formControlName="name" />
+    </label>
+    <label>
+      Email*
+      <input type="email" formControlName="email" />
+    </label>
+    <label>
+      電話
+      <input type="text" formControlName="phone" />
+    </label>
+    <label>
+      空間性質*
+      <input type="text" formControlName="spaceType" />
+    </label>
+    <label>
+      預算*
+      <input type="text" formControlName="budget" />
+    </label>
+    <label>
+      坪數
+      <input type="text" formControlName="square" />
+    </label>
+    <label>
+      期望完工時間
+      <input type="text" formControlName="wt" />
+    </label>
+    <label>
+      需求描述*
+      <textarea rows="5" formControlName="message"></textarea>
+    </label>
+
+    <button type="submit" [disabled]="sending()">{{ sending() ? '送出中...' : '送出表單' }}</button>
+  </form>
+
+  <p *ngIf="message()" [class.ok]="isSuccess()" [class.err]="!isSuccess()">{{ message() }}</p>
+</section>
