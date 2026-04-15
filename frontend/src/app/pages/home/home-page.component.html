@@ -1,20 +1,79 @@
 <section class="hero">
-  <h1>將空間，設計成你的日常風景</h1>
-  <p>THEMIS 以居住者的生活節奏為核心，提供住宅與商空整合設計服務。</p>
-  <a routerLink="/contact">立即諮詢</a>
+  <div class="hero-slider" aria-hidden="true">
+    <div class="slide" *ngFor="let slide of slides; let i = index" [style.backgroundImage]="'url(' + slide + ')'" [style.--i]="i"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>體驗夢想實現的美好</h1>
+    <p>打造安心、溫度與質感並存的居住空間</p>
+    <div class="hero-cta">
+      <a routerLink="/contact" class="btn btn-primary">立即預約諮詢</a>
+      <a routerLink="/works" class="btn btn-outline">瀏覽設計作品</a>
+    </div>
+  </div>
 </section>
 
-<section>
-  <h2>精選作品</h2>
-  <p *ngIf="loading()">載入中...</p>
-  <div class="grid" *ngIf="!loading()">
-    <article *ngFor="let work of works()" class="card">
-      <img [src]="work.heroImage" [alt]="work.title" />
-      <div class="card-body">
-        <h3>{{ work.title }}</h3>
-        <p>{{ work.designConcept }}</p>
-        <a [routerLink]="['/works', work.slug]">查看詳情</a>
-      </div>
+<section class="section container">
+  <div class="brand-grid">
+    <div class="brand-copy">
+      <h2 class="section-title">品牌理念</h2>
+      <p class="brand-lead">
+        同翕設計的起點，不只是為了解決空間問題，而是源於一個信念：
+        設計可以讓人更靠近自己想要的生活。我們相信，每個空間背後，都有人的故事與期待。
+      </p>
+      <p>
+        我們以理解為出發點，讓設計不只漂亮，更貼近每一份真實渴望。
+        在這裡，設計不是目的，而是一種連結人與人、夢想與日常的方式。
+      </p>
+      <p class="eng">
+        Themis Design starts with one belief: design can bring people closer to the life they truly want.
+      </p>
+    </div>
+    <div>
+      <img src="/images/ThemisWeb/about.jpg" alt="品牌理念" class="brand-image" />
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <h2 class="section-title">精選作品</h2>
+  <div class="works-grid">
+    <article *ngFor="let work of featuredWorks" class="work-card">
+      <a [routerLink]="['/works', work.slug]">
+        <img [src]="work.image" [alt]="work.title" />
+        <div class="work-info">
+          {{ work.title }}
+          <span>{{ work.subtitle }}</span>
+        </div>
+      </a>
     </article>
   </div>
+</section>
+
+<section class="section container process">
+  <div class="process-header">
+    <h2 class="section-title">服務流程</h2>
+    <p>我們以系統化流程管理設計專案，讓每一階段都清楚明確。</p>
+  </div>
+  <div class="process-grid">
+    <ol>
+      <li *ngFor="let item of processLeft">
+        <h3>{{ item[0] }}</h3>
+        <div>
+          <h4>{{ item[1] }}</h4>
+          <p>{{ item[2] }}</p>
+        </div>
+      </li>
+    </ol>
+    <ol>
+      <li *ngFor="let item of processRight">
+        <h3>{{ item[0] }}</h3>
+        <div>
+          <h4>{{ item[1] }}</h4>
+          <p>{{ item[2] }}</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+  <a routerLink="/contact" class="process-link">立即諮詢同翕設計 ▸</a>
 </section>

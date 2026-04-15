@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&display=swap');
+
 :root {
   color-scheme: light;
 }
@@ -8,9 +10,9 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', 'Noto Sans TC', sans-serif;
-  color: #263238;
-  background: #fcfcfb;
+  font-family: 'Noto Serif TC', 'Segoe UI', 'Noto Sans TC', sans-serif;
+  color: #5a4a3f;
+  background: #f8f0e6;
 }
 
 h1, h2, h3 {
