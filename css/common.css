@@ -173,11 +173,11 @@ body.home-page {
 
 /* 行動版 toggler 外觀統一（非首頁由 common 套用） */
 .navbar-custom .navbar-toggler{
-  border-color: rgba(90,74,63,0.18);
+  /* border-color: rgba(90,74,63,0.18); */
   background-color: rgba(248,240,230,0.92);
   border-radius: 10px;
   padding: .35rem .5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  /* box-shadow: 0 4px 12px rgba(0,0,0,0.08); */
   transition: background-color .28s ease, border-color .28s ease, box-shadow .28s ease;
 }
 .navbar-custom .navbar-toggler:focus{
@@ -187,7 +187,7 @@ body.home-page {
   filter: contrast(1.2) saturate(.75);
 }
 .navbar-custom.navbar-colored .navbar-toggler{
-  background-color: var(--c-bg);
+  /* background-color: var(--c-bg); */
 }
 
 /* 下拉選單（避免透明，統一為有底色） */
@@ -209,6 +209,10 @@ body.home-page {
 
 /* 行動版展開：確保可讀性 */
 @media (max-width: 991.98px) {
+  body:not(.home-page) .navbar-custom .navbar-toggler{
+    border: 0 !important;
+    border-color: transparent !important;
+  }
   .navbar-custom .navbar-collapse{
     margin-top: .6rem;
     padding: .65rem .8rem;
