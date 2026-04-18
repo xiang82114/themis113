@@ -29,9 +29,6 @@
 .top-section .section-title {
   border-top: 1px solid var(--c-line);
 }
-.top-section.text-center .section-title {
-  padding-bottom: 0;
-}
 
 /* ===== 服務項目 ===== */
 .service-items {
