@@ -43,9 +43,6 @@
 .top-section.text-center .section-title {
     padding-bottom: 0;
 }
-.top-section {
-    margin-bottom: 1.5rem;
-}
 
 /* Hero 區塊 */
 .faq-hero {
@@ -85,7 +82,6 @@
     padding: 0 0 6rem;
 }
 .faq-intro {
-    max-width:900px;
     margin: 0 auto 2rem;
     padding: 0.7rem 0;
     border: 0;
@@ -97,7 +93,7 @@
     text-align:center;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 1rem;
 }
 .faq-intro .sub {
